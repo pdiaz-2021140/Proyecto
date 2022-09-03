@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Marca;
 
 
 public class MarcaDAO {
@@ -70,9 +71,8 @@ public class MarcaDAO {
     try{
     con = cn.Conexion();
     ps = con.prepareStatement(sql);
-    ps.setInt(1, mc.getCodigoMarca());
-    ps.setString(2, mc.getNombreMarca());
-    ps.setString(3, mc.getNumeroContacto());
+    ps.setString(1, mc.getNombreMarca());
+    ps.setString(2, mc.getNumeroContacto());
     ps.executeUpdate();
     }catch(Exception e){
         e.printStackTrace();
