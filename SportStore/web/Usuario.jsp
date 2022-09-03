@@ -35,6 +35,10 @@
                             <input type="text" name="txtTelefonoUsuario" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label>Correo:</label>
+                            <input type="text" name="txtCorreoElectronico" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label>Usuario:</label>
                             <input type="text" name="txtUser" class="form-control">
                         </div>
@@ -61,6 +65,7 @@
                             <td>NOMBRE</td>
                             <td>APELLIDO</td>
                             <td>TELEFONO</td>
+                            <td>CORREO</td>
                             <td>USUARIO</td>
                             <td>CONTRASEÑA</td>
                             <td>TIPO USUARIO</td>
@@ -75,6 +80,7 @@
                             <td>${usuario.getNombreUsuario()}</td>
                             <td>${usuario.getApellidoUsuario()}</td>
                             <td>${usuario.getTelefonoContacto()}</td>
+                            <td>${usuario.getCorreoElectronico()}</td>
                             <td>${usuario.getUsuario()}</td>
                             <td>${usuario.getPasswordU()}</td>
                             <td>${usuario.getCodigoTUsuario()}</td>

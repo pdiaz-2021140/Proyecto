@@ -9,12 +9,13 @@ public class Usuario {
     private String telefonoContacto;
     private String usuario;
     private String passwordU;
+    private String correoElectronico;
     private int codigoTUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(int codigoUsuario, String nombreUsuario, String apellidoUsuario, String NIT, String telefonoContacto, String usuario, String passwordU, int codigoTUsuario) {
+    public Usuario(int codigoUsuario, String nombreUsuario, String apellidoUsuario, String NIT, String telefonoContacto, String usuario, String passwordU, String correoElectronico, int codigoTUsuario) {
         this.codigoUsuario = codigoUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -22,6 +23,7 @@ public class Usuario {
         this.telefonoContacto = telefonoContacto;
         this.usuario = usuario;
         this.passwordU = passwordU;
+        this.correoElectronico = correoElectronico;
         this.codigoTUsuario = codigoTUsuario;
     }
 
@@ -81,6 +83,14 @@ public class Usuario {
         this.passwordU = passwordU;
     }
 
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+
     public int getCodigoTUsuario() {
         return codigoTUsuario;
     }
@@ -88,6 +98,10 @@ public class Usuario {
     public void setCodigoTUsuario(int codigoTUsuario) {
         this.codigoTUsuario = codigoTUsuario;
     }
+
+    
+
+    
     
     
 }
