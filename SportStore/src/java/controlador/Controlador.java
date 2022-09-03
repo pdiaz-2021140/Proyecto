@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.TipoProducto;
+import modelo.TipoProductoDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 
@@ -26,7 +28,8 @@ public class Controlador extends HttpServlet {
 
     Usuario usuario = new Usuario();
     UsuarioDAO usuarioDAO = new UsuarioDAO();
-    
+    TipoProducto tpProucto = new TipoProducto();
+    TipoProductoDAO tpProductoDAO = new TipoProductoDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -107,7 +110,39 @@ public class Controlador extends HttpServlet {
         } else if (menu.equals("Home")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
 
-        }
+        }else if(menu.equals("TipoProducto")){
+         
+            switch(accion){
+                case "Listar":
+                    List listaTipoProductos = tpProductoDAO.listar();
+                    request.setAttribute("tipoProductos",listaTipoProductos);
+                    break;
+                case "Agregar":
+                    String descripcion  = request.getParameter("txtDescripcion");
+                    int codigoMarca = Integer.parseInt(request.getParameter("txtCodMarca"));
+                  
+                    tpProucto.setDescripcion(descripcion);
+                    tpProucto.setCodigoMarca(codigoMarca);
+                    tpProductoDAO.agregar(tpProucto);
+                    request.getRequestDispatcher("Controlador?menu=TipoProducto&accion=Listar").forward(request, response);
+                    break;
+                    
+                case "Editar" :
+                    
+                    break;
+                    
+                case "Actualizar":
+                    
+                    break;
+                    
+                case "Eliminar":
+                    
+                    break;
+                    
+                
+            }
+          request.getRequestDispatcher("TipoProducto.jsp").forward(request, response);   
+    } 
     
         }
     }
