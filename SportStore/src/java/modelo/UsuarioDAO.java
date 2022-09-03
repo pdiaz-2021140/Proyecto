@@ -85,7 +85,7 @@ public class UsuarioDAO {
     //Método Agregar
     
     public int agregar(Usuario user) {
-        String sql = "insert into Usuario(nombreUsuario, apellidoUsuario, NIT, telefonoContacto, usuario, passwordU, codigoTUsuario) values(?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Usuario(nombreUsuario, apellidoUsuario, NIT, telefonoContacto, usuario, passwordU, correoElectronico, codigoTUsuario) values(?, ?, ?, ?, ?, ?, ?, ?)";
         
         try {
             con = cn.Conexion();
@@ -142,7 +142,7 @@ public class UsuarioDAO {
     //Método para editar
     
     public int actualizar(Usuario user) {
-        String sql = "Update Usuario set nombreUsuario = ?, apellidoUsuario = ?, NIT = ?, telefonoContacto = ?, usuario = ?, passwordU = ? where codigoUsuario = ?";
+        String sql = "Update Usuario set nombreUsuario = ?, apellidoUsuario = ?, NIT = ?, telefonoContacto = ?, usuario = ?, passwordU = ?, correoElectronico = ? where codigoUsuario = ?";
         
         try {
             con = cn.Conexion();

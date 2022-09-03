@@ -25,7 +25,7 @@
                   </li>
                   <li class="nav-item active">
                       <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=TipoProducto&accion=Listar" target="homeFrame">TipoProducto</a>
-                    </li>
+                  </li>
                    
                 </ul>
               </div>
