@@ -7,16 +7,26 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
+
 
 /**
  *
  * @author Kevin
  */
 public class Controlador extends HttpServlet {
+
+
+
+    Usuario usuario = new Usuario();
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,6 +39,7 @@ public class Controlador extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -41,6 +52,63 @@ public class Controlador extends HttpServlet {
             out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
+
+        String menu = request.getParameter("menu");
+        String accion = request.getParameter("accion");
+        
+        if (menu.equals("Principal")) {
+            request.getRequestDispatcher("Principal.jsp").forward(request, response);     
+        } else if (menu.equals("Usuario")) {
+            //CRUD Usuario
+            switch(accion) {
+                case "Listar":
+                    List listaUsuario = usuarioDAO.listar();
+                    request.setAttribute("usuarios", listaUsuario);
+                    break;
+                    
+                case "Agregar":
+                    String NIT = request.getParameter("txtNITUsuario");
+                    String nombre = request.getParameter("txtNombreUsuario");
+                    String apellido = request.getParameter("txtApellidoUsuario");
+                    String tel = request.getParameter("txtTelefonoUsuario");
+                    String correoElec = request.getParameter("txtCorreoElectronico");
+                    String user = request.getParameter("txtUser");
+                    String pass = request.getParameter("txtPass");
+                    int codTUser = Integer.parseInt(request.getParameter("txtTipoUser"));
+                    
+                    usuario.setNombreUsuario(nombre);
+                    usuario.setApellidoUsuario(apellido);
+                    usuario.setNIT(NIT);
+                    usuario.setTelefonoContacto(tel);
+                    usuario.setCorreoElectronico(correoElec);
+                    usuario.setUsuario(user);
+                    usuario.setPasswordU(pass);
+                    usuario.setCodigoTUsuario(codTUser);
+                    usuarioDAO.agregar(usuario);
+                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
+                    
+                    break;
+                    
+                case "Editar":
+                    
+                    break;
+                    
+                case "Actualizar":
+                    
+                    break;
+                    
+                case "Eliminar":
+                    
+                    break;
+            }
+            
+            request.getRequestDispatcher("Usuario.jsp").forward(request, response);
+            
+        } else if (menu.equals("Home")) {
+            request.getRequestDispatcher("Principal.jsp").forward(request, response);
+
+        }
+    
         }
     }
 
@@ -57,6 +125,7 @@ public class Controlador extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+             
     }
 
     /**
@@ -70,6 +139,8 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                
+            
         processRequest(request, response);
     }
 
@@ -84,3 +155,5 @@ public class Controlador extends HttpServlet {
     }// </editor-fold>
 
 }
+    
+

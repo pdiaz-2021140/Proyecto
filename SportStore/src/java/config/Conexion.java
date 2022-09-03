@@ -10,10 +10,11 @@ public class Conexion {
     public Connection Conexion() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBSportStore?useSSL=false", "root", "admin");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBSportStore?useSSL=false", "root", "pdiaz2018265");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("No se puede realizar la conexion a la Base de Datos");
+            System.out.println("No se pudo realizar la conexión a la Base de Datos");
+
         }
         
         return conexion;
