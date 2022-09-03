@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Marca;
+import modelo.MarcaDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 
@@ -22,6 +24,8 @@ public class Validar extends HttpServlet {
 
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     Usuario usuario = new Usuario();
+    MarcaDAO marcaDAO = new MarcaDAO();
+    Marca marca = new Marca();
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
