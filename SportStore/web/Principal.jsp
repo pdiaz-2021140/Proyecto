@@ -40,7 +40,10 @@
                   </li>
                   <li class="nav-item">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=TipoUsuario&accion=Listar" target="homeFrame">TipoUsuario</a>
-                  </li>   
+                  </li>
+                   <li class="nav-item active">
+                      <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=Talla&accion=Listar" target="homeFrame">Talla</a>
+                  </li>
                 </ul>
               </div>
             <div class="dropdown">

@@ -20,6 +20,8 @@ import modelo.Marca;
 import modelo.MarcaDAO;
 import modelo.Producto;
 import modelo.ProductoDAO;
+import modelo.Talla;
+import modelo.TallaDAO;
 import modelo.TipoProducto;
 import modelo.TipoProductoDAO;
 import modelo.TipoUsuario;
@@ -47,6 +49,8 @@ public class Controlador extends HttpServlet {
     ProductoDAO productoDAO = new ProductoDAO();
     FormaDePago formaPago = new FormaDePago();
     FormaDePagoDAO formaPagoDAO = new FormaDePagoDAO();
+     Talla talla = new Talla();
+    TallaDAO tallaDAO = new TallaDAO();
     
     Factura factura = new Factura();
     FacturaDAO facturaDAO = new FacturaDAO();
@@ -305,7 +309,37 @@ public class Controlador extends HttpServlet {
                         
                 }
                 request.getRequestDispatcher("TipoUsuario.jsp").forward(request, response);
-        }   
+        }else if(menu.equals("Talla")){
+        
+        switch(accion) {
+                case "Listar":
+                    List listaTalla = tallaDAO.listar();
+                    request.setAttribute("tallas", listaTalla);
+                    break;
+                    
+                case "Agregar":
+                    String noTa = request.getParameter("txtNoTalla");
+                    talla.setNoTalla(noTa);
+                    tallaDAO.agregar(talla);
+                    request.getRequestDispatcher("Controlador?menu=Talla&accion=Listar").forward(request, response);
+                    
+                    break;
+                    
+                case "Editar":
+                    
+                    break;
+                    
+                case "Actualizar":
+                    
+                    break;
+                    
+                case "Eliminar":
+                    
+                    break;
+            }
+        
+        request.getRequestDispatcher("Talla.jsp").forward(request, response);
+    }   
         
     
         
