@@ -24,6 +24,7 @@ public class Departamento {
         this.municipio = municipio;
         this.codigoUsuario = codigoUsuario;
     }
+    // coment 
 
     public int getCodigoDepartamento() {
         return codigoDepartamento;

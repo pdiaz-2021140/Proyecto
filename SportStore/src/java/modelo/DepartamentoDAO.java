@@ -79,14 +79,13 @@ public class DepartamentoDAO {
     
     //METODO PARA AGREGAR
     public int agregar(Departamento dep){
-    String sql = "Insert into Departamento (codigoDepartamento, departamento, municipio, codigoUsuario) values(?,?,?,?)";
+    String sql = "Insert into Departamento (departamento, municipio, codigoUsuario) values(?,?,?)";
     try{
     con = cn.Conexion();
     ps = con.prepareStatement(sql);
-    ps.setInt(1, dep.getCodigoDepartamento());
-    ps.setString(2, dep.getDepartamento());
-    ps.setString(3, dep.getMunicipio());
-    ps.setInt(4, dep.getCodigoUsuario());
+    ps.setString(1, dep.getDepartamento());
+    ps.setString(2, dep.getMunicipio());
+    ps.setInt(3, dep.getCodigoUsuario());
     ps.executeUpdate();
     }catch(Exception e){
         e.printStackTrace();

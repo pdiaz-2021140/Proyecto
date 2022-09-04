@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Departamento;
+import modelo.DepartamentoDAO;
 import modelo.Factura;
 import modelo.FacturaDAO;
 import modelo.FormaDePago;
@@ -22,8 +24,11 @@ import modelo.Producto;
 import modelo.ProductoDAO;
 import modelo.TipoProducto;
 import modelo.TipoProductoDAO;
+import modelo.TipoUsuario;
+import modelo.TipoUsuarioDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+
 
 
 /**
@@ -32,7 +37,8 @@ import modelo.UsuarioDAO;
  */
 public class Controlador extends HttpServlet {
 
-
+    TipoUsuario tipousuario = new TipoUsuario();
+    TipoUsuarioDAO tipousuarioDAO = new TipoUsuarioDAO(); 
     Marca marca = new Marca();
     MarcaDAO marcaDAO = new MarcaDAO();
     Usuario usuario = new Usuario();
@@ -46,6 +52,9 @@ public class Controlador extends HttpServlet {
     
     Factura factura = new Factura();
     FacturaDAO facturaDAO = new FacturaDAO();
+    
+    Departamento dprt = new Departamento();
+    DepartamentoDAO departamentoDAO = new DepartamentoDAO();
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -247,7 +256,7 @@ public class Controlador extends HttpServlet {
             
             request.getRequestDispatcher("Factura.jsp").forward(request, response);
             
-        } else if (menu.equals("Marca")){
+        }else if (menu.equals("Marca")){
             switch(accion){
                 case "Listar":
                     List listaMarca = marcaDAO.listar();
@@ -262,7 +271,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Marca&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    
+                    // coment 
                     break;
                 case "Actualizar":
                     
@@ -272,7 +281,71 @@ public class Controlador extends HttpServlet {
                         break;
             }
              request.getRequestDispatcher("Marca.jsp").forward(request, response);
-        }   
+        }else if (menu.equals("TipoUsuario")) {
+            switch(accion){
+                    case "Listar":
+                        List listaTusuarios = tipousuarioDAO.listar();
+                        request.setAttribute("tipoUsuarios", listaTusuarios);
+                        
+                            break;
+                    case "Agregar":
+                            String tipoUsuario = request.getParameter("txtTipoUsuario");
+                            tipousuario.setTipoUsuario(tipoUsuario);
+                            tipousuarioDAO.agregar(tipousuario);
+                            request.getRequestDispatcher("Controlador?menu=TipoUsuario&accion=Listar").forward(request, response);
+                  
+                            break;
+                            
+                    case "Editar":
+                    
+                        break;
+                    
+                case "Actualizar":
+                    
+                        break;
+                    
+                case "Eliminar":    
+                    
+                        break;
+                        
+                }
+                request.getRequestDispatcher("TipoUsuario.jsp").forward(request, response);
+        } else if (menu.equalsIgnoreCase("Departamento")){
+             switch(accion){
+                case "Listar":
+                    List listarcodigoDepto = departamentoDAO.listar();
+                    request.setAttribute("departamentos",listarcodigoDepto);
+                    break;
+                case "Agregar":
+                    
+                    String departamento  = request.getParameter("txtDepartamento");
+                    String municipio = request.getParameter("txtMunicipio");
+                    int CodigoUsuario = Integer.parseInt(request.getParameter("txtCodigoUsuario"));
+                  
+                    dprt.setDepartamento(departamento);
+                    dprt.setMunicipio(municipio);
+                    dprt.setCodigoUsuario(CodigoUsuario);
+                    departamentoDAO.agregar(dprt);
+                    request.getRequestDispatcher("Controlador?menu=Departamento&accion=Listar").forward(request, response);
+
+                    break;
+                    
+                case "Editar" :
+                    
+                    break;
+                    
+                case "Actualizar":
+                    
+                    break;
+                    
+                case "Eliminar":
+                    
+                    break;
+                    
+                
+            }
+               request.getRequestDispatcher("Departamento.jsp").forward(request, response);
+    }      
         
     
         

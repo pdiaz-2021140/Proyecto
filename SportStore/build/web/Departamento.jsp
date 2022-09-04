@@ -18,11 +18,7 @@
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Empleado" method="POST">
-                        <div class="from-group">
-                            <label>codigo Departamento</label>
-                            <input type="text" name="txtcodigoDepartamento" class="">
-                        </div>
+                    <form action="Controlador?menu=Departamento" method="POST">
                         <div class="form-group">
                             <label>departamento</label>
                             <input type="text" name="txtDepartamento" class="form-control">
@@ -35,8 +31,8 @@
                             <label>codigo Usuario</label>
                             <input type="text" name="txtCodigoUsuario" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-succes">
+                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
@@ -45,19 +41,19 @@
                     <thead>
                    
                         <tr>
-                            <td>Cdigo Departamento</td>
+                            <td>Codigo Departamento</td>
                             <td>Departamento</td>
                             <td>Municipio</td>
-                            <td>codigoUsuarioO</td>
+                            <td>codigo Usuario</td>
                         </tr> 
                     </thead>
                     <tbody>
-                        <c:forEach var="departamento" items="${departamento}">
+                        <c:forEach var="departamento" items="${departamentos}">
                         <tr>
                              <td>${departamento.getCodigoDepartamento()}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>${departamento.getDepartamento()}</td>
+                            <td>${departamento.getMunicipio()}</td>
+                            <td>${departamento.getCodigoUsuario()}</td>
                             <td></td>
                              <td></td>
                                <td>
