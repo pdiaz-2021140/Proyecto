@@ -26,7 +26,13 @@
                   <li class="nav-item active">
                       <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=TipoProducto&accion=Listar" target="homeFrame">TipoProducto</a>
                   </li>
-                   
+                  <li class="nav-item">
+                      <a style='margin-left: 10px; border: none' class="btn btn-outline-light" href="Controlador?menu=Producto&accion=Listar" target="homeFrame">Producto</a>
+                  </li>
+                  <li class="nav-item">
+                      <a style='margin-left: 10px; border: none' class="btn btn-outline-light" href="Controlador?menu=FormaDePago&accion=Listar" target="homeFrame">Forma De Pago</a>
+                  </li>
+                  
                 </ul>
               </div>
             <div class="dropdown">
