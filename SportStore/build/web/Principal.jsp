@@ -38,22 +38,15 @@
                   <li class="nav-item active">
                     <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=Factura&accion=Listar" target="homeFrame">Factura</a>
                   </li>
+                  <li class="nav-item active">
+                      <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=DetalleFactura&accion=Listar" target="homeFrame">Detalle Factura</a>
+                  </li>
                   <li class="nav-item">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=TipoUsuario&accion=Listar" target="homeFrame">TipoUsuario</a>
-<<<<<<< HEAD
-                  </li>   
-<<<<<<< HEAD
-=======
-                    <li class="nav-item">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Departamento&accion=Listar" target="homeFrame">Departamento</a>
-                  </li>   
->>>>>>> mhurtado-2021407
-=======
                   </li>
                    <li class="nav-item active">
                       <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=Talla&accion=Listar" target="homeFrame">Talla</a>
                   </li>
->>>>>>> ae602072e4fc8031bdcbaf66b3e4feffdc8a97f6
                 </ul>
               </div>
             <div class="dropdown">

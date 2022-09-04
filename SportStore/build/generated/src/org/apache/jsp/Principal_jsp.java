@@ -77,6 +77,9 @@ public final class Principal_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                  <li class=\"nav-item active\">\r\n");
       out.write("                    <a style=\"margin-left: 10px; border: none\"class=\"btn btn-outline-light\" href=\"Controlador?menu=Factura&accion=Listar\" target=\"homeFrame\">Factura</a>\r\n");
       out.write("                  </li>\r\n");
+      out.write("                  <li class=\"nav-item active\">\r\n");
+      out.write("                      <a style=\"margin-left: 10px; border: none\"class=\"btn btn-outline-light\" href=\"Controlador?menu=DetalleFactura&accion=Listar\" target=\"homeFrame\">Detalle Factura</a>\r\n");
+      out.write("                  </li>\r\n");
       out.write("                  <li class=\"nav-item\">\r\n");
       out.write("                    <a style=\"margin-left: 10px; border: none\" class=\"btn btn-outline-light\" href=\"Controlador?menu=TipoUsuario&accion=Listar\" target=\"homeFrame\">TipoUsuario</a>\r\n");
       out.write("                  </li>\r\n");
