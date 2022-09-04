@@ -67,7 +67,7 @@ public class MarcaDAO {
     
     //METODO PARA AGREGAR
     public int agregar(Marca mc){
-    String sql = "Insert into Marca (codigoMarca, nombreMarca, numeroContacto) values(?,?,?)";
+    String sql = "Insert into Marca (nombreMarca, numeroContacto) values(?,?)";
     try{
     con = cn.Conexion();
     ps = con.prepareStatement(sql);

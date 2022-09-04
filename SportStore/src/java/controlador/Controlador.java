@@ -16,6 +16,8 @@ import modelo.Factura;
 import modelo.FacturaDAO;
 import modelo.FormaDePago;
 import modelo.FormaDePagoDAO;
+import modelo.Marca;
+import modelo.MarcaDAO;
 import modelo.Producto;
 import modelo.ProductoDAO;
 import modelo.TipoProducto;
@@ -31,7 +33,8 @@ import modelo.UsuarioDAO;
 public class Controlador extends HttpServlet {
 
 
-
+    Marca marca = new Marca();
+    MarcaDAO marcaDAO = new MarcaDAO();
     Usuario usuario = new Usuario();
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     TipoProducto tpProucto = new TipoProducto();
@@ -244,8 +247,33 @@ public class Controlador extends HttpServlet {
             
             request.getRequestDispatcher("Factura.jsp").forward(request, response);
             
-        }    
-        // Fin Factura
+        } else if (menu.equals("Marca")){
+            switch(accion){
+                case "Listar":
+                    List listaMarca = marcaDAO.listar();
+                    request.setAttribute("marcas", listaMarca);
+                    break;
+                case "Agregar":
+                    String nombres = request.getParameter("txtNombreMarca");
+                    String numero = request.getParameter("txtNumeroContacto");
+                    marca.setNombreMarca(nombres);
+                    marca.setNumeroContacto(numero);
+                    marcaDAO.agregar(marca);
+                    request.getRequestDispatcher("Controlador?menu=Marca&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                        
+                        break;
+            }
+             request.getRequestDispatcher("Marca.jsp").forward(request, response);
+        }   
+        
     
         
     }
