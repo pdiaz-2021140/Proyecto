@@ -12,11 +12,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 
 
 import modelo.Departamento;
 import modelo.DepartamentoDAO;
 
+=======
+import modelo.DetalleFactura;
+import modelo.DetalleFacturaDAO;
+>>>>>>> 4d1ea5a94a9fa8a41d1a75a322365985ef79058f
 import modelo.Factura;
 import modelo.FacturaDAO;
 import modelo.FormaDePago;
@@ -56,15 +61,19 @@ public class Controlador extends HttpServlet {
     FormaDePagoDAO formaPagoDAO = new FormaDePagoDAO();
      Talla talla = new Talla();
     TallaDAO tallaDAO = new TallaDAO();
-    
     Factura factura = new Factura();
     FacturaDAO facturaDAO = new FacturaDAO();
+    DetalleFactura dtFactura = new DetalleFactura();
+    DetalleFacturaDAO dtFacturaDAO = new DetalleFacturaDAO();
     
+<<<<<<< HEAD
 
     Departamento dprt = new Departamento();
     DepartamentoDAO departamentoDAO = new DepartamentoDAO();
     
 
+=======
+>>>>>>> 4d1ea5a94a9fa8a41d1a75a322365985ef79058f
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -280,11 +289,15 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Marca&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
+<<<<<<< HEAD
 
                     
 
                     // coment 
 
+=======
+                    
+>>>>>>> 4d1ea5a94a9fa8a41d1a75a322365985ef79058f
                     break;
                 case "Actualizar":
                     
@@ -323,6 +336,7 @@ public class Controlador extends HttpServlet {
                         
                 }
                 request.getRequestDispatcher("TipoUsuario.jsp").forward(request, response);
+<<<<<<< HEAD
 
            
 
@@ -350,6 +364,8 @@ public class Controlador extends HttpServlet {
                     break; 
              } request.getRequestDispatcher("Departamento.jsp").forward(request, response);
 
+=======
+>>>>>>> 4d1ea5a94a9fa8a41d1a75a322365985ef79058f
         }else if(menu.equals("Talla")){
         
         switch(accion) {
@@ -367,7 +383,10 @@ public class Controlador extends HttpServlet {
                     break;
                     
                 case "Editar":
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4d1ea5a94a9fa8a41d1a75a322365985ef79058f
                     
                     break;
                     
@@ -378,6 +397,7 @@ public class Controlador extends HttpServlet {
                 case "Eliminar":
                     
                     break;
+<<<<<<< HEAD
 
                     
                 
@@ -391,6 +411,45 @@ public class Controlador extends HttpServlet {
         
       
 
+=======
+            }
+        
+        request.getRequestDispatcher("Talla.jsp").forward(request, response);
+    } 
+        else if (menu.equals("DetalleFactura")){
+          switch(accion){
+                case "Listar":
+                    List listaDetalleFactura  = dtFacturaDAO.listar();
+                    request.setAttribute("detalleFacturas",listaDetalleFactura );
+                    break;
+                case "Agregar":
+                    int codigoProducto = Integer.parseInt(request.getParameter("txtCodigoProducto"));
+                    int codigoFactura = Integer.parseInt(request.getParameter("txtCodigoFactura"));
+                    
+                    dtFactura.setCodigoProducto(codigoProducto);
+                    dtFactura.setCodigoFactura(codigoFactura);
+                    dtFacturaDAO.agregar(dtFactura);
+                    request.getRequestDispatcher("Controlador?menu=DetalleFactura&accion=Listar").forward(request, response);
+                    break;
+                    
+                case "Editar" :
+                    
+                    break;
+                    
+                case "Actualizar":
+                    
+                    break;
+                    
+                case "Eliminar":
+                    
+                    break;
+                    
+                
+            }
+                request.getRequestDispatcher("DetalleFactura.jsp").forward(request, response);
+              
+    }
+>>>>>>> 4d1ea5a94a9fa8a41d1a75a322365985ef79058f
         
     
         

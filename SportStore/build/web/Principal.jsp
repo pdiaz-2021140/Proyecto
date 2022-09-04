@@ -38,19 +38,28 @@
                   <li class="nav-item active">
                     <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=Factura&accion=Listar" target="homeFrame">Factura</a>
                   </li>
+                  <li class="nav-item active">
+                      <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=DetalleFactura&accion=Listar" target="homeFrame">Detalle Factura</a>
+                  </li>
                   <li class="nav-item">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=TipoUsuario&accion=Listar" target="homeFrame">TipoUsuario</a>
+<<<<<<< HEAD
 
                   </li>   
 
                     <li class="nav-item">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Departamento&accion=Listar" target="homeFrame">Departamento</a>
                   </li>   
+=======
+>>>>>>> 4d1ea5a94a9fa8a41d1a75a322365985ef79058f
                   </li>
                    <li class="nav-item active">
                       <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=Talla&accion=Listar" target="homeFrame">Talla</a>
                   </li>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4d1ea5a94a9fa8a41d1a75a322365985ef79058f
                 </ul>
               </div>
             <div class="dropdown">
