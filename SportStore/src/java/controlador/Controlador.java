@@ -22,8 +22,11 @@ import modelo.Producto;
 import modelo.ProductoDAO;
 import modelo.TipoProducto;
 import modelo.TipoProductoDAO;
+import modelo.TipoUsuario;
+import modelo.TipoUsuarioDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+
 
 
 /**
@@ -32,7 +35,8 @@ import modelo.UsuarioDAO;
  */
 public class Controlador extends HttpServlet {
 
-
+    TipoUsuario tipousuario = new TipoUsuario();
+    TipoUsuarioDAO tipousuarioDAO = new TipoUsuarioDAO(); 
     Marca marca = new Marca();
     MarcaDAO marcaDAO = new MarcaDAO();
     Usuario usuario = new Usuario();
@@ -247,7 +251,7 @@ public class Controlador extends HttpServlet {
             
             request.getRequestDispatcher("Factura.jsp").forward(request, response);
             
-        } else if (menu.equals("Marca")){
+        }else if (menu.equals("Marca")){
             switch(accion){
                 case "Listar":
                     List listaMarca = marcaDAO.listar();
@@ -272,6 +276,35 @@ public class Controlador extends HttpServlet {
                         break;
             }
              request.getRequestDispatcher("Marca.jsp").forward(request, response);
+        }else if (menu.equals("TipoUsuario")) {
+            switch(accion){
+                    case "Listar":
+                        List listaTusuarios = tipousuarioDAO.listar();
+                        request.setAttribute("tipoUsuarios", listaTusuarios);
+                        
+                            break;
+                    case "Agregar":
+                            String tipoUsuario = request.getParameter("txtTipoUsuario");
+                            tipousuario.setTipoUsuario(tipoUsuario);
+                            tipousuarioDAO.agregar(tipousuario);
+                            request.getRequestDispatcher("Controlador?menu=TipoUsuario&accion=Listar").forward(request, response);
+                  
+                            break;
+                            
+                    case "Editar":
+                    
+                        break;
+                    
+                case "Actualizar":
+                    
+                        break;
+                    
+                case "Eliminar":    
+                    
+                        break;
+                        
+                }
+                request.getRequestDispatcher("TipoUsuario.jsp").forward(request, response);
         }   
         
     

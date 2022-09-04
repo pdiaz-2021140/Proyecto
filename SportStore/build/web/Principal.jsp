@@ -38,6 +38,9 @@
                   <li class="nav-item active">
                     <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=Factura&accion=Listar" target="homeFrame">Factura</a>
                   </li>
+                  <li class="nav-item">
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=TipoUsuario&accion=Listar" target="homeFrame">TipoUsuario</a>
+                  </li>   
                 </ul>
               </div>
             <div class="dropdown">
