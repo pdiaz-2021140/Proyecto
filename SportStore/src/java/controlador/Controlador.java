@@ -12,11 +12,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
-=======
+
+
 import modelo.Departamento;
 import modelo.DepartamentoDAO;
->>>>>>> mhurtado-2021407
+
 import modelo.Factura;
 import modelo.FacturaDAO;
 import modelo.FormaDePago;
@@ -60,12 +60,11 @@ public class Controlador extends HttpServlet {
     Factura factura = new Factura();
     FacturaDAO facturaDAO = new FacturaDAO();
     
-<<<<<<< HEAD
-=======
+
     Departamento dprt = new Departamento();
     DepartamentoDAO departamentoDAO = new DepartamentoDAO();
     
->>>>>>> mhurtado-2021407
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -281,11 +280,11 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Marca&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-<<<<<<< HEAD
+
                     
-=======
+
                     // coment 
->>>>>>> mhurtado-2021407
+
                     break;
                 case "Actualizar":
                     
@@ -324,10 +323,9 @@ public class Controlador extends HttpServlet {
                         
                 }
                 request.getRequestDispatcher("TipoUsuario.jsp").forward(request, response);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        }   
-=======
+
+           
+
         } else if (menu.equalsIgnoreCase("Departamento")){
              switch(accion){
                 case "Listar":
@@ -349,7 +347,9 @@ public class Controlador extends HttpServlet {
                     break;
                     
                 case "Editar" :
-=======
+                    break; 
+             } request.getRequestDispatcher("Departamento.jsp").forward(request, response);
+
         }else if(menu.equals("Talla")){
         
         switch(accion) {
@@ -367,7 +367,7 @@ public class Controlador extends HttpServlet {
                     break;
                     
                 case "Editar":
->>>>>>> ae602072e4fc8031bdcbaf66b3e4feffdc8a97f6
+
                     
                     break;
                     
@@ -378,23 +378,23 @@ public class Controlador extends HttpServlet {
                 case "Eliminar":
                     
                     break;
-<<<<<<< HEAD
+
                     
                 
             }
-               request.getRequestDispatcher("Departamento.jsp").forward(request, response);
+            request.getRequestDispatcher("Talla.jsp").forward(request, response);  
     }      
->>>>>>> mhurtado-2021407
-=======
-            }
+
+
+            
+    }    
         
-        request.getRequestDispatcher("Talla.jsp").forward(request, response);
-    }   
->>>>>>> ae602072e4fc8031bdcbaf66b3e4feffdc8a97f6
+      
+
         
     
         
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -439,5 +439,5 @@ public class Controlador extends HttpServlet {
     }// </editor-fold>
 
 }
-    
+
 
