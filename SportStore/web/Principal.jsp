@@ -41,6 +41,12 @@
                   <li class="nav-item">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=TipoUsuario&accion=Listar" target="homeFrame">TipoUsuario</a>
                   </li>   
+<<<<<<< HEAD
+=======
+                    <li class="nav-item">
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Departamento&accion=Listar" target="homeFrame">Departamento</a>
+                  </li>   
+>>>>>>> mhurtado-2021407
                 </ul>
               </div>
             <div class="dropdown">
