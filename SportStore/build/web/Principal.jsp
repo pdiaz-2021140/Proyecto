@@ -13,7 +13,7 @@
         <title>Principal page</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg" style="background-color: #ffcc33">
+        <nav class="navbar navbar-expand-lg navbar-lighr bg-dark">
             
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -22,6 +22,21 @@
                   </li>
                   <li class="nav-item">
                       <a style='margin-left: 10px; border: none' class="btn btn-outline-light" href="Controlador?menu=Usuario&accion=Listar" target="homeFrame">Usuario</a>
+                  </li>
+                  <li class="nav-item">
+                      <a style='margin-left: 10px; border: none' class="btn btn-outline-light" href="Controlador?menu=Marca&accion=Listar" target="homeFrame">Marca</a>
+                  </li>
+                  <li class="nav-item active">
+                      <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=TipoProducto&accion=Listar" target="homeFrame">TipoProducto</a>
+                  </li>
+                  <li class="nav-item">
+                      <a style='margin-left: 10px; border: none' class="btn btn-outline-light" href="Controlador?menu=Producto&accion=Listar" target="homeFrame">Producto</a>
+                  </li>
+                  <li class="nav-item">
+                      <a style='margin-left: 10px; border: none' class="btn btn-outline-light" href="Controlador?menu=FormaDePago&accion=Listar" target="homeFrame">Forma De Pago</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=Factura&accion=Listar" target="homeFrame">Factura</a>
                   </li>
                 </ul>
               </div>
@@ -34,7 +49,7 @@
                         <img src='img/usuario.png' alt='' width="50">
                     </a>
                     <a class="dropdown-item" href="#">${usuario.getUsuario()}</a>
-                    <a class="dropdown-item" href="#">usuario@gmail.com</a>
+                    <a class="dropdown-item" href="#">${usuario.getCorreoElectronico()}</a>
                     <div class='dropdown-divider'></div>
                         <form action='Validar' method="POST">
                             <button name='accion' name='Salir' class='dropdown-item' href='#'>Salir</button>

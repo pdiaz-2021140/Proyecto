@@ -19,10 +19,6 @@
             <div class="card col-sm-4">
                 <div class="card-body">
                 <form action="Controlador?menu=Marca" method="POST">
-                    <div class="form-group">
-                        <label>CODIGO DE MARCA</label>
-                        <input type="text" name="txtCodigoMarca" class="form-control">  
-                    </div>
                      <div class="form-group">
                         <label>NOMBRE DE MARCA</label>
                         <input type="text" name="txtNombreMarca" class="form-control">  
@@ -49,9 +45,9 @@
                 <tbody>  
                     <c:forEach var="marca" items="${marcas}">
                     <tr>
-                        <td>{marca.getCodigoMarca()}</td> 
-                        <td>{marca.getNombreMarca()}</td> 
-                        <td>{marca.getNumeroContacto()}</td> 
+                        <td>${marca.getCodigoMarca()}</td> 
+                        <td>${marca.getNombreMarca()}</td> 
+                        <td>${marca.getNumeroContacto()}</td> 
                         <td>
                              <a class="btn btn-info" href="">Editar</a>
                              <a class="btn btn-danger" href="">Eliminar</a>

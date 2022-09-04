@@ -12,8 +12,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Factura;
+import modelo.FacturaDAO;
+import modelo.FormaDePago;
+import modelo.FormaDePagoDAO;
 import modelo.Marca;
 import modelo.MarcaDAO;
+import modelo.Producto;
+import modelo.ProductoDAO;
+import modelo.TipoProducto;
+import modelo.TipoProductoDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 
@@ -29,8 +37,16 @@ public class Controlador extends HttpServlet {
     MarcaDAO marcaDAO = new MarcaDAO();
     Usuario usuario = new Usuario();
     UsuarioDAO usuarioDAO = new UsuarioDAO();
+    TipoProducto tpProucto = new TipoProducto();
+    TipoProductoDAO tpProductoDAO = new TipoProductoDAO();
+    Producto producto = new Producto();
+    ProductoDAO productoDAO = new ProductoDAO();
+    FormaDePago formaPago = new FormaDePago();
+    FormaDePagoDAO formaPagoDAO = new FormaDePagoDAO();
     
-
+    Factura factura = new Factura();
+    FacturaDAO facturaDAO = new FacturaDAO();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,19 +58,6 @@ public class Controlador extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Controlador</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
 
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
@@ -74,18 +77,18 @@ public class Controlador extends HttpServlet {
                     String nombre = request.getParameter("txtNombreUsuario");
                     String apellido = request.getParameter("txtApellidoUsuario");
                     String tel = request.getParameter("txtTelefonoUsuario");
-                    String correoElec = request.getParameter("txtCorreoElectronico");
                     String user = request.getParameter("txtUser");
                     String pass = request.getParameter("txtPass");
+                    String correoElec = request.getParameter("txtCorreoElectronico");
                     int codTUser = Integer.parseInt(request.getParameter("txtTipoUser"));
                     
                     usuario.setNombreUsuario(nombre);
                     usuario.setApellidoUsuario(apellido);
                     usuario.setNIT(NIT);
                     usuario.setTelefonoContacto(tel);
-                    usuario.setCorreoElectronico(correoElec);
                     usuario.setUsuario(user);
                     usuario.setPasswordU(pass);
+                    usuario.setCorreoElectronico(correoElec);
                     usuario.setCodigoTUsuario(codTUser);
                     usuarioDAO.agregar(usuario);
                     request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
@@ -110,6 +113,140 @@ public class Controlador extends HttpServlet {
         } else if (menu.equals("Home")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
 
+        }else if(menu.equals("TipoProducto")){
+         
+            switch(accion){
+                case "Listar":
+                    List listaTipoProductos = tpProductoDAO.listar();
+                    request.setAttribute("tipoProductos",listaTipoProductos);
+                    break;
+                case "Agregar":
+                    String descripcion  = request.getParameter("txtDescripcion");
+                    int codigoMarca = Integer.parseInt(request.getParameter("txtCodMarca"));
+                  
+                    tpProucto.setDescripcion(descripcion);
+                    tpProucto.setCodigoMarca(codigoMarca);
+                    tpProductoDAO.agregar(tpProucto);
+                    request.getRequestDispatcher("Controlador?menu=TipoProducto&accion=Listar").forward(request, response);
+                    break;
+                    
+                case "Editar" :
+                    
+                    break;
+                    
+                case "Actualizar":
+                    
+                    break;
+                    
+                case "Eliminar":
+                    
+                    break;
+                    
+                
+            }
+          request.getRequestDispatcher("TipoProducto.jsp").forward(request, response);   
+    }else if(menu.equals("Producto")){
+            
+            switch(accion) {
+                case "Listar":
+                    List listaProducto = productoDAO.listar();
+                    request.setAttribute("productos", listaProducto);
+                    break;
+                    
+                case "Agregar":
+                    String nombrePro = request.getParameter("txtNombreProducto");
+                    int stock = Integer.parseInt(request.getParameter("txtStock"));
+                    double prec = Double.parseDouble(request.getParameter("txtPrecio"));
+                    int codigoTP = Integer.parseInt(request.getParameter("txtCodigoTProducto"));
+                    int codigoTa = Integer.parseInt(request.getParameter("txtCodigoTalla"));
+                    
+                    producto.setNombreProducto(nombrePro);
+                    producto.setStock(stock);
+                    producto.setPrecio(prec);
+                    producto.setCodigoTProducto(codigoTP);
+                    producto.setCodigoTalla(codigoTa);
+                    productoDAO.agregar(producto);
+                    request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
+                    
+                    break;
+                    
+                case "Editar":
+                    
+                    break;
+                    
+                case "Actualizar":
+                    
+                    break;
+                    
+                case "Eliminar":
+                    
+                    break;
+            }
+            
+            request.getRequestDispatcher("Productos.jsp").forward(request, response);
+        }else if(menu.equals("FormaDePago")){
+            switch(accion){
+                case "Listar":
+                    List listaFormaDePago = formaPagoDAO.listar();
+                    request.setAttribute("formaDePagos", listaFormaDePago);
+                    break;
+                case "Agregar":
+                    String formaDPago = request.getParameter("txtFormaDePago");
+                    formaPago.setFormaDePago(formaDPago);
+                    formaPagoDAO.agregar(formaPago);
+                    request.getRequestDispatcher("Controlador?menu=FormaDePago&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;
+            }
+            request.getRequestDispatcher("FormaDePago.jsp").forward(request, response);
+        }
+        // Inicio Factura    
+        else if (menu.equals("Factura")) {
+            //CRUD FACTURA
+            switch(accion) {
+                case "Listar":
+                    List listaFactura = facturaDAO.listar();
+                    request.setAttribute("facturas", listaFactura);
+                    break;
+                    
+                case "Agregar":
+                    
+                    String fFactura = request.getParameter("txtFechaFactura");
+                    int condition = Integer.parseInt(request.getParameter("txtEstado"));
+                    int codUsuario = Integer.parseInt(request.getParameter("txtCodigoUsuario"));
+                    int codFPago = Integer.parseInt(request.getParameter("txtFormaDePago"));
+                    
+                    factura.setFechaFactura(fFactura);
+                    factura.setEstado(condition);
+                    factura.setCodigoUsuario(codUsuario);
+                    factura.setCodigoFPago(codFPago);
+                    facturaDAO.agregar(factura);
+                    request.getRequestDispatcher("Controlador?menu=Factura&accion=Listar").forward(request, response);
+                    break;
+                    
+                case "Editar":
+                    
+                    break;
+                    
+                case "Actualizar":
+                    
+                    break;
+                    
+                case "Eliminar":
+                    
+                    break;
+            }
+            
+            request.getRequestDispatcher("Factura.jsp").forward(request, response);
+            
         } else if (menu.equals("Marca")){
             switch(accion){
                 case "Listar":
@@ -134,9 +271,11 @@ public class Controlador extends HttpServlet {
                         
                         break;
             }
-        }
+             request.getRequestDispatcher("Marca.jsp").forward(request, response);
+        }   
+        
     
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
