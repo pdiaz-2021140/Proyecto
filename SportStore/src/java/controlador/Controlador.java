@@ -12,16 +12,33 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+
+import modelo.Departamento;
+import modelo.DepartamentoDAO;
+
+
+import modelo.DetalleFactura;
+import modelo.DetalleFacturaDAO;
+
 import modelo.Factura;
 import modelo.FacturaDAO;
 import modelo.FormaDePago;
 import modelo.FormaDePagoDAO;
+import modelo.Marca;
+import modelo.MarcaDAO;
 import modelo.Producto;
 import modelo.ProductoDAO;
+import modelo.Talla;
+import modelo.TallaDAO;
 import modelo.TipoProducto;
 import modelo.TipoProductoDAO;
+import modelo.TipoUsuario;
+import modelo.TipoUsuarioDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+
 
 
 /**
@@ -30,8 +47,10 @@ import modelo.UsuarioDAO;
  */
 public class Controlador extends HttpServlet {
 
-
-
+    TipoUsuario tipousuario = new TipoUsuario();
+    TipoUsuarioDAO tipousuarioDAO = new TipoUsuarioDAO(); 
+    Marca marca = new Marca();
+    MarcaDAO marcaDAO = new MarcaDAO();
     Usuario usuario = new Usuario();
     UsuarioDAO usuarioDAO = new UsuarioDAO();
     TipoProducto tpProucto = new TipoProducto();
@@ -40,9 +59,14 @@ public class Controlador extends HttpServlet {
     ProductoDAO productoDAO = new ProductoDAO();
     FormaDePago formaPago = new FormaDePago();
     FormaDePagoDAO formaPagoDAO = new FormaDePagoDAO();
-    
+    Talla talla = new Talla();
+    TallaDAO tallaDAO = new TallaDAO();
     Factura factura = new Factura();
     FacturaDAO facturaDAO = new FacturaDAO();
+    DetalleFactura dtFactura = new DetalleFactura();
+    DetalleFacturaDAO dtFacturaDAO = new DetalleFacturaDAO();
+    Departamento dprt = new Departamento();
+    DepartamentoDAO departamentoDAO = new DepartamentoDAO();
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -244,11 +268,163 @@ public class Controlador extends HttpServlet {
             
             request.getRequestDispatcher("Factura.jsp").forward(request, response);
             
-        }    
-        // Fin Factura
+        }else if (menu.equals("Marca")){
+            switch(accion){
+                case "Listar":
+                    List listaMarca = marcaDAO.listar();
+                    request.setAttribute("marcas", listaMarca);
+                    break;
+                case "Agregar":
+                    String nombres = request.getParameter("txtNombreMarca");
+                    String numero = request.getParameter("txtNumeroContacto");
+                    marca.setNombreMarca(nombres);
+                    marca.setNumeroContacto(numero);
+                    marcaDAO.agregar(marca);
+                    request.getRequestDispatcher("Controlador?menu=Marca&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                        
+                        break;
+            }
+             request.getRequestDispatcher("Marca.jsp").forward(request, response);
+        }else if (menu.equals("TipoUsuario")) {
+            switch(accion){
+                    case "Listar":
+                        List listaTusuarios = tipousuarioDAO.listar();
+                        request.setAttribute("tipoUsuarios", listaTusuarios);
+                        
+                            break;
+                    case "Agregar":
+                            String tipoUsuario = request.getParameter("txtTipoUsuario");
+                            tipousuario.setTipoUsuario(tipoUsuario);
+                            tipousuarioDAO.agregar(tipousuario);
+                            request.getRequestDispatcher("Controlador?menu=TipoUsuario&accion=Listar").forward(request, response);
+                  
+                            break;
+                            
+                    case "Editar":
+                    
+                        break;
+                    
+                case "Actualizar":
+                    
+                        break;
+                    
+                case "Eliminar":    
+                    
+                        break;
+                        
+                }
+                request.getRequestDispatcher("TipoUsuario.jsp").forward(request, response);
+
+
+           
+
+        } else if (menu.equalsIgnoreCase("Departamento")){
+             switch(accion){
+                case "Listar":
+                    List listarcodigoDepto = departamentoDAO.listar();
+                    request.setAttribute("departamentos",listarcodigoDepto);
+                    break;
+                case "Agregar":
+                    // another comment
+                    String departamento  = request.getParameter("txtDepartamento");
+                    String municipio = request.getParameter("txtMunicipio");
+                    int CodigoUsuario = Integer.parseInt(request.getParameter("txtCodigoUsuario"));
+                  
+                    dprt.setDepartamento(departamento);
+                    dprt.setMunicipio(municipio);
+                    dprt.setCodigoUsuario(CodigoUsuario);
+                    departamentoDAO.agregar(dprt);
+                    request.getRequestDispatcher("Controlador?menu=Departamento&accion=Listar").forward(request, response);
+
+                    break;
+                    
+                case "Editar" :
+                    break; 
+             } request.getRequestDispatcher("Departamento.jsp").forward(request, response);
+
+
+        }else if(menu.equals("Talla")){
+        
+        switch(accion) {
+                case "Listar":
+                    List listaTalla = tallaDAO.listar();
+                    request.setAttribute("tallas", listaTalla);
+                    break;
+                    
+                case "Agregar":
+                    String noTa = request.getParameter("txtNoTalla");
+                    talla.setNoTalla(noTa);
+                    tallaDAO.agregar(talla);
+                    request.getRequestDispatcher("Controlador?menu=Talla&accion=Listar").forward(request, response);
+                    
+                    break;
+                    
+                case "Editar":
+
+                    
+                    break;
+                    
+                case "Actualizar":
+                    
+                    break;
+                    
+                case "Eliminar":
+                    
+                    break;
+
+
+                    
+                
+            }
+            request.getRequestDispatcher("Talla.jsp").forward(request, response);  
+          
+
+    } else if (menu.equals("DetalleFactura")){
+          switch(accion){
+                case "Listar":
+                    List listaDetalleFactura  = dtFacturaDAO.listar();
+                    request.setAttribute("detalleFacturas",listaDetalleFactura );
+                    break;
+                case "Agregar":
+                    int codigoProducto = Integer.parseInt(request.getParameter("txtCodigoProducto"));
+                    int codigoFactura = Integer.parseInt(request.getParameter("txtCodigoFactura"));
+                    
+                    dtFactura.setCodigoProducto(codigoProducto);
+                    dtFactura.setCodigoFactura(codigoFactura);
+                    dtFacturaDAO.agregar(dtFactura);
+                    request.getRequestDispatcher("Controlador?menu=DetalleFactura&accion=Listar").forward(request, response);
+                    break;
+                    
+                case "Editar" :
+                    
+                    break;
+                    
+                case "Actualizar":
+                    
+                    break;
+                    
+                case "Eliminar":
+                    
+                    break;
+                    
+                
+            }
+                request.getRequestDispatcher("DetalleFactura.jsp").forward(request, response);
+              
+    }
+}
+        
     
         
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -293,5 +469,6 @@ public class Controlador extends HttpServlet {
     }// </editor-fold>
 
 }
-    
+
+
 

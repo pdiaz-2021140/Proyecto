@@ -9,9 +9,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <title>Principal page</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <title>Sport Store</title>
     </head>
+    <style >
+        body{
+            background-image:url("https://media.giphy.com/media/6WjiPPOF0eeS3ipQKH/giphy.gif");
+            
+            background-repeat: no-repeat;
+            background-size: 100% 120%;
+        }
+    </style>
     <body>
         <nav class="navbar navbar-expand-lg navbar-lighr bg-dark">
             
@@ -38,7 +46,23 @@
                   <li class="nav-item active">
                     <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=Factura&accion=Listar" target="homeFrame">Factura</a>
                   </li>
-                </ul>
+                  <li class="nav-item active">
+                      <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=DetalleFactura&accion=Listar" target="homeFrame">Detalle Factura</a>
+                  </li>
+                  <li class="nav-item">
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=TipoUsuario&accion=Listar" target="homeFrame">TipoUsuario</a>
+
+                  </li>   
+
+                    <li class="nav-item">
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Departamento&accion=Listar" target="homeFrame">Departamento</a>
+                  </li>   
+
+                  </li>
+                   <li class="nav-item active">
+                      <a style="margin-left: 10px; border: none"class="btn btn-outline-light" href="Controlador?menu=Talla&accion=Listar" target="homeFrame">Talla</a>
+                  </li>
+
               </div>
             <div class="dropdown">
                 <button style='border: none' class="btn btn-outline-light dropdown-toggle" type="button" id='dropdownMenuButton' data-toggle="dropdown" aria-haspopup='true' aria-expanded="false">
