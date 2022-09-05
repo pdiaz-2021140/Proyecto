@@ -12,8 +12,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+
+import modelo.Departamento;
+import modelo.DepartamentoDAO;
+
+
 import modelo.DetalleFactura;
 import modelo.DetalleFacturaDAO;
+
 import modelo.Factura;
 import modelo.FacturaDAO;
 import modelo.FormaDePago;
@@ -51,12 +59,14 @@ public class Controlador extends HttpServlet {
     ProductoDAO productoDAO = new ProductoDAO();
     FormaDePago formaPago = new FormaDePago();
     FormaDePagoDAO formaPagoDAO = new FormaDePagoDAO();
-     Talla talla = new Talla();
+    Talla talla = new Talla();
     TallaDAO tallaDAO = new TallaDAO();
     Factura factura = new Factura();
     FacturaDAO facturaDAO = new FacturaDAO();
     DetalleFactura dtFactura = new DetalleFactura();
     DetalleFacturaDAO dtFacturaDAO = new DetalleFacturaDAO();
+    Departamento dprt = new Departamento();
+    DepartamentoDAO departamentoDAO = new DepartamentoDAO();
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -273,7 +283,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Marca&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    
+
                     break;
                 case "Actualizar":
                     
@@ -312,6 +322,35 @@ public class Controlador extends HttpServlet {
                         
                 }
                 request.getRequestDispatcher("TipoUsuario.jsp").forward(request, response);
+
+
+           
+
+        } else if (menu.equalsIgnoreCase("Departamento")){
+             switch(accion){
+                case "Listar":
+                    List listarcodigoDepto = departamentoDAO.listar();
+                    request.setAttribute("departamentos",listarcodigoDepto);
+                    break;
+                case "Agregar":
+                    // another comment
+                    String departamento  = request.getParameter("txtDepartamento");
+                    String municipio = request.getParameter("txtMunicipio");
+                    int CodigoUsuario = Integer.parseInt(request.getParameter("txtCodigoUsuario"));
+                  
+                    dprt.setDepartamento(departamento);
+                    dprt.setMunicipio(municipio);
+                    dprt.setCodigoUsuario(CodigoUsuario);
+                    departamentoDAO.agregar(dprt);
+                    request.getRequestDispatcher("Controlador?menu=Departamento&accion=Listar").forward(request, response);
+
+                    break;
+                    
+                case "Editar" :
+                    break; 
+             } request.getRequestDispatcher("Departamento.jsp").forward(request, response);
+
+
         }else if(menu.equals("Talla")){
         
         switch(accion) {
@@ -329,6 +368,7 @@ public class Controlador extends HttpServlet {
                     break;
                     
                 case "Editar":
+
                     
                     break;
                     
@@ -339,11 +379,15 @@ public class Controlador extends HttpServlet {
                 case "Eliminar":
                     
                     break;
+
+
+                    
+                
             }
-        
-        request.getRequestDispatcher("Talla.jsp").forward(request, response);
-    } 
-        else if (menu.equals("DetalleFactura")){
+            request.getRequestDispatcher("Talla.jsp").forward(request, response);  
+          
+
+    } else if (menu.equals("DetalleFactura")){
           switch(accion){
                 case "Listar":
                     List listaDetalleFactura  = dtFacturaDAO.listar();
@@ -376,10 +420,11 @@ public class Controlador extends HttpServlet {
                 request.getRequestDispatcher("DetalleFactura.jsp").forward(request, response);
               
     }
+}
         
     
         
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -424,5 +469,6 @@ public class Controlador extends HttpServlet {
     }// </editor-fold>
 
 }
-    
+
+
 
