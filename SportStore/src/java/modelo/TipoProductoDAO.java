@@ -1,4 +1,5 @@
 
+
 package modelo;
 
 import config.Conexion;
@@ -26,9 +27,9 @@ public class TipoProductoDAO {
                while(rs.next()){
                    TipoProducto tp = new TipoProducto();
                  
-                   tp.setcodigoProducto(rs.getInt(1));
+                   tp.setCodigoProducto(rs.getInt(1));
                    tp.setDescripcion(rs.getString(2));
-                   tp.setCodigoMarca(rs.getInt(3));
+                   tp.setGenero(rs.getString(3));
                    listaTipoProducto.add(tp);
                }  
             }catch(Exception e){
@@ -39,14 +40,14 @@ public class TipoProductoDAO {
      
       public int agregar (TipoProducto emp){
       
-        String sql = "insert into tipoProducto (descripcion , codigoMarca) values (?,?)";
+        String sql = "insert into tipoProducto (descripcion , genero) values (?,?)";
         
         try{
             
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1,emp.getDescripcion());
-            ps.setInt(2,emp.getCodigoMarca());
+            ps.setString(2,emp.getGenero());
             ps.executeUpdate();
             
         }catch(Exception e){
@@ -58,6 +59,74 @@ public class TipoProductoDAO {
         
         
         return resp;
+    }
+          public TipoProducto listaTipoProducto (int id){
+        TipoProducto tp = new TipoProducto();
+             String sql = "select * from Empleado where codigoEmpleado = "+id;
+      
+        try{
+            
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+            while (rs.next()){
+                tp.setDescripcion(rs.getString(2));
+                tp.setGenero(rs.getString(3));
+
+            }
+            
+        }catch(Exception e){
+           
+            e.printStackTrace();
+            
+        }
+        return tp;
+    }
+    
+              public int actualizar(TipoProducto tp){
+        String sql = "Update TipoProducto set descripcion = ?, genero= ? where codigoTipoProducto = ?";
+        
+        try{
+            
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1,tp.getDescripcion());
+            ps.setString(2,tp.getGenero());
+            ps.setInt(3,tp.getCodigoProducto());
+            ps.executeUpdate();
+            
+           
+            
+            
+        }catch(Exception e){
+           
+            e.printStackTrace();
+           
+        }
+        
+        return resp;
+    }
+              
+              
+        public void eliminar (int id){
+        String sql ="delete from tipoProducto where codigoTipoProducto ="+id;
+    
+    try{
+            
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            
+           
+            
+            
+        }catch(Exception e){
+           
+            e.printStackTrace();
+           
+        }
+    
     }
     
 }
