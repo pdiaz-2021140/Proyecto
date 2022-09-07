@@ -42,7 +42,7 @@
                     <thead>
                          <td>CODIGO</td>
                          <td>DESCRIPCIÓN</td>
-                         <td>GÉNERO DE LA MARCA</td>
+                         <td>GÉNERO DEL PRODUCTO</td>
                          <td>ACCIONES</td>
                     </thead>
                     <tbody>
