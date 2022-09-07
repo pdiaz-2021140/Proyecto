@@ -336,11 +336,10 @@ public class Controlador extends HttpServlet {
                     // another comment
                     String departamento  = request.getParameter("txtDepartamento");
                     String municipio = request.getParameter("txtMunicipio");
-                    int CodigoUsuario = Integer.parseInt(request.getParameter("txtCodigoUsuario"));
-                  
+             
                     dprt.setDepartamento(departamento);
                     dprt.setMunicipio(municipio);
-                    dprt.setCodigoUsuario(CodigoUsuario);
+                 
                     departamentoDAO.agregar(dprt);
                     request.getRequestDispatcher("Controlador?menu=Departamento&accion=Listar").forward(request, response);
 

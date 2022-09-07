@@ -27,10 +27,6 @@
                               <label>municipio</label>
                             <input type="text" name="txtMunicipio" class="form-control">
                         </div>
-                          <div class="form-group">
-                            <label>codigo Usuario</label>
-                            <input type="text" name="txtCodigoUsuario" class="form-control">
-                        </div>
                          <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
@@ -44,7 +40,7 @@
                             <td>Codigo Departamento</td>
                             <td>Departamento</td>
                             <td>Municipio</td>
-                            <td>codigo Usuario</td>
+                       
                         </tr> 
                     </thead>
                     <tbody>
@@ -53,7 +49,7 @@
                              <td>${departamento.getCodigoDepartamento()}</td>
                             <td>${departamento.getDepartamento()}</td>
                             <td>${departamento.getMunicipio()}</td>
-                            <td>${departamento.getCodigoUsuario()}</td>
+                         
                             <td></td>
                              <td></td>
                                <td>

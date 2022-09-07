@@ -13,7 +13,7 @@ public class Departamento {
     private int codigoDepartamento; 
     private String departamento; 
     private String municipio;
-    private int codigoUsuario;
+ 
 
     public Departamento() {
     }
@@ -22,7 +22,7 @@ public class Departamento {
         this.codigoDepartamento = codigoDepartamento;
         this.departamento = departamento;
         this.municipio = municipio;
-        this.codigoUsuario = codigoUsuario;
+        
     }
     // coment 
 
@@ -50,13 +50,7 @@ public class Departamento {
         this.municipio = municipio;
     }
 
-    public int getCodigoUsuario() {
-        return codigoUsuario;
-    }
-
-    public void setCodigoUsuario(int codigoUsuario) {
-        this.codigoUsuario = codigoUsuario;
-    }
+   
     
     
 }
