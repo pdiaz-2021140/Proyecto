@@ -1,49 +1,27 @@
 <%-- 
-    Document   : index
-    Created on : 31/08/2022, 03:55:51 PM
-    Author     : informatica
+    Document   : login
+    Created on : 4/09/2022, 12:25:15 AM
+    Author     : Alessandro Gutiérrez
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-        <title>JSP Page</title>
-    </head>
-    <body>
-
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <div class="container mt-4 col-lg-4">
-            <div class="card col-sm-10">
-                <div class="card-body">
-                    <form class="form-sign" action="Validar" method="POST">
-                        <div class="form-group text-center">
-                            <h3>Login</h3>
-                            
-                            <br>
-                            <label>Bienvenido a SportStore</label>
-                        </div>
-                        <div class="form-group">
-                            <label>Usuario</label>
-                            <input type="text" name="txtUser" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Contraseña</label>
-                            <input type="password" name="txtPass" class="form-control">
-                        </div>
-                        <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block">
-                    </form>
-                </div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="login.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <div class="login-box">
+        <h2>Login</h2>
+        <form class="form-sign" action="Validar" method="POST">
+            <div class="user-box">
+              <input type="text" name="txtUser" required="">
+              <label>Username</label>
             </div>
-        </div>
-        
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    </body>
+            <div class="user-box">
+              <input type="password" name="txtPass" required="">
+              <label>Password</label>
+            </div>
+            <input type="submit" name="accion" value="Ingresar" class="a">
+        </form>
+    </div>
 </html>

@@ -5,14 +5,15 @@ public class Marca {
     private int codigoMarca;
     private String nombreMarca;
     private String numeroContacto;
-
+    private String correoContacto;
     public Marca() {
     }
 
-    public Marca(int codigoMarca, String nombreMarca, String numeroContacto) {
+    public Marca(int codigoMarca, String nombreMarca, String numeroContacto, String correoContacto) {
         this.codigoMarca = codigoMarca;
         this.nombreMarca = nombreMarca;
         this.numeroContacto = numeroContacto;
+        this.correoContacto = correoContacto;
     }
 
     public int getCodigoMarca() {
@@ -38,5 +39,14 @@ public class Marca {
     public void setNumeroContacto(String numeroContacto) {
         this.numeroContacto = numeroContacto;
     }
-    
+
+    public String getCorreoContacto() {
+        return correoContacto;
+    }
+
+    public void setCorreoContacto(String correoContacto) {
+        this.correoContacto = correoContacto;
+    }
+
+ 
 }
