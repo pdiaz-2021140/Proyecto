@@ -6,25 +6,25 @@ public class Usuario {
     private String nombreUsuario;
     private String apellidoUsuario;
     private String NIT;
-    private String telefonoContacto;
     private String usuario;
-    private String passwordU;
+    private String passwordUser;
     private String correoElectronico;
     private int codigoTUsuario;
+    private int codigoDepartamento;
 
     public Usuario() {
     }
 
-    public Usuario(int codigoUsuario, String nombreUsuario, String apellidoUsuario, String NIT, String telefonoContacto, String usuario, String passwordU, String correoElectronico, int codigoTUsuario) {
+    public Usuario(int codigoUsuario, String nombreUsuario, String apellidoUsuario, String NIT, String usuario, String passwordUser, String correoElectronico, int codigoTUsuario, int codigoDepartamento) {
         this.codigoUsuario = codigoUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
         this.NIT = NIT;
-        this.telefonoContacto = telefonoContacto;
         this.usuario = usuario;
-        this.passwordU = passwordU;
+        this.passwordUser = passwordUser;
         this.correoElectronico = correoElectronico;
         this.codigoTUsuario = codigoTUsuario;
+        this.codigoDepartamento = codigoDepartamento;
     }
 
     public int getCodigoUsuario() {
@@ -59,14 +59,6 @@ public class Usuario {
         this.NIT = NIT;
     }
 
-    public String getTelefonoContacto() {
-        return telefonoContacto;
-    }
-
-    public void setTelefonoContacto(String telefonoContacto) {
-        this.telefonoContacto = telefonoContacto;
-    }
-
     public String getUsuario() {
         return usuario;
     }
@@ -75,12 +67,12 @@ public class Usuario {
         this.usuario = usuario;
     }
 
-    public String getPasswordU() {
-        return passwordU;
+    public String getPasswordUser() {
+        return passwordUser;
     }
 
-    public void setPasswordU(String passwordU) {
-        this.passwordU = passwordU;
+    public void setPasswordUser(String passwordUser) {
+        this.passwordUser = passwordUser;
     }
 
     public String getCorreoElectronico() {
@@ -99,8 +91,13 @@ public class Usuario {
         this.codigoTUsuario = codigoTUsuario;
     }
 
-    
+    public int getCodigoDepartamento() {
+        return codigoDepartamento;
+    }
 
+    public void setCodigoDepartamento(int codigoDepartamento) {
+        this.codigoDepartamento = codigoDepartamento;
+    }
     
     
     
