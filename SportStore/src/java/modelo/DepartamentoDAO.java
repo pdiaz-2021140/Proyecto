@@ -25,7 +25,7 @@ public class DepartamentoDAO {
     int resp;
     
     //Metodo para Validar
-    public Departamento validar(int codigoDepartamento, String departamento, String municipio , int codigoUsuario){
+    public Departamento validar(int codigoDepartamento, String departamento, String municipio ){
         //Instanciar un objeto de tipo Departamento
         Departamento depto = new Departamento();
         //Agregar una variable de tipo String para la consulta 
@@ -36,13 +36,13 @@ public class DepartamentoDAO {
             ps.setInt(1, codigoDepartamento);
             ps.setString(2, departamento);
             ps.setString(3, municipio);
-            ps.setInt(4, codigoUsuario);
+         
             rs = ps.executeQuery();
             while(rs.next()){
             depto.setCodigoDepartamento(rs.getInt("codigoDepartamento"));
             depto.setDepartamento(rs.getString("departamento"));
             depto.setMunicipio(rs.getString("municipio"));
-            depto.setCodigoUsuario(rs.getInt("codigoUsuario"));
+          
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -67,7 +67,7 @@ public class DepartamentoDAO {
             dep.setCodigoDepartamento(rs.getInt(1));
             dep.setDepartamento(rs.getString(2));
             dep.setMunicipio(rs.getString(3));
-            dep.setCodigoUsuario(rs.getInt(4));
+         
             listaDepartamento.add(dep);
         }
     }catch(Exception e){
@@ -79,13 +79,13 @@ public class DepartamentoDAO {
     
     //METODO PARA AGREGAR
     public int agregar(Departamento dep){
-    String sql = "Insert into Departamento (departamento, municipio, codigoUsuario) values(?,?,?)";
+    String sql = "Insert into Departamento (departamento, municipio) values(?,?)";
     try{
     con = cn.Conexion();
     ps = con.prepareStatement(sql);
     ps.setString(1, dep.getDepartamento());
     ps.setString(2, dep.getMunicipio());
-    ps.setInt(3, dep.getCodigoUsuario());
+
     ps.executeUpdate();
     }catch(Exception e){
         e.printStackTrace();
@@ -106,7 +106,7 @@ public class DepartamentoDAO {
                 depart.setCodigoDepartamento(rs.getInt(1));
                 depart.setDepartamento(rs.getString(2));
                 depart.setMunicipio(rs.getString(3));
-                depart.setCodigoUsuario(rs.getInt(4));
+// comment 
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -116,13 +116,13 @@ public class DepartamentoDAO {
     
  //METODO PARA EDITAR
     public int actualizar(Departamento dpt){
-        String sql = "Update Departamento set departamento = ?, municipio = ?, codigoUsuario =? where codigoDepartamento = ?";
+        String sql = "Update Departamento set departamento = ?, municipio = ? where codigoDepartamento = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, dpt.getDepartamento());
             ps.setString(2, dpt.getMunicipio());
-            ps.setInt(3, dpt.getCodigoUsuario());
+           
         }catch(Exception e){
             e.printStackTrace();
         }

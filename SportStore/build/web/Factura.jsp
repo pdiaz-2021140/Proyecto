@@ -1,7 +1,7 @@
 <%-- 
     Document   : Factura
     Created on : 3/09/2022, 02:04:43 PM
-    Author     : Alex
+    Author     : Alessandro Gutiérrez
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

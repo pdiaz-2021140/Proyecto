@@ -42,7 +42,7 @@
                             <td>${tipoUsuario.getCodigoTUsuario()}</td>
                             <td>${tipoUsuario.getTipoUsuario()}</td>
                             <td>
-                                <a class="btn btn-info" href="" >EDITAR</a>
+                                <a class="btn btn-warning" href="" >EDITAR</a>
                                 <a class="btn btn-danger" href="">ELIMINAR</a>
                             </td>
                         </tr>
