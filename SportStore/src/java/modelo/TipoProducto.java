@@ -3,25 +3,25 @@ package modelo;
 
 
 public class TipoProducto {
-      private int codigoProducto ;
+      private int codigoProducto;
       private String descripcion;
-      private int codigoMarca;
-
-    public TipoProducto(int codigoProducto, String descripcion, int codigoMarca) {
-        this.codigoProducto = codigoProducto;
-        this.descripcion = descripcion;
-        this.codigoMarca = codigoMarca;
-    }
+      private String genero;
 
     public TipoProducto() {
     }
 
-    public int getcodigoProducto() {
+    public TipoProducto(int codigoProducto, String descripcion, String genero) {
+        this.codigoProducto = codigoProducto;
+        this.descripcion = descripcion;
+        this.genero = genero;
+    }
+
+    public int getCodigoProducto() {
         return codigoProducto;
     }
 
-    public void setcodigoProducto(int codigoEmpleado) {
-        this.codigoProducto = codigoEmpleado;
+    public void setCodigoProducto(int codigoProducto) {
+        this.codigoProducto = codigoProducto;
     }
 
     public String getDescripcion() {
@@ -32,12 +32,14 @@ public class TipoProducto {
         this.descripcion = descripcion;
     }
 
-    public int getCodigoMarca() {
-        return codigoMarca;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setCodigoMarca(int codigoMarca) {
-        this.codigoMarca = codigoMarca;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
+
+
     
 }

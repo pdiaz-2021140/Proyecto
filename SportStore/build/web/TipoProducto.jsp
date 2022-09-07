@@ -4,6 +4,7 @@
     Author     : Carlos
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -13,7 +14,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
         <title>TIPO PRODUCTO</title>
     </head>
     <body>
@@ -27,8 +27,8 @@
                             <input type="text" name="txtDescripcion" class="form-control">
                         </div>
                           <div class="form-group">
-                            <label>CÓDIGO DE LA MARCA</label>
-                            <input type="text" name="txtCodMarca" class="form-control">
+                            <label>GÉNERO DEL PRODUCTO</label>
+                            <input type="text" name="txtGenero" class="form-control">
                         </div>
                         <input type ="submit" name="accion" value="Agregar" class="btn btn-info">
                          <input type ="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -42,15 +42,15 @@
                     <thead>
                          <td>CODIGO</td>
                          <td>DESCRIPCIÓN</td>
-                         <td>CÓDIGO DE LA MARCA</td>
+                         <td>GÉNERO DE LA MARCA</td>
                          <td>ACCIONES</td>
                     </thead>
                     <tbody>
                  <c:forEach var="tipoProducto" items="${tipoProductos}">
                         <tr>
-                            <td>${tipoProducto.getcodigoProducto()}</td>
+                            <td>${tipoProducto.getCodigoProducto()}</td>
                             <td>${tipoProducto.getDescripcion()}</td>
-                            <td>${tipoProducto.getCodigoMarca()}</td>
+                            <td>${tipoProducto.getGenero()}</td>
                             <td>
                                 <a class="btn btn-warning" href="">Editar</a>
                                 <a class="btn btn-danger" href="">Eliminar</a>

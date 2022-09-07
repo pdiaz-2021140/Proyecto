@@ -143,10 +143,10 @@ public class Controlador extends HttpServlet {
                     break;
                 case "Agregar":
                     String descripcion  = request.getParameter("txtDescripcion");
-                    int codigoMarca = Integer.parseInt(request.getParameter("txtCodMarca"));
+                    String genero = request.getParameter("txtGenero");
                   
                     tpProucto.setDescripcion(descripcion);
-                    tpProucto.setCodigoMarca(codigoMarca);
+                    tpProucto.setGenero(genero);
                     tpProductoDAO.agregar(tpProucto);
                     request.getRequestDispatcher("Controlador?menu=TipoProducto&accion=Listar").forward(request, response);
                     break;
@@ -166,7 +166,7 @@ public class Controlador extends HttpServlet {
                 
             }
           request.getRequestDispatcher("TipoProducto.jsp").forward(request, response);   
-    }else if(menu.equals("Producto")){
+    } else if(menu.equals("Producto")){
             
             switch(accion) {
                 case "Listar":
