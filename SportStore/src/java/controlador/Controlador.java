@@ -178,14 +178,16 @@ public class Controlador extends HttpServlet {
                     String nombrePro = request.getParameter("txtNombreProducto");
                     int stock = Integer.parseInt(request.getParameter("txtStock"));
                     double prec = Double.parseDouble(request.getParameter("txtPrecio"));
-                    int codigoTP = Integer.parseInt(request.getParameter("txtCodigoTProducto"));
+                    int codMar = Integer.parseInt(request.getParameter("txtCodigoMarca"));
                     int codigoTa = Integer.parseInt(request.getParameter("txtCodigoTalla"));
+                    int codigoTP = Integer.parseInt(request.getParameter("txtCodigoTProducto"));
                     
                     producto.setNombreProducto(nombrePro);
                     producto.setStock(stock);
                     producto.setPrecio(prec);
-                    producto.setCodigoTProducto(codigoTP);
+                    producto.setCodigoMarca(codMar);
                     producto.setCodigoTalla(codigoTa);
+                    producto.setCodigoTProducto(codigoTP);
                     productoDAO.agregar(producto);
                     request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     
