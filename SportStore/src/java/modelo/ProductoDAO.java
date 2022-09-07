@@ -28,9 +28,8 @@ public class ProductoDAO {
                     pr.setNombreProducto(rs.getString(2));
                     pr.setStock(rs.getInt(3));
                     pr.setPrecio(rs.getDouble(4));
-                    pr.setCodigoMarca(rs.getInt(5));
+                    pr.setCodigoTProducto(rs.getInt(5));
                     pr.setCodigoTalla(rs.getInt(6));
-                    pr.setCodigoTProducto(rs.getInt(7));
                     listaProducto.add(pr);
                 }
             }catch(Exception e){
@@ -43,16 +42,15 @@ public class ProductoDAO {
         // Agregar
         
         public int agregar(Producto pr){
-            String sql = "Insert into producto(nombreProducto, stock, precio, codigoMarca, codigoTalla, codigoTProducto) values(?,?,?,?,?,?)";
+            String sql = "Insert into producto(nombreProducto, stock, precio, codigoTProducto, codigoTalla) values(?,?,?,?,?)";
             try{
                 con = cn.Conexion();
                 ps = con.prepareStatement(sql);
                 ps.setString(1, pr.getNombreProducto());
                 ps.setInt(2,pr.getStock());
                 ps.setDouble(3, pr.getPrecio());
-                ps.setInt(4, pr.getCodigoMarca());
+                ps.setInt(4, pr.getCodigoTProducto());
                 ps.setInt(5, pr.getCodigoTalla());
-                ps.setInt(6, pr.getCodigoTProducto());
                 ps.executeUpdate();
             }catch(Exception e){
                 e.printStackTrace();
@@ -74,9 +72,8 @@ public class ProductoDAO {
                     pr.setNombreProducto(rs.getString(2));
                     pr.setStock(rs.getInt(3));
                     pr.setPrecio(rs.getDouble(4));
-                    pr.setCodigoMarca(rs.getInt(5));
+                    pr.setCodigoTProducto(rs.getInt(5));
                     pr.setCodigoTalla(rs.getInt(6));
-                    pr.setCodigoTProducto(rs.getInt(7));
                 }
             }catch(Exception e){
                 e.printStackTrace();

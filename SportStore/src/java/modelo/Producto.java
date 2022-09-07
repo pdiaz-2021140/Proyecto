@@ -6,21 +6,10 @@ public class Producto {
     private String nombreProducto;
     private int stock;
     private Double precio;
-    private int codigoMarca;
-    private int codigoTalla;
     private int codigoTProducto;
+    private int codigoTalla;
 
     public Producto() {
-    }
-
-    public Producto(int codigoProducto, String nombreProducto, int stock, Double precio, int codigoMarca, int codigoTalla, int codigoTProducto) {
-        this.codigoProducto = codigoProducto;
-        this.nombreProducto = nombreProducto;
-        this.stock = stock;
-        this.precio = precio;
-        this.codigoMarca = codigoMarca;
-        this.codigoTalla = codigoTalla;
-        this.codigoTProducto = codigoTProducto;
     }
 
     public int getCodigoProducto() {
@@ -55,12 +44,12 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getCodigoMarca() {
-        return codigoMarca;
+    public int getCodigoTProducto() {
+        return codigoTProducto;
     }
 
-    public void setCodigoMarca(int codigoMarca) {
-        this.codigoMarca = codigoMarca;
+    public void setCodigoTProducto(int codigoTProducto) {
+        this.codigoTProducto = codigoTProducto;
     }
 
     public int getCodigoTalla() {
@@ -70,15 +59,6 @@ public class Producto {
     public void setCodigoTalla(int codigoTalla) {
         this.codigoTalla = codigoTalla;
     }
-
-    public int getCodigoTProducto() {
-        return codigoTProducto;
-    }
-
-    public void setCodigoTProducto(int codigoTProducto) {
-        this.codigoTProducto = codigoTProducto;
-    }
-    
     
     
 }

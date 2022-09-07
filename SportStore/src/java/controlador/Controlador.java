@@ -178,16 +178,14 @@ public class Controlador extends HttpServlet {
                     String nombrePro = request.getParameter("txtNombreProducto");
                     int stock = Integer.parseInt(request.getParameter("txtStock"));
                     double prec = Double.parseDouble(request.getParameter("txtPrecio"));
-                    int codMar = Integer.parseInt(request.getParameter("txtCodigoMarca"));
-                    int codigoTa = Integer.parseInt(request.getParameter("txtCodigoTalla"));
                     int codigoTP = Integer.parseInt(request.getParameter("txtCodigoTProducto"));
+                    int codigoTa = Integer.parseInt(request.getParameter("txtCodigoTalla"));
                     
                     producto.setNombreProducto(nombrePro);
                     producto.setStock(stock);
                     producto.setPrecio(prec);
-                    producto.setCodigoMarca(codMar);
-                    producto.setCodigoTalla(codigoTa);
                     producto.setCodigoTProducto(codigoTP);
+                    producto.setCodigoTalla(codigoTa);
                     productoDAO.agregar(producto);
                     request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     
@@ -279,8 +277,10 @@ public class Controlador extends HttpServlet {
                 case "Agregar":
                     String nombres = request.getParameter("txtNombreMarca");
                     String numero = request.getParameter("txtNumeroContacto");
+                    String correo = request.getParameter("txtCorreoContacto");
                     marca.setNombreMarca(nombres);
                     marca.setNumeroContacto(numero);
+                    marca.setCorreoContacto(correo);
                     marcaDAO.agregar(marca);
                     request.getRequestDispatcher("Controlador?menu=Marca&accion=Listar").forward(request, response);
                     break;

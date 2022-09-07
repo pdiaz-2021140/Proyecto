@@ -10,6 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         
         <title>Productos</title>
@@ -32,16 +33,12 @@
                             <input type="text" name="txtPrecio" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Marca</label>
-                            <input type="text" name="txtCodigoMarca" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Talla</label>
-                            <input type="text" name="txtCodigoTalla" class="form-control">
-                        </div>
-                        <div class="form-group">
                             <label>Tipo Producto</label>
                             <input type="text" name="txtCodigoTProducto" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo Talla</label>
+                            <input type="text" name="txtCodigoTalla" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -56,9 +53,8 @@
                             <td>NOMBRES</td>
                             <td>STOCK</td>
                             <td>PRECIO</td>
-                            <td>MARCA</td>
-                            <td>TALLA</td>
                             <td>TIPO PRODUCTO</td>
+                            <td>TIPO TALLA</td>
                             <td>ACCIONES</td>
                         </tr>
                     </thead>
@@ -69,9 +65,8 @@
                             <td>${producto.getNombreProducto()}</td>
                             <td>${producto.getStock()}</td>
                             <td>${producto.getPrecio()}</td>
-                            <td>${producto.getCodigoMarca()}</td>
-                            <td>${producto.getCodigoTalla()}</td>
                             <td>${producto.getCodigoTProducto()}</td>
+                            <td>${producto.getCodigoTalla()}</td>
                             <td>
                                 <a class="btn btn-warning" href="">Editar</a>
                                 <a class="btn btn-danger" href="">Eliminar</a>
