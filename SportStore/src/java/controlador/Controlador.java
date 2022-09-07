@@ -97,20 +97,20 @@ public class Controlador extends HttpServlet {
                     String NIT = request.getParameter("txtNITUsuario");
                     String nombre = request.getParameter("txtNombreUsuario");
                     String apellido = request.getParameter("txtApellidoUsuario");
-                    String tel = request.getParameter("txtTelefonoUsuario");
                     String user = request.getParameter("txtUser");
                     String pass = request.getParameter("txtPass");
+                    int codDep = Integer.parseInt(request.getParameter("txtCodigoDepartamento"));
                     String correoElec = request.getParameter("txtCorreoElectronico");
                     int codTUser = Integer.parseInt(request.getParameter("txtTipoUser"));
                     
                     usuario.setNombreUsuario(nombre);
                     usuario.setApellidoUsuario(apellido);
                     usuario.setNIT(NIT);
-                    usuario.setTelefonoContacto(tel);
                     usuario.setUsuario(user);
-                    usuario.setPasswordU(pass);
+                    usuario.setPasswordUser(pass);
                     usuario.setCorreoElectronico(correoElec);
                     usuario.setCodigoTUsuario(codTUser);
+                    usuario.setCodigoDepartamento(codDep);
                     usuarioDAO.agregar(usuario);
                     request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
                     

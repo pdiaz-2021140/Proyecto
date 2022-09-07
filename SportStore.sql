@@ -141,13 +141,13 @@ Insert into TipoUsuario (tipoUsuario) values ('Cliente');
 
 Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento)
     values ('Carlos', 'lopez', '1234567890',  'carloslop@gmail.com', 'clopez', '123', '3','4');
-Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, usuario, passwordUser, correoElectronico, codigoTUsuario, codigoDepartamento)
+Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento)
     values ('Juan', 'Castillo', '1234567890', 'juancastillo@gmail.com','jcastillo', '123','3','2');   
-Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, usuario, passwordUser, correoElectronico, codigoTUsuario, codigoDepartamento)
+Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento)
     values ('Adilson', 'Cucul', '1452369887','adilsoncucul@gmail.com', 'ecucul', '54321', '3','5');  
-Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, usuario, passwordUser, correoElectronico, codigoTUsuario, codigoDepartamento)
+Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento)
     values ('Gabriela', 'Pinzon', '25361425',  'gabrielapinzon@gmail.com','gpinzon', '987654', '2','1');     
-Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, usuario, passwordUser, correoElectronico, codigoTUsuario, codigoDepartamento)
+Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento)
     values ('Stuart', 'Pinzon', '8754219632',  'stuartpinzon@gmail.com','spinzon', '12345', '1','3');  
 
 
@@ -187,7 +187,7 @@ Insert into DetalleFactura (codigoProducto, codigoFactura) values (5,5);
 
 
 
-
+select * from Usuario
 
 
 
