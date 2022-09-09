@@ -67,6 +67,7 @@ public class Controlador extends HttpServlet {
     DetalleFacturaDAO dtFacturaDAO = new DetalleFacturaDAO();
     Departamento dprt = new Departamento();
     DepartamentoDAO departamentoDAO = new DepartamentoDAO();
+    int codTipoProdducto;
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -152,21 +153,33 @@ public class Controlador extends HttpServlet {
                     break;
                     
                 case "Editar" :
-                    
+                    codTipoProdducto = Integer.parseInt(request.getParameter("codigoTProducto"));
+                    TipoProducto e = tpProductoDAO.listaTipoProducto(codTipoProdducto);
+                    request.setAttribute("tipoProducto", e);
+                    request.getRequestDispatcher("Controlador?menu=TipoProducto&accion=Listar").forward(request, response);
                     break;
+                   
                     
                 case "Actualizar":
-                    
+                    String descripTp = request.getParameter("txtDescripcion");
+                    String genroTp = request.getParameter("txtGenero");
+                    tpProucto.setDescripcion(descripTp);
+                    tpProucto.setGenero(genroTp);
+                    tpProucto.setCodigoTProducto(codTipoProdducto);
+                    tpProductoDAO.actualizar(tpProucto);
+                    request.getRequestDispatcher("Controlador?menu=TipoProducto&accion=Listar").forward(request, response);
                     break;
                     
                 case "Eliminar":
-                    
+                   codTipoProdducto = Integer.parseInt(request.getParameter("codigoTProducto"));
+                   tpProductoDAO.eliminar(codTipoProdducto);
+                    request.getRequestDispatcher("Controlador?menu=TipoProducto&accion=Listar").forward(request, response);       
                     break;
                     
                 
             }
           request.getRequestDispatcher("TipoProducto.jsp").forward(request, response);   
-    } else if(menu.equals("Producto")){
+    }else if(menu.equals("Producto")){
             
             switch(accion) {
                 case "Listar":
@@ -178,14 +191,16 @@ public class Controlador extends HttpServlet {
                     String nombrePro = request.getParameter("txtNombreProducto");
                     int stock = Integer.parseInt(request.getParameter("txtStock"));
                     double prec = Double.parseDouble(request.getParameter("txtPrecio"));
-                    int codigoTP = Integer.parseInt(request.getParameter("txtCodigoTProducto"));
+                    int codMar = Integer.parseInt(request.getParameter("txtCodigoMarca"));
                     int codigoTa = Integer.parseInt(request.getParameter("txtCodigoTalla"));
+                    int codigoTP = Integer.parseInt(request.getParameter("txtCodigoTProducto"));
                     
                     producto.setNombreProducto(nombrePro);
                     producto.setStock(stock);
                     producto.setPrecio(prec);
-                    producto.setCodigoTProducto(codigoTP);
+                    producto.setCodigoMarca(codMar);
                     producto.setCodigoTalla(codigoTa);
+                    producto.setCodigoTProducto(codigoTP);
                     productoDAO.agregar(producto);
                     request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     

@@ -24,11 +24,11 @@
                     <form action="Controlador?menu=TipoProducto" method="POST">
                         <div class="form-group">
                             <label>DESCRIPCIÓN</label>
-                            <input type="text" name="txtDescripcion" class="form-control">
+                            <input type="text" value="${tipoProducto.getDescripcion()}" name="txtDescripcion" class="form-control">
                         </div>
                           <div class="form-group">
                             <label>GÉNERO DEL PRODUCTO</label>
-                            <input type="text" name="txtGenero" class="form-control">
+                            <input type="text"  value="${tipoProducto.getGenero()}" name="txtGenero" class="form-control">
                         </div>
                         <input type ="submit" name="accion" value="Agregar" class="btn btn-info">
                          <input type ="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -48,12 +48,12 @@
                     <tbody>
                  <c:forEach var="tipoProducto" items="${tipoProductos}">
                         <tr>
-                            <td>${tipoProducto.getCodigoProducto()}</td>
+                            <td>${tipoProducto.getCodigoTProducto()}</td>
                             <td>${tipoProducto.getDescripcion()}</td>
                             <td>${tipoProducto.getGenero()}</td>
                             <td>
-                                <a class="btn btn-warning" href="">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=TipoProducto&accion=Editar&codigoTProducto=${tipoProducto.getCodigoTProducto()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=TipoProducto&accion=Eliminar&codigoTProducto=${tipoProducto.getCodigoTProducto()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>
