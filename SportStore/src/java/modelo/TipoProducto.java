@@ -3,25 +3,25 @@ package modelo;
 
 
 public class TipoProducto {
-      private int codigoProducto;
+      private int codigoTProducto;
       private String descripcion;
       private String genero;
 
     public TipoProducto() {
     }
 
-    public TipoProducto(int codigoProducto, String descripcion, String genero) {
-        this.codigoProducto = codigoProducto;
+    public TipoProducto(int codigoTProducto, String descripcion, String genero) {
+        this.codigoTProducto = codigoTProducto;
         this.descripcion = descripcion;
         this.genero = genero;
     }
 
-    public int getCodigoProducto() {
-        return codigoProducto;
+    public int getCodigoTProducto() {
+        return codigoTProducto;
     }
 
-    public void setCodigoProducto(int codigoProducto) {
-        this.codigoProducto = codigoProducto;
+    public void setCodigoTProducto(int codigoTProducto) {
+        this.codigoTProducto = codigoTProducto;
     }
 
     public String getDescripcion() {
@@ -41,5 +41,4 @@ public class TipoProducto {
     }
 
 
-    
 }

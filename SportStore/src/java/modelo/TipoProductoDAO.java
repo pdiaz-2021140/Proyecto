@@ -1,5 +1,3 @@
-
-
 package modelo;
 
 import config.Conexion;
@@ -27,7 +25,7 @@ public class TipoProductoDAO {
                while(rs.next()){
                    TipoProducto tp = new TipoProducto();
                  
-                   tp.setCodigoProducto(rs.getInt(1));
+                   tp.setCodigoTProducto(rs.getInt(1));
                    tp.setDescripcion(rs.getString(2));
                    tp.setGenero(rs.getString(3));
                    listaTipoProducto.add(tp);
@@ -62,7 +60,7 @@ public class TipoProductoDAO {
     }
           public TipoProducto listaTipoProducto (int id){
         TipoProducto tp = new TipoProducto();
-             String sql = "select * from Empleado where codigoEmpleado = "+id;
+             String sql = "select * from tipoProducto where codigoTProducto = "+id;
       
         try{
             
@@ -85,7 +83,7 @@ public class TipoProductoDAO {
     }
     
               public int actualizar(TipoProducto tp){
-        String sql = "Update TipoProducto set descripcion = ?, genero= ? where codigoTipoProducto = ?";
+        String sql = "Update TipoProducto set descripcion = ?, genero= ? where codigoTProducto = ?";
         
         try{
             
@@ -93,7 +91,7 @@ public class TipoProductoDAO {
             ps = con.prepareStatement(sql);
             ps.setString(1,tp.getDescripcion());
             ps.setString(2,tp.getGenero());
-            ps.setInt(3,tp.getCodigoProducto());
+            ps.setInt(3,tp.getCodigoTProducto());
             ps.executeUpdate();
             
            
@@ -110,7 +108,7 @@ public class TipoProductoDAO {
               
               
         public void eliminar (int id){
-        String sql ="delete from tipoProducto where codigoTipoProducto ="+id;
+        String sql ="delete from tipoProducto where codigoTProducto ="+id;
     
     try{
             
