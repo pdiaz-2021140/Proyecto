@@ -70,7 +70,7 @@ public class Controlador extends HttpServlet {
     DepartamentoDAO departamentoDAO = new DepartamentoDAO();
     int codTipoProdducto;
     int codFormaDePago;
-    
+    int codFactura;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -290,6 +290,8 @@ public class Controlador extends HttpServlet {
                 case "Listar":
                     List listaFactura = facturaDAO.listar();
                     request.setAttribute("facturas", listaFactura);
+                    request.setAttribute("us", usuarioDAO);
+                    request.setAttribute("fp", formaPagoDAO);
                     break;
                     
                 case "Agregar":
@@ -297,8 +299,7 @@ public class Controlador extends HttpServlet {
                     String fFactura = request.getParameter("txtFechaFactura");
                     int condition = Integer.parseInt(request.getParameter("txtEstado"));
                     int codUsuario = Integer.parseInt(request.getParameter("txtCodigoUsuario"));
-                    int codFPago = Integer.parseInt(request.getParameter("txtFormaDePago"));
-                    
+                    int codFPago = Integer.parseInt(request.getParameter("txtFormaDePago"));                    
                     factura.setFechaFactura(fFactura);
                     factura.setEstado(condition);
                     factura.setCodigoUsuario(codUsuario);
@@ -307,18 +308,31 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Factura&accion=Listar").forward(request, response);
                     break;
                     
-                case "Editar":
-                    
-                    break;
+                case "Editar": 
+                        codFactura = Integer.parseInt(request.getParameter("codigoFactura"));
+                        request.setAttribute("read", "readonly");
+                        Factura f = facturaDAO.listarCodigoFactura(codFactura);
+                        request.setAttribute("factura", f);
+                        request.getRequestDispatcher("Controlador?menu=Factura&accion=Listar").forward(request, response);
+                break;
                     
                 case "Actualizar":
-                    
+                    String codFFact = request.getParameter("txtFechaFactura");
+                    int estad = Integer.parseInt(request.getParameter("txtEstado"));
+
+                    factura.setFechaFactura(codFFact);
+                    factura.setEstado(estad);
+                    factura.setCodigoFactura(codFactura);
+                    facturaDAO.actualizar(factura);
+                    request.getRequestDispatcher("Controlador?menu=Factura&accion=Listar").forward(request, response);
                     break;
                     
                 case "Eliminar":
-                    
+                    codFactura = Integer.parseInt(request.getParameter("codigoFactura"));
+                    facturaDAO.eliminar(codFactura);
+                    request.getRequestDispatcher("Controlador?menu=Factura&accion=Listar").forward(request, response);
                     break;
-            }
+            }            
             
             request.getRequestDispatcher("Factura.jsp").forward(request, response);
             
