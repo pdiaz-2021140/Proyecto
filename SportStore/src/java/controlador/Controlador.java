@@ -68,6 +68,7 @@ public class Controlador extends HttpServlet {
     Departamento dprt = new Departamento();
     DepartamentoDAO departamentoDAO = new DepartamentoDAO();
     int codTipoProdducto;
+    int codFormaDePago;
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -233,13 +234,22 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=FormaDePago&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    
+                    codFormaDePago = Integer.parseInt(request.getParameter("codigoFormaDePago"));
+                    FormaDePago form = formaPagoDAO.lsitarCodigoFormaDePago(codFormaDePago);
+                    request.setAttribute("formaDePago", form);
+                    request.getRequestDispatcher("Controlador?menu=FormaDePago&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    
+                    String formDPago = request.getParameter("txtFormaDePago");
+                    formaPago.setFormaDePago(formDPago);
+                    formaPago.setCodigoFormaDePago(codFormaDePago);
+                    formaPagoDAO.actualizar(formaPago);
+                    request.getRequestDispatcher("Controlador?menu=FormaDePago&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                    
+                    codFormaDePago = Integer.parseInt(request.getParameter("codigoFormaDePago"));
+                    formaPagoDAO.eliminar(codFormaDePago);
+                    request.getRequestDispatcher("Controlador?menu=FormaDePago&accion=Listar").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("FormaDePago.jsp").forward(request, response);
