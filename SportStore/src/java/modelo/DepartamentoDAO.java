@@ -29,6 +29,7 @@ public class DepartamentoDAO {
         //Instanciar un objeto de tipo Departamento
         Departamento depto = new Departamento();
         //Agregar una variable de tipo String para la consulta 
+        
         String sql = "Select * from Departamento where codigoDepartamento = ? and departamento = ?";
         try{
             con= cn.Conexion();

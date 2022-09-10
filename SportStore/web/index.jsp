@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="login.css" rel="stylesheet" type="text/css"/>
+    <link href="CSS/login.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
     <div class="login-box">
         <h2>Login</h2>

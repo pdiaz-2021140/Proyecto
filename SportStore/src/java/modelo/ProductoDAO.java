@@ -95,6 +95,7 @@ public class ProductoDAO {
                 ps.setInt(2, pr.getStock());
                 ps.setDouble(3, pr.getPrecio());
                 ps.setInt(4, pr.getCodigoProducto());
+                ps.executeUpdate();
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -104,7 +105,7 @@ public class ProductoDAO {
         //Eliminar
         
         public void eliminar(int id){
-            String sql = "delete from producto where codigoProducto = "+id;
+            String sql = "delete from Producto where codigoProducto = "+id;
             try{
                 con = cn.Conexion();
                 ps = con.prepareStatement(sql);
