@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
         <title>Usuario</title>
     </head>
     <body>
@@ -31,20 +32,20 @@
                             <input type="text" name="txtApellidoUsuario" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Teléfono:</label>
-                            <input type="text" name="txtTelefonoUsuario" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Correo:</label>
-                            <input type="text" name="txtCorreoElectronico" class="form-control">
-                        </div>
-                        <div class="form-group">
                             <label>Usuario:</label>
                             <input type="text" name="txtUser" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Contraseña:</label>
                             <input type="text" name="txtPass" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Correo:</label>
+                            <input type="text" name="txtCorreoElectronico" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Departamento:</label>
+                            <input type="text" name="txtCodigoDepartamento" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Tipo de usuario:</label>
@@ -63,11 +64,11 @@
                             <td>CÓDIGO</td>
                             <td>NIT</td>
                             <td>NOMBRE</td>
-                            <td>APELLIDO</td>
-                            <td>TELEFONO</td>
-                            <td>CORREO</td>
+                            <td>APELLIDO</td>                           
                             <td>USUARIO</td>
                             <td>CONTRASEÑA</td>
+                            <td>CORREO</td>
+                            <td>DEPARTAMENTO</td>
                             <td>TIPO USUARIO</td>
                             <td>ACCIONES</td>
                         </tr>
@@ -79,10 +80,10 @@
                             <td>${usuario.getNIT()}</td>
                             <td>${usuario.getNombreUsuario()}</td>
                             <td>${usuario.getApellidoUsuario()}</td>
-                            <td>${usuario.getTelefonoContacto()}</td>
-                            <td>${usuario.getCorreoElectronico()}</td>
                             <td>${usuario.getUsuario()}</td>
-                            <td>${usuario.getPasswordU()}</td>
+                            <td>${usuario.getPasswordUser()}</td>
+                            <td>${usuario.getCorreoElectronico()}</td>
+                            <td>${usuario.getCodigoDepartamento()}</td>
                             <td>${usuario.getCodigoTUsuario()}</td>
                             <td>
                                 <a class="btn btn-warning" href="#">Editar</a>

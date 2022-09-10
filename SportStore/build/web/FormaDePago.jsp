@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
         <title>Forma De Pago</title>
     </head>
     <style>
@@ -37,7 +38,7 @@
                     <form action="Controlador?menu=FormaDePago" method="POST">
                         <div class="form-group">
                             <label>Forma De Pago</label>
-                            <input type="text" name="txtFormaDePago" class="form-control">
+                            <input type="text" name="txtFormaDePago" value="${formaDePago.getFormaDePago()}" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -51,7 +52,7 @@
             <c:forEach var="formaDePago" items="${formaDePagos}">
             <div class="col mt-5" style="margin: 5px;">
                 <div class="card" style="width: 18rem; background-color: #1B4F72; color: white; ">
-                    <img src="img/formasDePago.PNG" alt="Forma De Pago" style="border-radius:1rem;"/>
+                    <img src="img/formasDePago.png" alt="Forma De Pago" style="border-radius:1rem;"/>
                     <div class="card-body">
                         <h1>${formaDePago.getFormaDePago()}</h1>
                         <details>
@@ -59,8 +60,8 @@
                             <p>La culpa de gastar, se acaba al estrenar</p>
                         </details>
                         <a href="#" class="btn btn-primary">._.</a>
-                        <a class="btn btn-warning" href="#">Editar</a>
-                        <a class="btn btn-danger" href="#">Eliminar</a> 
+                        <a class="btn btn-warning" href="Controlador?menu=FormaDePago&accion=Editar&codigoFormaDePago=${formaDePago.getCodigoFormaDePago()}">Editar</a>
+                        <a class="btn btn-danger"  href="Controlador?menu=FormaDePago&accion=Eliminar&codigoFormaDePago=${formaDePago.getCodigoFormaDePago()}">Eliminar</a> 
                     </div>
                 </div> 
             </div>

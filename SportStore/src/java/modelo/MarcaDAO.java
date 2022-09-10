@@ -17,21 +17,23 @@ public class MarcaDAO {
     int resp;
     
     //Metodo para Validar
-    public Marca validar(int codigoMarca, String nombreMarca){
+    public Marca validar(int codigoMarca, String nombreMarca, String correoContacto){
         //Instanciar un objeto de tipo Marca
         Marca marca = new Marca();
         //Agregar una variable de tipo String para la consulta 
-        String sql = "Select * from Marca where codigoMarca = ? and nombreMarca = ?";
+        String sql = "Select * from Marca where codigoMarca = ? , nombreMarca = ? and correoContacto = ?";
         try{
             con= cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, codigoMarca);
             ps.setString(2, nombreMarca);
+            ps.setString(3, correoContacto);
             rs = ps.executeQuery();
             while(rs.next()){
             marca.setCodigoMarca(rs.getInt("codigoMarca"));
             marca.setNombreMarca(rs.getString("nombreMarca"));
             marca.setNumeroContacto(rs.getString("numeroContacto"));
+            marca.setCorreoContacto(rs.getString("correoContacto"));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -56,6 +58,7 @@ public class MarcaDAO {
             mc.setCodigoMarca(rs.getInt(1));
             mc.setNombreMarca(rs.getString(2));
             mc.setNumeroContacto(rs.getString(3));
+            mc.setCorreoContacto(rs.getString(4));
             listaMarca.add(mc);
         }
     }catch(Exception e){
@@ -67,12 +70,13 @@ public class MarcaDAO {
     
     //METODO PARA AGREGAR
     public int agregar(Marca mc){
-    String sql = "Insert into Marca (codigoMarca, nombreMarca, numeroContacto) values(?,?,?)";
+    String sql = "Insert into Marca (nombreMarca, numeroContacto, correoContacto) values(?,?,?)";
     try{
     con = cn.Conexion();
     ps = con.prepareStatement(sql);
     ps.setString(1, mc.getNombreMarca());
     ps.setString(2, mc.getNumeroContacto());
+    ps.setString(3, mc.getCorreoContacto());
     ps.executeUpdate();
     }catch(Exception e){
         e.printStackTrace();
@@ -92,6 +96,7 @@ public class MarcaDAO {
             while(rs.next()){
                 mrc.setNombreMarca(rs.getString(2));
                 mrc.setNumeroContacto(rs.getString(3));
+                mrc.setCorreoContacto(rs.getString(4));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -101,12 +106,13 @@ public class MarcaDAO {
     
  //METODO PARA EDITAR
     public int actualizar(Marca mrc){
-        String sql = "Update Marca set nombreMarca = ?, numeroContacto = ? where codigoMarca = ?";
+        String sql = "Update Marca set nombreMarca = ?, numeroContacto = ?, correoContacto = ? where codigoMarca = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, mrc.getNombreMarca());
             ps.setString(2, mrc.getNumeroContacto());
+            ps.setString(3, mrc.getCorreoContacto());
         }catch(Exception e){
             e.printStackTrace();
         }
