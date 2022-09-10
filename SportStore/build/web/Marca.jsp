@@ -27,6 +27,10 @@
                         <label>NUMERO DE CONTACTO</label>
                         <input type="text" name="txtNumeroContacto" class="form-control">  
                     </div>
+                    <div class="form-group">
+                        <label>CORREO CONTACTO</label>
+                        <input type="text" name="txtCorreoContacto" class="form-control">  
+                    </div>
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                     <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                 </form>
@@ -40,6 +44,8 @@
                         <td>CODIGO  MARCA</td>
                         <td>NOMBRE  MARCA</td>
                         <td>NUMERO  CONTACTO</td>
+                        <td>CORREO CONTACTO</td>
+                        <td>ACCIONES</td>
                     </tr>
                 </thead>
                 <tbody>  
@@ -48,6 +54,7 @@
                         <td>${marca.getCodigoMarca()}</td> 
                         <td>${marca.getNombreMarca()}</td> 
                         <td>${marca.getNumeroContacto()}</td> 
+                        <td>${marca.getCorreoContacto()}</td>
                         <td>
                              <a class="btn btn-warning" href="">Editar</a>
                              <a class="btn btn-danger" href="">Eliminar</a>

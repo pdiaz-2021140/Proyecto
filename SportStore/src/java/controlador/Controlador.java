@@ -53,6 +53,7 @@ public class Controlador extends HttpServlet {
     MarcaDAO marcaDAO = new MarcaDAO();
     Usuario usuario = new Usuario();
     UsuarioDAO usuarioDAO = new UsuarioDAO();
+    int codUsuario;
     TipoProducto tpProucto = new TipoProducto();
     TipoProductoDAO tpProductoDAO = new TipoProductoDAO();
     Producto producto = new Producto();
@@ -67,6 +68,8 @@ public class Controlador extends HttpServlet {
     DetalleFacturaDAO dtFacturaDAO = new DetalleFacturaDAO();
     Departamento dprt = new Departamento();
     DepartamentoDAO departamentoDAO = new DepartamentoDAO();
+    int codTipoProdducto;
+    int codFormaDePago;
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -91,6 +94,8 @@ public class Controlador extends HttpServlet {
                 case "Listar":
                     List listaUsuario = usuarioDAO.listar();
                     request.setAttribute("usuarios", listaUsuario);
+                    request.setAttribute("dep", departamentoDAO);
+                    request.setAttribute("tipoUser", tipousuarioDAO);
                     break;
                     
                 case "Agregar":
@@ -117,14 +122,40 @@ public class Controlador extends HttpServlet {
                     break;
                     
                 case "Editar":
+                    codUsuario = Integer.parseInt(request.getParameter("codigoUsuario"));
+                    request.setAttribute("read", "readonly");
+                    Usuario u = usuarioDAO.listarCodigoUsuario(codUsuario);
+                    request.setAttribute("usuario", u);
+                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
                     
                     break;
                     
                 case "Actualizar":
+                    String nitUser = request.getParameter("txtNITUsuario");
+                    String nombreUser = request.getParameter("txtNombreUsuario");
+                    String apellidoUser = request.getParameter("txtApellidoUsuario");
+                    String userU = request.getParameter("txtUser");
+                    String passUser = request.getParameter("txtPass");
+                    String correoUser = request.getParameter("txtCorreoElectronico");
+                    
+                    usuario.setNIT(nitUser);
+                    usuario.setNombreUsuario(nombreUser);
+                    usuario.setApellidoUsuario(apellidoUser);
+                    usuario.setUsuario(userU);
+                    usuario.setPasswordUser(passUser);
+                    usuario.setCorreoElectronico(correoUser);
+                    usuario.setCodigoUsuario(codUsuario);
+                    usuarioDAO.actualizar(usuario);
+                    
+                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
                     
                     break;
                     
                 case "Eliminar":
+                    codUsuario = Integer.parseInt(request.getParameter("codigoUsuario"));
+                    usuarioDAO.eliminar(codUsuario);
+                    
+                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
                     
                     break;
             }
@@ -143,24 +174,36 @@ public class Controlador extends HttpServlet {
                     break;
                 case "Agregar":
                     String descripcion  = request.getParameter("txtDescripcion");
-                    int codigoMarca = Integer.parseInt(request.getParameter("txtCodMarca"));
+                    String genero = request.getParameter("txtGenero");
                   
                     tpProucto.setDescripcion(descripcion);
-                    tpProucto.setCodigoMarca(codigoMarca);
+                    tpProucto.setGenero(genero);
                     tpProductoDAO.agregar(tpProucto);
                     request.getRequestDispatcher("Controlador?menu=TipoProducto&accion=Listar").forward(request, response);
                     break;
                     
                 case "Editar" :
-                    
+                    codTipoProdducto = Integer.parseInt(request.getParameter("codigoTProducto"));
+                    TipoProducto e = tpProductoDAO.listaTipoProducto(codTipoProdducto);
+                    request.setAttribute("tipoProducto", e);
+                    request.getRequestDispatcher("Controlador?menu=TipoProducto&accion=Listar").forward(request, response);
                     break;
+                   
                     
                 case "Actualizar":
-                    
+                    String descripTp = request.getParameter("txtDescripcion");
+                    String genroTp = request.getParameter("txtGenero");
+                    tpProucto.setDescripcion(descripTp);
+                    tpProucto.setGenero(genroTp);
+                    tpProucto.setCodigoTProducto(codTipoProdducto);
+                    tpProductoDAO.actualizar(tpProucto);
+                    request.getRequestDispatcher("Controlador?menu=TipoProducto&accion=Listar").forward(request, response);
                     break;
                     
                 case "Eliminar":
-                    
+                   codTipoProdducto = Integer.parseInt(request.getParameter("codigoTProducto"));
+                   tpProductoDAO.eliminar(codTipoProdducto);
+                    request.getRequestDispatcher("Controlador?menu=TipoProducto&accion=Listar").forward(request, response);       
                     break;
                     
                 
@@ -178,14 +221,16 @@ public class Controlador extends HttpServlet {
                     String nombrePro = request.getParameter("txtNombreProducto");
                     int stock = Integer.parseInt(request.getParameter("txtStock"));
                     double prec = Double.parseDouble(request.getParameter("txtPrecio"));
-                    int codigoTP = Integer.parseInt(request.getParameter("txtCodigoTProducto"));
+                    int codMar = Integer.parseInt(request.getParameter("txtCodigoMarca"));
                     int codigoTa = Integer.parseInt(request.getParameter("txtCodigoTalla"));
+                    int codigoTP = Integer.parseInt(request.getParameter("txtCodigoTProducto"));
                     
                     producto.setNombreProducto(nombrePro);
                     producto.setStock(stock);
                     producto.setPrecio(prec);
-                    producto.setCodigoTProducto(codigoTP);
+                    producto.setCodigoMarca(codMar);
                     producto.setCodigoTalla(codigoTa);
+                    producto.setCodigoTProducto(codigoTP);
                     productoDAO.agregar(producto);
                     request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     
@@ -218,13 +263,22 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=FormaDePago&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-                    
+                    codFormaDePago = Integer.parseInt(request.getParameter("codigoFormaDePago"));
+                    FormaDePago form = formaPagoDAO.lsitarCodigoFormaDePago(codFormaDePago);
+                    request.setAttribute("formaDePago", form);
+                    request.getRequestDispatcher("Controlador?menu=FormaDePago&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    
+                    String formDPago = request.getParameter("txtFormaDePago");
+                    formaPago.setFormaDePago(formDPago);
+                    formaPago.setCodigoFormaDePago(codFormaDePago);
+                    formaPagoDAO.actualizar(formaPago);
+                    request.getRequestDispatcher("Controlador?menu=FormaDePago&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                    
+                    codFormaDePago = Integer.parseInt(request.getParameter("codigoFormaDePago"));
+                    formaPagoDAO.eliminar(codFormaDePago);
+                    request.getRequestDispatcher("Controlador?menu=FormaDePago&accion=Listar").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("FormaDePago.jsp").forward(request, response);
@@ -277,8 +331,10 @@ public class Controlador extends HttpServlet {
                 case "Agregar":
                     String nombres = request.getParameter("txtNombreMarca");
                     String numero = request.getParameter("txtNumeroContacto");
+                    String correo = request.getParameter("txtCorreoContacto");
                     marca.setNombreMarca(nombres);
                     marca.setNumeroContacto(numero);
+                    marca.setCorreoContacto(correo);
                     marcaDAO.agregar(marca);
                     request.getRequestDispatcher("Controlador?menu=Marca&accion=Listar").forward(request, response);
                     break;
@@ -336,11 +392,10 @@ public class Controlador extends HttpServlet {
                     // another comment
                     String departamento  = request.getParameter("txtDepartamento");
                     String municipio = request.getParameter("txtMunicipio");
-                    int CodigoUsuario = Integer.parseInt(request.getParameter("txtCodigoUsuario"));
-                  
+             
                     dprt.setDepartamento(departamento);
                     dprt.setMunicipio(municipio);
-                    dprt.setCodigoUsuario(CodigoUsuario);
+                 
                     departamentoDAO.agregar(dprt);
                     request.getRequestDispatcher("Controlador?menu=Departamento&accion=Listar").forward(request, response);
 
