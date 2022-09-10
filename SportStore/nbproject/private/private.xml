@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/50256/Desktop/kinal%202022/Informatica/Unidad%204/Proyecto%20final/SportStore/src/java/modelo/TipoProductoDAO.java</file>
-            <file>file:/C:/Users/50256/Desktop/kinal%202022/Informatica/Unidad%204/Proyecto%20final/SportStore/src/java/modelo/TipoProducto.java</file>
-            <file>file:/C:/Users/50256/Desktop/kinal%202022/Informatica/Unidad%204/Proyecto%20final/SportStore/src/java/config/Conexion.java</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/src/java/controlador/Controlador.java</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/web/Usuario.jsp</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/src/java/config/Conexion.java</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/src/java/modelo/UsuarioDAO.java</file>
         </group>
     </open-files>
 </project-private>

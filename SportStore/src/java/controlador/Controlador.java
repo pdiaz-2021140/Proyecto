@@ -53,6 +53,7 @@ public class Controlador extends HttpServlet {
     MarcaDAO marcaDAO = new MarcaDAO();
     Usuario usuario = new Usuario();
     UsuarioDAO usuarioDAO = new UsuarioDAO();
+    int codUsuario;
     TipoProducto tpProucto = new TipoProducto();
     TipoProductoDAO tpProductoDAO = new TipoProductoDAO();
     Producto producto = new Producto();
@@ -93,6 +94,8 @@ public class Controlador extends HttpServlet {
                 case "Listar":
                     List listaUsuario = usuarioDAO.listar();
                     request.setAttribute("usuarios", listaUsuario);
+                    request.setAttribute("dep", departamentoDAO);
+                    request.setAttribute("tipoUser", tipousuarioDAO);
                     break;
                     
                 case "Agregar":
@@ -119,14 +122,40 @@ public class Controlador extends HttpServlet {
                     break;
                     
                 case "Editar":
+                    codUsuario = Integer.parseInt(request.getParameter("codigoUsuario"));
+                    request.setAttribute("read", "readonly");
+                    Usuario u = usuarioDAO.listarCodigoUsuario(codUsuario);
+                    request.setAttribute("usuario", u);
+                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
                     
                     break;
                     
                 case "Actualizar":
+                    String nitUser = request.getParameter("txtNITUsuario");
+                    String nombreUser = request.getParameter("txtNombreUsuario");
+                    String apellidoUser = request.getParameter("txtApellidoUsuario");
+                    String userU = request.getParameter("txtUser");
+                    String passUser = request.getParameter("txtPass");
+                    String correoUser = request.getParameter("txtCorreoElectronico");
+                    
+                    usuario.setNIT(nitUser);
+                    usuario.setNombreUsuario(nombreUser);
+                    usuario.setApellidoUsuario(apellidoUser);
+                    usuario.setUsuario(userU);
+                    usuario.setPasswordUser(passUser);
+                    usuario.setCorreoElectronico(correoUser);
+                    usuario.setCodigoUsuario(codUsuario);
+                    usuarioDAO.actualizar(usuario);
+                    
+                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
                     
                     break;
                     
                 case "Eliminar":
+                    codUsuario = Integer.parseInt(request.getParameter("codigoUsuario"));
+                    usuarioDAO.eliminar(codUsuario);
+                    
+                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
                     
                     break;
             }
