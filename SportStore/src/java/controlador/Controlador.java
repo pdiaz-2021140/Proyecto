@@ -72,6 +72,7 @@ public class Controlador extends HttpServlet {
     int codFormaDePago;
     int codFactura;
     int codDept;
+    int codProducto;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -238,15 +239,28 @@ public class Controlador extends HttpServlet {
                     break;
                     
                 case "Editar":
-                    
+                    codProducto = Integer.parseInt(request.getParameter("codigoProducto"));
+                    Producto p = productoDAO.listarCodigoProducto(codProducto);
+                    request.setAttribute("producto", p);
+                    request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     break;
                     
                 case "Actualizar":
-                    
+                    String nombrePr = request.getParameter("txtNombreProducto");
+                    int stockk = Integer.parseInt(request.getParameter("txtStock"));
+                    double preci = Double.parseDouble(request.getParameter("txtPrecio"));
+                    producto.setNombreProducto(nombrePr);
+                    producto.setStock(stockk);
+                    producto.setPrecio(preci);
+                    producto.setCodigoProducto(codProducto);
+                    productoDAO.actualizar(producto);
+                    request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     break;
                     
                 case "Eliminar":
-                    
+                    codProducto = Integer.parseInt(request.getParameter("codigoProducto"));
+                    productoDAO.eliminar(codProducto);
+                    request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     break;
             }
             
