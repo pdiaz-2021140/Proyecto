@@ -12,7 +12,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <title>Departamento page</title>
+         <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+         <title>Departamento page</title>
     </head>
     <body>
         <div class="d-flex">
@@ -20,12 +21,12 @@
                 <div class="card-body">
                     <form action="Controlador?menu=Departamento" method="POST">
                         <div class="form-group">
-                            <label>departamento</label>
-                            <input type="text" name="txtDepartamento" class="form-control">
+                            <label>Departamento</label>
+                            <input type="text" value="${departamento.getDepartamento()}" name="txtDepartamento" class="form-control">
                         </div>
                           <div class="form-group">
-                              <label>municipio</label>
-                            <input type="text" name="txtMunicipio" class="form-control">
+                              <label>Municipio</label>
+                              <input type="text" value="${departamento.getMunicipio()}" name="txtMunicipio" class="form-control">
                         </div>
                          <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -40,6 +41,7 @@
                             <td>Codigo Departamento</td>
                             <td>Departamento</td>
                             <td>Municipio</td>
+                            <td>Acciones<td>
                        
                         </tr> 
                     </thead>
@@ -50,11 +52,10 @@
                             <td>${departamento.getDepartamento()}</td>
                             <td>${departamento.getMunicipio()}</td>
                          
-                            <td></td>
-                             <td></td>
+                           
                                <td>
-                                <a class="btn btn-warning" href="#" >Editar</a>
-                                <a class="btn btn-danger" href="#">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Departamento&accion=Editar&codigoDepartamento=${departamento.getCodigoDepartamento()}" >Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Departamento&accion=Eliminar&codigoDepartamento=${departamento.getCodigoDepartamento()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach> 

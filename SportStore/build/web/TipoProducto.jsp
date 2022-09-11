@@ -4,6 +4,7 @@
     Author     : Carlos
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -23,11 +24,11 @@
                     <form action="Controlador?menu=TipoProducto" method="POST">
                         <div class="form-group">
                             <label>DESCRIPCIÓN</label>
-                            <input type="text" name="txtDescripcion" class="form-control">
+                            <input type="text" value="${tipoProducto.getDescripcion()}" name="txtDescripcion" class="form-control">
                         </div>
                           <div class="form-group">
-                            <label>CÓDIGO DE LA MARCA</label>
-                            <input type="text" name="txtCodMarca" class="form-control">
+                            <label>GÉNERO DEL PRODUCTO</label>
+                            <input type="text"  value="${tipoProducto.getGenero()}" name="txtGenero" class="form-control">
                         </div>
                         <input type ="submit" name="accion" value="Agregar" class="btn btn-info">
                          <input type ="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -41,18 +42,18 @@
                     <thead>
                          <td>CODIGO</td>
                          <td>DESCRIPCIÓN</td>
-                         <td>CÓDIGO DE LA MARCA</td>
+                         <td>GÉNERO DE LA MARCA</td>
                          <td>ACCIONES</td>
                     </thead>
                     <tbody>
                  <c:forEach var="tipoProducto" items="${tipoProductos}">
                         <tr>
-                            <td>${tipoProducto.getcodigoProducto()}</td>
+                            <td>${tipoProducto.getCodigoTProducto()}</td>
                             <td>${tipoProducto.getDescripcion()}</td>
-                            <td>${tipoProducto.getCodigoMarca()}</td>
+                            <td>${tipoProducto.getGenero()}</td>
                             <td>
-                                <a class="btn btn-warning" href="">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=TipoProducto&accion=Editar&codigoTProducto=${tipoProducto.getCodigoTProducto()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=TipoProducto&accion=Eliminar&codigoTProducto=${tipoProducto.getCodigoTProducto()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>
