@@ -71,6 +71,7 @@ public class Controlador extends HttpServlet {
     int codTipoProdducto;
     int codFormaDePago;
     int codFactura;
+    int codDept;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -403,7 +404,7 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("departamentos",listarcodigoDepto);
                     break;
                 case "Agregar":
-                    // another comment
+                    // the last comment comment
                     String departamento  = request.getParameter("txtDepartamento");
                     String municipio = request.getParameter("txtMunicipio");
              
@@ -415,8 +416,30 @@ public class Controlador extends HttpServlet {
 
                     break;
                     
-                case "Editar" :
-                    break; 
+               case "Editar" :
+                    codDept = Integer.parseInt(request.getParameter("codigoDepartamento"));
+                    Departamento d = departamentoDAO.listarCodigoDepto(codDept);
+                    request.setAttribute("departamento", d);
+                    request.getRequestDispatcher("Controlador?menu=Departamento&accion=Listar").forward(request, response);
+                    break;
+                   
+                    
+                case "Actualizar":
+                    String Ndep = request.getParameter("txtDepartamento");
+                    String Nmun = request.getParameter("txtMunicipio");
+                    dprt.setDepartamento(Ndep);
+                    dprt.setMunicipio(Nmun);
+                    dprt.setCodigoDepartamento(codDept);
+                    departamentoDAO.actualizar(dprt);
+                    request.getRequestDispatcher("Controlador?menu=Departamento&accion=Listar").forward(request, response);
+                    break;
+                    
+                case "Eliminar":
+                   codDept = Integer.parseInt(request.getParameter("codigoDepartamento"));
+                   departamentoDAO.eliminar(codDept);
+                    request.getRequestDispatcher("Controlador?menu=Departamento&accion=Listar").forward(request, response);       
+                    break;
+                     
              } request.getRequestDispatcher("Departamento.jsp").forward(request, response);
 
 
