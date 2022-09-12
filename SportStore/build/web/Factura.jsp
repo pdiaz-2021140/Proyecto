@@ -1,7 +1,7 @@
 <%-- 
     Document   : Factura
     Created on : 3/09/2022, 02:04:43 PM
-    Author     : Alex
+    Author     : Alessandro Gutiérrez
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -20,19 +20,19 @@
                     <form action="Controlador?menu=Factura" method="POST">
                         <div class="form-group">
                             <label>Fecha Factura:</label>
-                            <input type="date" name="txtFechaFactura" class="form-control" />
+                            <input type="date" value="${factura.getFechaFactura()}" name="txtFechaFactura" class="form-control" />
                         </div>
                         <div class="form-group">
                             <label>Estado:</label>
-                            <input type="text" name="txtEstado" class="form-control">
+                            <input type="text" value="${factura.getEstado()}" name="txtEstado" class="form-control">
                         </div>
                          <div class="form-group">
                             <label>Codigo Usuario:</label>
-                            <input type="text" name="txtCodigoUsuario" class="form-control">
+                            <input type="text" value="${factura.getCodigoUsuario()}" ${read} name="txtCodigoUsuario" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Forma de Pago:</label>
-                            <input type="text" name="txtFormaDePago" class="form-control">
+                            <input type="text" value="${factura.getCodigoFPago()}" ${read} name="txtFormaDePago" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -47,7 +47,7 @@
                             <td>CODIGO FACTURA</td>
                             <td>FECHA</td>
                             <td>ESTADO</td>
-                            <td>USUARIO</td>
+                            <td>NIT</td>
                             <td>FORMA DE PAGO</td>
                             <td>ACCIONES</td>
                         </tr>
@@ -58,11 +58,11 @@
                             <td>${factura.getCodigoFactura()}</td>
                             <td>${factura.getFechaFactura()}</td>
                             <td>${factura.getEstado()}</td>
-                            <td>${factura.getCodigoUsuario()}</td>
-                            <td>${factura.getCodigoFPago()}</td>
+                            <td>${(us.listarCodigoUsuario(factura.getCodigoUsuario())).getNIT()}</td>
+                            <td>${(fp.lsitarCodigoFormaDePago(factura.getCodigoFPago())).getFormaDePago()}</td>
                             <td>
-                                <a class="btn btn-warning" href="#">Editar</a>
-                                <a class="btn btn-danger" href="#">Eliminar</a>                                                                
+                                <a class="btn btn-warning" href="Controlador?menu=Factura&accion=Editar&codigoFactura=${factura.getCodigoFactura()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Factura&accion=Eliminar&codigoFactura=${factura.getCodigoFactura()}">Eliminar</a>                                                             
                             </td>
                         </tr>
                         </c:forEach>

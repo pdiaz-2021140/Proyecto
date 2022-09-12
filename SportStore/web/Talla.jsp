@@ -21,7 +21,7 @@
                     <form action="Controlador?menu=Talla" method="POST">
                         <div class="form-group">
                             <label>Número de Talla:</label>
-                            <input type="text" name="txtNoTalla" class="form-control">
+                            <input type="text" value="${talla.getNoTalla()}"  name="txtNoTalla" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -43,8 +43,8 @@
                             <td>${talla.getCodigoTalla()}</td>
                             <td>${talla.getNoTalla()}</td>
                             <td>
-                                <a class="btn btn-warning" href="">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Talla&accion=Editar&codigoTalla=${talla.getCodigoTalla()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Talla&accion=Eliminar&codigoTalla=${talla.getCodigoTalla()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>

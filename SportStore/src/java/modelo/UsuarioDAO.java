@@ -18,7 +18,7 @@ public class UsuarioDAO {
     //Validación de usuario y contraseña
     public Usuario validar(String usuario, String passwordU) {
         Usuario user = new Usuario();
-        String sql = "Select * from Usuario where usuario = ? and passwordU = ?";
+        String sql = "Select * from Usuario where usuario = ? and passwordUser = ?";
         
         try {
             con = cn.Conexion();
@@ -32,10 +32,10 @@ public class UsuarioDAO {
                 user.setNombreUsuario(rs.getString("nombreUsuario"));
                 user.setApellidoUsuario(rs.getString("apellidoUsuario"));
                 user.setNIT(rs.getString("NIT"));
-                user.setTelefonoContacto(rs.getString("telefonoContacto"));
                 user.setUsuario(rs.getString("usuario"));
-                user.setPasswordU(rs.getString("passwordU"));
+                user.setPasswordUser(rs.getString("passwordU"));
                 user.setCorreoElectronico(rs.getString("correoElectronico"));
+                user.setCodigoDepartamento(rs.getInt("codigoDepartamento"));
                 user.setCodigoTUsuario(rs.getInt("codigoTUsuario"));
             }
             
@@ -65,11 +65,11 @@ public class UsuarioDAO {
                 user.setNombreUsuario(rs.getString(2));
                 user.setApellidoUsuario(rs.getString(3));
                 user.setNIT(rs.getString(4));
-                user.setTelefonoContacto(rs.getString(5));
+                user.setCorreoElectronico(rs.getString(5));
                 user.setUsuario(rs.getString(6));
-                user.setPasswordU(rs.getString(7));
-                user.setCorreoElectronico(rs.getString(8));
-                user.setCodigoTUsuario(rs.getInt(9));
+                user.setPasswordUser(rs.getString(7));
+                user.setCodigoTUsuario(rs.getInt(8));
+                user.setCodigoDepartamento(rs.getInt(9));
                 listaUsuario.add(user);
                 
             }
@@ -85,7 +85,7 @@ public class UsuarioDAO {
     //Método Agregar
     
     public int agregar(Usuario user) {
-        String sql = "insert into Usuario(nombreUsuario, apellidoUsuario, NIT, telefonoContacto, usuario, passwordU, correoElectronico, codigoTUsuario) values(?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Usuario(nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento) values(?, ?, ?, ?, ?, ?, ?, ?)";
         
         try {
             con = cn.Conexion();
@@ -93,11 +93,11 @@ public class UsuarioDAO {
             ps.setString(1, user.getNombreUsuario());
             ps.setString(2, user.getApellidoUsuario());
             ps.setString(3, user.getNIT());
-            ps.setString(4, user.getTelefonoContacto());
+            ps.setString(4, user.getCorreoElectronico());
             ps.setString(5, user.getUsuario());
-            ps.setString(6, user.getPasswordU());
-            ps.setString(7, user.getCorreoElectronico());
-            ps.setInt(8, user.getCodigoTUsuario());
+            ps.setString(6, user.getPasswordUser());
+            ps.setInt(7, user.getCodigoTUsuario());
+            ps.setInt(8, user.getCodigoDepartamento());
             ps.executeUpdate();
             
         } catch(Exception e) {
@@ -124,11 +124,11 @@ public class UsuarioDAO {
                 user.setNombreUsuario(rs.getString(2));
                 user.setApellidoUsuario(rs.getString(3));
                 user.setNIT(rs.getString(4));
-                user.setTelefonoContacto(rs.getString(5));
+                user.setCorreoElectronico(rs.getString(5));
                 user.setUsuario(rs.getString(6));
-                user.setPasswordU(rs.getString(7));
-                user.setCorreoElectronico(rs.getString(8));
-                user.setCodigoTUsuario(rs.getInt(9));
+                user.setPasswordUser(rs.getString(7));
+                user.setCodigoTUsuario(rs.getInt(8));
+                user.setCodigoDepartamento(rs.getInt(9));
             }
             
         } catch(Exception e) {
@@ -142,7 +142,7 @@ public class UsuarioDAO {
     //Método para editar
     
     public int actualizar(Usuario user) {
-        String sql = "Update Usuario set nombreUsuario = ?, apellidoUsuario = ?, NIT = ?, telefonoContacto = ?, usuario = ?, passwordU = ?, correoElectronico = ? where codigoUsuario = ?";
+        String sql = "Update Usuario set nombreUsuario = ?, apellidoUsuario = ?, NIT = ?, usuario = ?, passwordUser = ?, correoElectronico = ? where codigoUsuario = ?";
         
         try {
             con = cn.Conexion();
@@ -150,11 +150,10 @@ public class UsuarioDAO {
             ps.setString(1, user.getNombreUsuario());
             ps.setString(2, user.getApellidoUsuario());
             ps.setString(3, user.getNIT());
-            ps.setString(4, user.getTelefonoContacto());
-            ps.setString(5, user.getUsuario());
-            ps.setString(6, user.getPasswordU());
-            ps.setString(7, user.getCorreoElectronico());
-            ps.setInt(8, user.getCodigoUsuario());
+            ps.setString(4, user.getUsuario());
+            ps.setString(5, user.getPasswordUser());
+            ps.setString(6, user.getCorreoElectronico());
+            ps.setInt(7, user.getCodigoUsuario());
             ps.executeUpdate();
             
         } catch(Exception e) {
@@ -168,7 +167,7 @@ public class UsuarioDAO {
     //Método para eliminar
     
     public void eliminar(int id) {
-        String sql = "delete from Usuario where codigoUsuairo = " + id;
+        String sql = "delete from Usuario where codigoUsuario = " + id;
         
         try {
             con = cn.Conexion();

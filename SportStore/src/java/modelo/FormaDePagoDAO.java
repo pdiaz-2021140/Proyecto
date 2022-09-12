@@ -60,5 +60,52 @@ public class FormaDePagoDAO {
         return resp;
     }
     
+    //Buscar por codigo
+    public FormaDePago lsitarCodigoFormaDePago (int id){
+        FormaDePago formP = new FormaDePago();
+        String sql = "Select * from formaDePago where codigoFormaDePago = "+id;
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                formP.setFormaDePago(rs.getString(2));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return formP;
+    }
+    
+    //Metodo para Editar
+    public int actualizar(FormaDePago formP){
+        String sql = "Update formaDePago set formaDePago = ? where codigoFormaDePago = ?";
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, formP.getFormaDePago());
+            ps.setInt(2, formP.getCodigoFormaDePago());
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return resp;
+    }
+    
+    //Metodo para eliminar
+    public void eliminar(int id){
+        String sql = "delete from formaDePago where codigoFormaDePago ="+id;
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    
     
 }

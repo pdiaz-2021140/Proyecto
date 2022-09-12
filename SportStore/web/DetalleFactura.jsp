@@ -1,7 +1,7 @@
 <%-- 
-    Document   : Marca
-    Created on : 2/09/2022, 11:33:33 PM
-    Author     : Kevin
+    Document   : DetalleFactura
+    Created on : 3/09/2022, 05:14:45 PM
+    Author     : User
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,24 +12,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
-         <title>Vista Marca</title>
+         <title>Detalle Factura</title>
     </head>
     <body>
         <div class ="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                <form action="Controlador?menu=Marca" method="POST">
-                     <div class="form-group">
-                        <label>NOMBRE DE MARCA</label>
-                        <input type="text" name="txtNombreMarca" class="form-control">  
-                    </div>
-                     <div class="form-group">
-                        <label>NUMERO DE CONTACTO</label>
-                        <input type="text" name="txtNumeroContacto" class="form-control">  
-                    </div>
+                <form action="Controlador?menu=DetalleFactura" method="POST">
                     <div class="form-group">
-                        <label>CORREO CONTACTO</label>
-                        <input type="text" name="txtCorreoContacto" class="form-control">  
+                        <label>CODIGO PRODUCTO</label>
+                        <input type="text" name="txtCodigoProducto" class="form-control">  
+                    </div>
+                     <div class="form-group">
+                        <label>CODIGO FACTURA</label>
+                        <input type="text" name="txtCodigoFactura" class="form-control">  
                     </div>
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                     <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -41,20 +37,17 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <td>CODIGO  MARCA</td>
-                        <td>NOMBRE  MARCA</td>
-                        <td>NUMERO  CONTACTO</td>
-                        <td>CORREO CONTACTO</td>
-                        <td>ACCIONES</td>
+                        <td>CODIGO DE FACTURA</td>
+                        <td>CODIGO PRODUCTO</td>
+                        <td>CODIGO FACTURA</td>
                     </tr>
                 </thead>
                 <tbody>  
-                    <c:forEach var="marca" items="${marcas}">
+                    <c:forEach var="detalleFactura" items="${detalleFacturas}">
                     <tr>
-                        <td>${marca.getCodigoMarca()}</td> 
-                        <td>${marca.getNombreMarca()}</td> 
-                        <td>${marca.getNumeroContacto()}</td> 
-                        <td>${marca.getCorreoContacto()}</td>
+                        <td>${detalleFactura.getCodigoDFactura()}</td> 
+                        <td>${detalleFactura.getCodigoProducto()}</td> 
+                        <td>${detalleFactura.getCodigoFactura()}</td> 
                         <td>
                              <a class="btn btn-warning" href="">Editar</a>
                              <a class="btn btn-danger" href="">Eliminar</a>
