@@ -73,6 +73,10 @@ public class Controlador extends HttpServlet {
     int codFactura;
     int codDept;
     int codProducto;
+    int codTipoUser;
+    
+    
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -379,7 +383,7 @@ public class Controlador extends HttpServlet {
             }
              request.getRequestDispatcher("Marca.jsp").forward(request, response);
         }else if (menu.equals("TipoUsuario")) {
-            switch(accion){
+             switch(accion){
                     case "Listar":
                         List listaTusuarios = tipousuarioDAO.listar();
                         request.setAttribute("tipoUsuarios", listaTusuarios);
@@ -394,17 +398,31 @@ public class Controlador extends HttpServlet {
                             break;
                             
                     case "Editar":
+                           codTipoUser= Integer.parseInt(request.getParameter("codigoTUsuario"));
+                           TipoUsuario tU = tipousuarioDAO.listarTipoUsuario(codTipoUser);
+                           request.setAttribute("tipoUsuario", tU);
+                           request.getRequestDispatcher("Controlador?menu=TipoUsuario&accion=Listar").forward(request, response);
                     
                         break;
                     
                 case "Actualizar":
                     
+                        String tUser = request.getParameter("txtTipoUsuario");
+                        tipousuario.setTipoUsuario(tUser);
+                        tipousuario.setCodigoTUsuario(codTipoUser);
+                        tipousuarioDAO.actualizar(tipousuario);
+                        request.getRequestDispatcher("Controlador?menu=TipoUsuario&accion=Listar").forward(request, response);
+                    
                         break;
                     
                 case "Eliminar":    
                     
+                    codTipoUser = Integer.parseInt(request.getParameter("codigoTUsuario"));
+                    tipousuarioDAO.eliminar(codTipoUser);
+                    request.getRequestDispatcher("Controlador?menu=TipoUsuario&accion=Listar").forward(request, response);
+                    
                         break;
-                        
+                             
                 }
                 request.getRequestDispatcher("TipoUsuario.jsp").forward(request, response);
 
