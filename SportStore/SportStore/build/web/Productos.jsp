@@ -1,7 +1,7 @@
 <%-- 
-    Document   : Talla
-    Created on : 3/09/2022, 05:32:03 PM
-    Author     : Queme
+    Document   : Productos
+    Created on : 2/09/2022, 10:20:35 PM
+    Author     : Jose Cifuentes
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,16 +12,32 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         
-        <title>Tallas</title>
+        <title>Productos</title>
     </head>
     <body>
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Talla" method="POST">
+                    <form action="Controlador?menu=Producto" method="POST">
                         <div class="form-group">
-                            <label>Número de Talla:</label>
-                            <input type="text" value="${talla.getNoTalla()}"  name="txtNoTalla" class="form-control">
+                            <label>Nombre:</label>
+                            <input type="text" name="txtNombreProducto" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Stock</label>
+                            <input type="text" name="txtStock" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Precio</label>
+                            <input type="text" name="txtPrecio" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo Producto</label>
+                            <input type="text" name="txtCodigoTProducto" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo Talla</label>
+                            <input type="text" name="txtCodigoTalla" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -33,18 +49,26 @@
                     <thead>
                         <tr>
                             <td>CODIGO</td>
-                            <td>NUMERO</td>
+                            <td>NOMBRES</td>
+                            <td>STOCK</td>
+                            <td>PRECIO</td>
+                            <td>TIPO PRODUCTO</td>
+                            <td>TIPO TALLA</td>
                             <td>ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="talla" items="${tallas}">
+                        <c:forEach var="producto" items="${productos}">
                         <tr>
-                            <td>${talla.getCodigoTalla()}</td>
-                            <td>${talla.getNoTalla()}</td>
+                            <td>${producto.getCodigoProducto()}</td>
+                            <td>${producto.getNombreProducto()}</td>
+                            <td>${producto.getStock()}</td>
+                            <td>${producto.getPrecio()}</td>
+                            <td>${producto.getCodigoTProducto()}</td>
+                            <td>${producto.getCodigoTalla()}</td>
                             <td>
-                                <a class="btn btn-warning" href="Controlador?menu=Talla&accion=Editar&codigoTalla=${talla.getCodigoTalla()}">Editar</a>
-                                <a class="btn btn-danger" href="Controlador?menu=Talla&accion=Eliminar&codigoTalla=${talla.getCodigoTalla()}">Eliminar</a>
+                                <a class="btn btn-warning" href="">Editar</a>
+                                <a class="btn btn-danger" href="">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>

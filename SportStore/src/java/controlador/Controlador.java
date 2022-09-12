@@ -74,6 +74,7 @@ public class Controlador extends HttpServlet {
     int codDept;
     int codProducto;
     int codTipoUser;
+    int codTalla;
     int codDFactura;
     
     
@@ -493,25 +494,33 @@ public class Controlador extends HttpServlet {
                     break;
                     
                 case "Editar":
-
-                    
+                    codTalla = Integer.parseInt(request.getParameter("codigoTalla"));
+                    Talla t = tallaDAO.listarCodigoTalla(codTalla);
+                    request.setAttribute("talla", t);
+                    request.getRequestDispatcher("Controlador?menu=Talla&accion=Listar").forward(request, response);
                     break;
+                    
                     
                 case "Actualizar":
-                    
+                    String nombreTa = request.getParameter("txtNoTalla");
+                    talla.setNoTalla(nombreTa);
+                    talla.setCodigoTalla(codTalla);
+                    tallaDAO.actualizar(talla);
+                    request.getRequestDispatcher("Controlador?menu=Talla&accion=Listar").forward(request, response);
                     break;
+                    
+                    
                     
                 case "Eliminar":
-                    
+                    codTalla = Integer.parseInt(request.getParameter("codigoTalla"));
+                    tallaDAO.eliminar(codTalla);
+                    request.getRequestDispatcher("Controlador?menu=Talla&accion=Listar").forward(request, response);
                     break;
-
-
                     
-                
+                    
             }
-            request.getRequestDispatcher("Talla.jsp").forward(request, response);  
-          
-
+        
+        request.getRequestDispatcher("Talla.jsp").forward(request, response);
     }  else if (menu.equals("DetalleFactura")){
           switch(accion){
                 case "Listar":

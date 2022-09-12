@@ -1,6 +1,5 @@
 Drop database if exists DBSportStore;
 
-Drop database if exists DBSportStore;
 
 Create database DBSportStore;
 
@@ -57,6 +56,7 @@ Create table Usuario(
     passwordUser varchar(50) not null,
     codigoTUsuario int not null,
     codigoDepartamento int not null,
+    fotoProducto longblob,
     primary key Pk_codigoUsuario (codigoUsuario),
     constraint Fk_Usuario_TipoUsuario foreign key (codigoTUsuario)
 		references TipoUsuario(codigoTUsuario),
@@ -192,7 +192,8 @@ Insert into DetalleFactura (horaDeEmision, codigoProducto, codigoFactura) values
 
 
 
-select * from Usuario
+select * from DetalleFactura;
+
 
 
 
