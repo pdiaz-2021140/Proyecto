@@ -79,6 +79,7 @@ public class TallaDAO {
                 ps = con.prepareStatement(sql);
                 ps.setString(1, ta.getNoTalla());
                 ps.setInt(2, ta.getCodigoTalla());
+                ps.executeUpdate();
             }catch(Exception e){
                 e.printStackTrace();
             }
