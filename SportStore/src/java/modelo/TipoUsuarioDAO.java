@@ -14,32 +14,9 @@ public class TipoUsuarioDAO {
     Connection con;
     PreparedStatement  ps;
     ResultSet rs;
-    
     int resp;
     
-    public TipoUsuario validar (String tipoUsuario){
-        TipoUsuario tipoDUsuario = new TipoUsuario();
-        String sql="select * from TipoUsuario where tipoUsuario = ?";
-        try {
-            con = cn.Conexion();
-            ps = con.prepareStatement(sql);
-            ps.setString(1, tipoUsuario);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                tipoDUsuario.setCodigoTUsuario(rs.getInt("codigoTUsuario"));
-                tipoDUsuario.setTipoUsuario(rs.getString("tipoUsuario"));
-                
-                
-            }
-     
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("ERROR en validar");
-        }
     
-
-        return tipoDUsuario;
-    }
     
     
     
@@ -95,7 +72,7 @@ public class TipoUsuarioDAO {
     
     public TipoUsuario listarTipoUsuario (int id){
         TipoUsuario tdu = new TipoUsuario();
-        String sql = "select * from TipoUsuario where codigoTUsuario =  "+ id;
+        String sql = "select * from tipoUsuario where codigoTUsuario =  "+ id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -112,13 +89,49 @@ public class TipoUsuarioDAO {
         }
 
         return tdu;
+        
     }
     
     
     //mostrar en la vista:
     
+    public int actualizar (TipoUsuario tu){
+         
+         String sql = "Update tipoUsuario set tipoUsuario = ? where codigoTUsuario = ?";
+         try {
+             con = cn.Conexion();
+             ps = con.prepareStatement(sql);
+             ps.setString(1, tu.getTipoUsuario());
+             ps.setInt(2, tu.getCodigoTUsuario());
+             ps.executeUpdate();
+             
+         } catch (Exception e) {
+             e.printStackTrace();
+             System.out.println("Es de DAO" + e);
+         }
+     
+     
+         return resp;
+     }   
     
     
+    
+    
+    
+    public void eliminar (int id){
+        String sql ="delete from tipoUsuario where codigoTUsuario =" +id;
+    
+    try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate(); 
+        }catch(Exception e){
+           
+            e.printStackTrace();
+           
+        }
+    
+    }
     
     
     

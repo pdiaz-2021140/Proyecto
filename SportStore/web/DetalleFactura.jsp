@@ -19,13 +19,17 @@
             <div class="card col-sm-4">
                 <div class="card-body">
                 <form action="Controlador?menu=DetalleFactura" method="POST">
+                        <div class="form-group">
+                            <label>HORA DETALLE FACTURA</label>
+                            <input type="time" value="${detalleFactura.getHoraDeEmision()}" name="txtHoraDeEmision" class="form-control" />
+                        </div>
                     <div class="form-group">
                         <label>CODIGO PRODUCTO</label>
-                        <input type="text" name="txtCodigoProducto" class="form-control">  
+                        <input type="text" value="${detalleFactura.getCodigoProducto()}" ${read} name="txtCodigoProducto" class="form-control">  
                     </div>
                      <div class="form-group">
                         <label>CODIGO FACTURA</label>
-                        <input type="text" name="txtCodigoFactura" class="form-control">  
+                        <input type="text" value="${detalleFactura.getCodigoFactura()}" ${read} name="txtCodigoFactura" class="form-control">  
                     </div>
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                     <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -38,6 +42,7 @@
                 <thead>
                     <tr>
                         <td>CODIGO DE FACTURA</td>
+                        <td>HORA DE EMISION</td>
                         <td>CODIGO PRODUCTO</td>
                         <td>CODIGO FACTURA</td>
                     </tr>
@@ -46,11 +51,12 @@
                     <c:forEach var="detalleFactura" items="${detalleFacturas}">
                     <tr>
                         <td>${detalleFactura.getCodigoDFactura()}</td> 
-                        <td>${detalleFactura.getCodigoProducto()}</td> 
+                        <td>${detalleFactura.getHoraDeEmision()}</td>
+                        <td>${(pro.listarCodigoProducto(detalleFactura.getCodigoProducto())).getNombreProducto()}</td> 
                         <td>${detalleFactura.getCodigoFactura()}</td> 
                         <td>
-                             <a class="btn btn-warning" href="">Editar</a>
-                             <a class="btn btn-danger" href="">Eliminar</a>
+                             <a class="btn btn-warning" href="Controlador?menu=DetalleFactura&accion=Editar&codigoDFactura=${detalleFactura.getCodigoDFactura()}">Editar</a>
+                             <a class="btn btn-danger" href="Controlador?menu=DetalleFactura&accion=Eliminar&codigoDFactura=${detalleFactura.getCodigoDFactura()}">Eliminar</a>
                         </td>
                     </tr> 
                     </c:forEach>
