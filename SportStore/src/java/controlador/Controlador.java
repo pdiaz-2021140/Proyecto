@@ -74,7 +74,8 @@ public class Controlador extends HttpServlet {
     int codDept;
     int codProducto;
     int codTipoUser;
-     int codTalla;
+    int codTalla;
+    int codDFactura;
     
     
     
@@ -524,27 +525,45 @@ public class Controlador extends HttpServlet {
           switch(accion){
                 case "Listar":
                     List listaDetalleFactura  = dtFacturaDAO.listar();
+                    request.setAttribute("pro", productoDAO);
                     request.setAttribute("detalleFacturas",listaDetalleFactura );
                     break;
                 case "Agregar":
+                    String horaDEmision = request.getParameter("txtHoraDeEmision");
                     int codigoProducto = Integer.parseInt(request.getParameter("txtCodigoProducto"));
                     int codigoFactura = Integer.parseInt(request.getParameter("txtCodigoFactura"));
                     
+                    dtFactura.setHoraDeEmision(horaDEmision);
                     dtFactura.setCodigoProducto(codigoProducto);
                     dtFactura.setCodigoFactura(codigoFactura);
                     dtFacturaDAO.agregar(dtFactura);
                     request.getRequestDispatcher("Controlador?menu=DetalleFactura&accion=Listar").forward(request, response);
+                    
                     break;
                     
                 case "Editar" :
+                        codDFactura = Integer.parseInt(request.getParameter("codigoDFactura"));
+                        request.setAttribute("read", "readonly");
+                        DetalleFactura dt = dtFacturaDAO.listarCodigoDetalleFactura(codDFactura);
+                        request.setAttribute("detalleFactura", dt);
+                        request.getRequestDispatcher("Controlador?menu=DetalleFactura&accion=Listar").forward(request, response);
                     
                     break;
                     
                 case "Actualizar":
+                    String horaEmi = request.getParameter("txtHoraDeEmision");
+                    dtFactura.setHoraDeEmision(horaEmi);
+                    dtFactura.setCodigoDFactura(codDFactura);
+                    dtFacturaDAO.actualizar(dtFactura);
+                    request.getRequestDispatcher("Controlador?menu=DetalleFactura&accion=Listar").forward(request, response);
+                    
                     
                     break;
                     
                 case "Eliminar":
+                    codDFactura = Integer.parseInt(request.getParameter("codigoDFactura"));
+                    dtFacturaDAO.eliminar(codDFactura);
+                    request.getRequestDispatcher("Controlador?menu=DetalleFactura&accion=Listar").forward(request, response);
                     
                     break;
                     

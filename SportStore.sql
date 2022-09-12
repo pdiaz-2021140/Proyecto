@@ -1,4 +1,6 @@
 Drop database if exists DBSportStore;
+
+
 Create database DBSportStore;
 
 Use DBSportStore;
@@ -54,6 +56,7 @@ Create table Usuario(
     passwordUser varchar(50) not null,
     codigoTUsuario int not null,
     codigoDepartamento int not null,
+    fotoProducto longblob,
     primary key Pk_codigoUsuario (codigoUsuario),
     constraint Fk_Usuario_TipoUsuario foreign key (codigoTUsuario)
 		references TipoUsuario(codigoTUsuario),
@@ -69,6 +72,7 @@ Create table Producto(
     codigoMarca int not null,
     codigoTalla int,
     codigoTProducto int not null,
+    fotoProducto longblob,
     primary key Pk_codigoProducto (codigoProducto),
     constraint Fk_Producto_Marca foreign key (codigoMarca)
 		references Marca(codigoMarca),
@@ -93,13 +97,14 @@ Create table Factura(
 
 Create table DetalleFactura(
 	codigoDFactura int not null auto_increment,
-    codigoProducto int not null,
-    codigoFactura int not null,
-    primary key Pk_codigoDFactura (codigoDFactura),
-    constraint Fk_DetalleFactura_Producto foreign key (codigoProducto)
-		references Producto(codigoProducto),
-	constraint Fk_DetalleFactura_Factura foreign key (codigoFactura)
-		references Factura(codigoFactura)
+    horaDeEmision time not null,
+	codigoProducto int not null,
+	codigoFactura int not null,
+    primary key PK_codigoDFactura (codigoDFactura),
+    constraint FK_DetalleFactura_Factura foreign key (codigoFactura)
+		references Factura (codigoFactura),
+	constraint FK_DetalleFactura_Producto foreign key (codigoProducto)
+		references Producto (codigoProducto)    
 );
 
 
@@ -140,15 +145,15 @@ Insert into TipoUsuario (tipoUsuario) values ('Trabajador');
 Insert into TipoUsuario (tipoUsuario) values ('Cliente');
 
 Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento)
-    values ('Carlos', 'lopez', '1234567890',  'carloslop@gmail.com', 'clopez', '123', '3','4');
+    values ('Carlos', 'lopez', '1234567890',  'carloslop@gmail.com', 'clopez', '123', 3,4);
 Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento)
-    values ('Juan', 'Castillo', '1234567890', 'juancastillo@gmail.com','jcastillo', '123','3','2');   
+    values ('Juan', 'Castillo', '1234567890', 'juancastillo@gmail.com','jcastillo', '123',3,2);   
 Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento)
-    values ('Adilson', 'Cucul', '1452369887','adilsoncucul@gmail.com', 'ecucul', '54321', '3','5');  
+    values ('Adilson', 'Cucul', '1452369887','adilsoncucul@gmail.com', 'ecucul', '54321', 3,5);  
 Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento)
-    values ('Gabriela', 'Pinzon', '25361425',  'gabrielapinzon@gmail.com','gpinzon', '987654', '2','1');     
+    values ('Gabriela', 'Pinzon', '25361425',  'gabrielapinzon@gmail.com','gpinzon', '987654', 2,1);     
 Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento)
-    values ('Stuart', 'Pinzon', '8754219632',  'stuartpinzon@gmail.com','spinzon', '12345', '1','3');  
+    values ('Stuart', 'Pinzon', '8754219632',  'stuartpinzon@gmail.com','spinzon', '12345', 1,3);  
 
 
 
@@ -178,16 +183,17 @@ Insert into Producto(nombreProducto, stock, precio, codigoMarca, codigoTalla, co
 	values('Tenis',30,200.00,5,5,5);
 
 
-
-Insert into DetalleFactura (codigoProducto, codigoFactura) values (1,1);
-Insert into DetalleFactura (codigoProducto, codigoFactura) values (2,2);
-Insert into DetalleFactura (codigoProducto, codigoFactura) values (3,3);
-Insert into DetalleFactura (codigoProducto, codigoFactura) values (4,4);
-Insert into DetalleFactura (codigoProducto, codigoFactura) values (5,5);
-
+Insert into DetalleFactura (horaDeEmision, codigoProducto, codigoFactura) values ('12:03',1,1);
+Insert into DetalleFactura (horaDeEmision, codigoProducto, codigoFactura) values ('17:00',2,2);
+Insert into DetalleFactura (horaDeEmision, codigoProducto, codigoFactura) values ('11:03',3,3);
+Insert into DetalleFactura (horaDeEmision, codigoProducto, codigoFactura) values ('13:03',4,4);
+Insert into DetalleFactura (horaDeEmision, codigoProducto, codigoFactura) values ('14:03',5,5);
 
 
-select * from Usuario
+
+
+select * from DetalleFactura;
+
 
 
 
