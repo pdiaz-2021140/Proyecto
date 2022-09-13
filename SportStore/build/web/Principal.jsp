@@ -9,6 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://kit.fontawesome.com/d40ea9438d.js" crossorigin="anonymous"></script>
+        <link href="botonTienda.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
         <title>Sport Store</title>
@@ -79,8 +81,24 @@
                         <form action='Validar' method="POST">
                             <button name='accion' name='Salir' class='dropdown-item' href='#'>Salir</button>
                         </form>
+                     <div class='dropdown-divider'></div>
+                    <form action="Controlador?menu=Tienda" method="POST">
+                        
+                        <div class="container">
+                       
+                              <button class="learn-more">
+                                <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"><i class="fa-solid fa-cart-shopping"></i></span>
+                                </span>
+                                <span class="button-text">Ir a Tienda</span>
+                              </button>
+                                  
+                        </div>
+                       
+                    </form>
                     
                 </div>
+                    
                 
               </div>
           </nav>

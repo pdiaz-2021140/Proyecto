@@ -110,6 +110,32 @@ public class UsuarioDAO {
         return resp;
     }
     
+        public int agregarCliente(Usuario user) {
+        String sql = "insert into Usuario(nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser,codigoDepartamento,codigoTUsuario) values(?, ?, ?, ?, ?, ?, ?,3)";
+        
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, user.getNombreUsuario());
+            ps.setString(2, user.getApellidoUsuario());
+            ps.setString(3, user.getNIT());
+            ps.setString(4, user.getCorreoElectronico());
+            ps.setString(5, user.getUsuario());
+            ps.setString(6, user.getPasswordUser());
+            ps.setInt(7, user.getCodigoDepartamento());
+            ps.executeUpdate();
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+            System.out.println("No se pudo agregar el registro"+e);
+        }
+        
+        return resp;
+        
+        
+    }
+    
+    
     
     //Método buscar por código
     

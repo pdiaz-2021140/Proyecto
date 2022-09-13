@@ -101,6 +101,19 @@ public class Controlador extends HttpServlet {
         
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);     
+        }else if(menu.equals("Cliente")){
+               
+                 switch(accion){
+                     case "Registrate":
+                          request.getRequestDispatcher("Cliente.jsp").forward(request, response); 
+                          break;
+                 }
+                    
+        }else if (menu.equals("Tienda")){
+        
+         request.getRequestDispatcher("Tienda.jsp").forward(request, response);  
+        
+        
         } else if (menu.equals("Usuario")) {
             //CRUD Usuario
             switch(accion) {
@@ -194,6 +207,27 @@ public class Controlador extends HttpServlet {
                     usuarioDAO.eliminar(codUsuario);
                     
                     request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
+                    
+                    break;
+                    
+                    case "AgregarCliente":
+                    String NITCL = request.getParameter("txtNITUsuario");
+                    String nombreCL = request.getParameter("txtNombreUsuario");
+                    String apellidoCL = request.getParameter("txtApellidoUsuario");
+                    String userCL = request.getParameter("txtUser");
+                    String passCL = request.getParameter("txtPass");
+                    String correoElecCL = request.getParameter("txtCorreoElectronico");
+                    int departamento = Integer.parseInt(request.getParameter("txtdepa"));
+
+                    usuario.setNombreUsuario(nombreCL);
+                    usuario.setApellidoUsuario(apellidoCL);
+                    usuario.setNIT(NITCL);
+                    usuario.setUsuario(userCL);
+                    usuario.setPasswordUser(passCL);
+                    usuario.setCorreoElectronico(correoElecCL);
+                    usuario.setCodigoDepartamento(departamento);
+                    usuarioDAO.agregarCliente(usuario);
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                     
                     break;
             }
