@@ -13,15 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
 import modelo.Departamento;
 import modelo.DepartamentoDAO;
-
-
 import modelo.DetalleFactura;
 import modelo.DetalleFacturaDAO;
-
 import modelo.Factura;
 import modelo.FacturaDAO;
 import modelo.FormaDePago;
@@ -76,6 +71,7 @@ public class Controlador extends HttpServlet {
     int codTipoUser;
     int codTalla;
     int codDFactura;
+    int codMarca;
     
     
     
@@ -374,13 +370,26 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Marca&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-
+                    codMarca = Integer.parseInt(request.getParameter("codigoMarca"));
+                    Marca m = marcaDAO.listarCodigoMarca(codMarca);
+                    request.setAttribute("marca", m);
+                    request.getRequestDispatcher("Controlador?menu=Marca&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    
+                    String NombreMarc = request.getParameter("txtNombreMarca");
+                    String NumeroMarc = request.getParameter("txtNumeroContacto");
+                    String CorreoMarc = request.getParameter("txtCorreoContacto");
+                    marca.setNombreMarca(NombreMarc);
+                    marca.setNumeroContacto(NumeroMarc);
+                    marca.setCorreoContacto(CorreoMarc);
+                    marca.setCodigoMarca(codMarca);
+                    marcaDAO.actualizar(marca);
+                    request.getRequestDispatcher("Controlador?menu=Marca&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-                        
+                    codMarca = Integer.parseInt(request.getParameter("codigoMarca"));
+                    marcaDAO.eliminar(codMarca);
+                    request.getRequestDispatcher("Controlador?menu=Marca&accion=Listar").forward(request, response);    
                         break;
             }
              request.getRequestDispatcher("Marca.jsp").forward(request, response);

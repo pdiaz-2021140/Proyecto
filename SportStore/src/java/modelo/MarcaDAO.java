@@ -16,31 +16,7 @@ public class MarcaDAO {
     ResultSet rs;
     int resp;
     
-    //Metodo para Validar
-    public Marca validar(int codigoMarca, String nombreMarca, String correoContacto){
-        //Instanciar un objeto de tipo Marca
-        Marca marca = new Marca();
-        //Agregar una variable de tipo String para la consulta 
-        String sql = "Select * from Marca where codigoMarca = ? , nombreMarca = ? and correoContacto = ?";
-        try{
-            con= cn.Conexion();
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, codigoMarca);
-            ps.setString(2, nombreMarca);
-            ps.setString(3, correoContacto);
-            rs = ps.executeQuery();
-            while(rs.next()){
-            marca.setCodigoMarca(rs.getInt("codigoMarca"));
-            marca.setNombreMarca(rs.getString("nombreMarca"));
-            marca.setNumeroContacto(rs.getString("numeroContacto"));
-            marca.setCorreoContacto(rs.getString("correoContacto"));
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-    }
-    return marca;     //Marca Encontrada
-    
-    }
+  
     
     //OPERACIONES DEL CRUD
     
@@ -113,6 +89,8 @@ public class MarcaDAO {
             ps.setString(1, mrc.getNombreMarca());
             ps.setString(2, mrc.getNumeroContacto());
             ps.setString(3, mrc.getCorreoContacto());
+            ps.setInt(4, mrc.getCodigoMarca());
+            ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
         }
