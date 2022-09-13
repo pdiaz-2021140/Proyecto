@@ -56,7 +56,7 @@ Create table Usuario(
     passwordUser varchar(50) not null,
     codigoTUsuario int not null,
     codigoDepartamento int not null,
-    fotoProducto longblob,
+    fotoUsuario varchar(255),
     primary key Pk_codigoUsuario (codigoUsuario),
     constraint Fk_Usuario_TipoUsuario foreign key (codigoTUsuario)
 		references TipoUsuario(codigoTUsuario),
@@ -72,7 +72,7 @@ Create table Producto(
     codigoMarca int not null,
     codigoTalla int,
     codigoTProducto int not null,
-    fotoProducto longblob,
+    fotoProducto varchar(255),
     primary key Pk_codigoProducto (codigoProducto),
     constraint Fk_Producto_Marca foreign key (codigoMarca)
 		references Marca(codigoMarca),
@@ -154,7 +154,8 @@ Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usu
     values ('Gabriela', 'Pinzon', '25361425',  'gabrielapinzon@gmail.com','gpinzon', '987654', 2,1);     
 Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento)
     values ('Stuart', 'Pinzon', '8754219632',  'stuartpinzon@gmail.com','spinzon', '12345', 1,3);  
-
+Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento, fotoUsuario)
+    values ('Pablo', 'Díaz', '1234567880',  'pablod2021@gmail.com','pdiaz', '12345', 1,3, './img/Perfil/306697981_627641495378368_6982417623225097073_n.jpg');  
 
 
 
@@ -192,7 +193,8 @@ Insert into DetalleFactura (horaDeEmision, codigoProducto, codigoFactura) values
 
 
 
-select * from DetalleFactura;
+select * from Producto;
+select * from Usuario;
 
 
 

@@ -11,11 +11,12 @@ public class Usuario {
     private String correoElectronico;
     private int codigoTUsuario;
     private int codigoDepartamento;
+    private String fotoUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(int codigoUsuario, String nombreUsuario, String apellidoUsuario, String NIT, String usuario, String passwordUser, String correoElectronico, int codigoTUsuario, int codigoDepartamento) {
+    public Usuario(int codigoUsuario, String nombreUsuario, String apellidoUsuario, String NIT, String usuario, String passwordUser, String correoElectronico, int codigoTUsuario, int codigoDepartamento, String fotoUsuario) {
         this.codigoUsuario = codigoUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoUsuario = apellidoUsuario;
@@ -25,6 +26,7 @@ public class Usuario {
         this.correoElectronico = correoElectronico;
         this.codigoTUsuario = codigoTUsuario;
         this.codigoDepartamento = codigoDepartamento;
+        this.fotoUsuario = fotoUsuario;
     }
 
     public int getCodigoUsuario() {
@@ -98,7 +100,15 @@ public class Usuario {
     public void setCodigoDepartamento(int codigoDepartamento) {
         this.codigoDepartamento = codigoDepartamento;
     }
-    
-    
+
+    public String getFotoUsuario() {
+        return fotoUsuario;
+    }
+
+    public void setFotoUsuario(String fotoUsuario) {
+        this.fotoUsuario = fotoUsuario;
+    }
+
+   
     
 }

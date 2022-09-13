@@ -5,13 +5,16 @@
  */
 package controlador;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 import modelo.Departamento;
 import modelo.DepartamentoDAO;
@@ -23,6 +26,7 @@ import modelo.FormaDePago;
 import modelo.FormaDePagoDAO;
 import modelo.Marca;
 import modelo.MarcaDAO;
+import modelo.ObtenerUrl;
 import modelo.Producto;
 import modelo.ProductoDAO;
 import modelo.Talla;
@@ -33,6 +37,10 @@ import modelo.TipoUsuario;
 import modelo.TipoUsuarioDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 
 
@@ -63,6 +71,7 @@ public class Controlador extends HttpServlet {
     DetalleFacturaDAO dtFacturaDAO = new DetalleFacturaDAO();
     Departamento dprt = new Departamento();
     DepartamentoDAO departamentoDAO = new DepartamentoDAO();
+    ObtenerUrl obUrl = new ObtenerUrl();
     int codTipoProdducto;
     int codFormaDePago;
     int codFactura;
@@ -103,24 +112,49 @@ public class Controlador extends HttpServlet {
                     break;
                     
                 case "Agregar":
-                    String NIT = request.getParameter("txtNITUsuario");
-                    String nombre = request.getParameter("txtNombreUsuario");
-                    String apellido = request.getParameter("txtApellidoUsuario");
-                    String user = request.getParameter("txtUser");
-                    String pass = request.getParameter("txtPass");
-                    int codDep = Integer.parseInt(request.getParameter("txtCodigoDepartamento"));
-                    String correoElec = request.getParameter("txtCorreoElectronico");
-                    int codTUser = Integer.parseInt(request.getParameter("txtTipoUser"));
+                      String url = obUrl.url();
+                      ArrayList <String> lista = new ArrayList ();
+                      try{
+                          FileItemFactory archivo = new DiskFileItemFactory();
+                          ServletFileUpload archivoGuardado = new ServletFileUpload(archivo);
+                          List items = archivoGuardado.parseRequest(request);
+                            for (int i = 0; i < items.size(); i++) {
+                              FileItem fileItem = (FileItem) items.get(i);
+                                if (! fileItem.isFormField()) {
+                                    File archivoNuevo = new File (url+fileItem.getName());
+                                    fileItem.write(archivoNuevo);
+                                    usuario.setFotoUsuario("./img/Perfil/"+fileItem.getName());
+                                    
+                                }else {
+                                    lista.add(fileItem.getString());
+                                
+                                }
+                          }
+                                String NIT = lista.get(0);
+                                String nombre = lista.get(1);
+                                String apellido = lista.get(2);
+                                String user = lista.get(3);
+                                String pass = lista.get(4);
+                                String correoElec = lista.get(5);
+                                int codTUser = Integer.parseInt(lista.get(6));
+                                int codDep =  Integer.parseInt(lista.get(7));
+                                         
+                                usuario.setNombreUsuario(nombre);
+                                usuario.setApellidoUsuario(apellido);
+                                usuario.setNIT(NIT);
+                                usuario.setUsuario(user);
+                                usuario.setPasswordUser(pass);
+                                usuario.setCorreoElectronico(correoElec);
+                                usuario.setCodigoTUsuario(codTUser);
+                                usuario.setCodigoDepartamento(codDep);
+                                usuarioDAO.agregar(usuario);
+                      
+                      }catch(Exception e){
+                          e.printStackTrace();
+                      
+                      
+                      }
                     
-                    usuario.setNombreUsuario(nombre);
-                    usuario.setApellidoUsuario(apellido);
-                    usuario.setNIT(NIT);
-                    usuario.setUsuario(user);
-                    usuario.setPasswordUser(pass);
-                    usuario.setCorreoElectronico(correoElec);
-                    usuario.setCodigoTUsuario(codTUser);
-                    usuario.setCodigoDepartamento(codDep);
-                    usuarioDAO.agregar(usuario);
                     request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
                     
                     break;
@@ -220,25 +254,48 @@ public class Controlador extends HttpServlet {
                     List listaProducto = productoDAO.listar();
                     request.setAttribute("productos", listaProducto);
                     break;
-                    
-                case "Agregar":
-                    String nombrePro = request.getParameter("txtNombreProducto");
-                    int stock = Integer.parseInt(request.getParameter("txtStock"));
-                    double prec = Double.parseDouble(request.getParameter("txtPrecio"));
-                    int codMar = Integer.parseInt(request.getParameter("txtCodigoMarca"));
-                    int codigoTa = Integer.parseInt(request.getParameter("txtCodigoTalla"));
-                    int codigoTP = Integer.parseInt(request.getParameter("txtCodigoTProducto"));
-                    
-                    producto.setNombreProducto(nombrePro);
-                    producto.setStock(stock);
-                    producto.setPrecio(prec);
-                    producto.setCodigoMarca(codMar);
-                    producto.setCodigoTalla(codigoTa);
-                    producto.setCodigoTProducto(codigoTP);
-                    productoDAO.agregar(producto);
+             case "Agregar":
+                      String url = obUrl.urlPro();
+                      ArrayList <String> lista = new ArrayList ();
+                      try{
+                          FileItemFactory archivo = new DiskFileItemFactory();
+                          ServletFileUpload archivoGuardado = new ServletFileUpload(archivo);
+                          List items = archivoGuardado.parseRequest(request);
+                            for (int i = 0; i < items.size(); i++) {
+                              FileItem fileItem = (FileItem) items.get(i);
+                                if (! fileItem.isFormField()) {
+                                    File archivoNuevo = new File (url+fileItem.getName());
+                                    fileItem.write(archivoNuevo);
+                                    producto.setFotoProducto("./img/Producto/"+fileItem.getName());
+                                    
+                                }else {
+                                    lista.add(fileItem.getString());
+                                
+                                }
+                          }
+                                String nombrePro = lista.get(0);
+                                int stock = Integer.parseInt(lista.get(1));
+                                double prec = Double.parseDouble(lista.get(2));
+                                int codMar = Integer.parseInt(lista.get(3));
+                                int codigoTa = Integer.parseInt(lista.get(4));
+                                int codigoTP = Integer.parseInt(lista.get(5));
+
+                                producto.setNombreProducto(nombrePro);
+                                producto.setStock(stock);
+                                producto.setPrecio(prec);
+                                producto.setCodigoMarca(codMar);
+                                producto.setCodigoTalla(codigoTa);
+                                producto.setCodigoTProducto(codigoTP);
+                                productoDAO.agregar(producto);
+                                
+                      }catch(Exception e){
+                          e.printStackTrace();
+                      
+                      
+                      }
                     request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
-                    
                     break;
+
                     
                 case "Editar":
                     codProducto = Integer.parseInt(request.getParameter("codigoProducto"));
