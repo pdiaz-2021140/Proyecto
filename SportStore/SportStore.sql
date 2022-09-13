@@ -192,7 +192,7 @@ Insert into DetalleFactura (horaDeEmision, codigoProducto, codigoFactura) values
 
 
 
-select * from Producto;
+select * from DetalleFactura;
 
 
 

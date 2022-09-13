@@ -123,6 +123,8 @@ public class DepartamentoDAO {
             ps = con.prepareStatement(sql);
             ps.setString(1, dpt.getDepartamento());
             ps.setString(2, dpt.getMunicipio());
+            ps.setInt(3, dpt.getCodigoDepartamento());
+            ps.executeUpdate();
            
         }catch(Exception e){
             e.printStackTrace();
