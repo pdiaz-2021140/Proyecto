@@ -22,6 +22,14 @@
               <label>Password</label>
             </div>
             <input type="submit" name="accion" value="Ingresar" class="a">
+           
+       
         </form>
+          <div>
+        <form action="Controlador?menu=Cliente" method="POST">
+        <input type="submit" name="accion" value="Registrate" class="a">
+        </form>
+        </div>>
+        
     </div>
 </html>

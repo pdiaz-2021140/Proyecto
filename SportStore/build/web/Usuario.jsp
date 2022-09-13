@@ -18,40 +18,44 @@
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Usuario" method="POST">
+                    <form action="Controlador?menu=Usuario" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>NIT:</label>
-                            <input type="text" name="txtNITUsuario" class="form-control">
+                            <input type="text" value="${usuario.getNIT()}" name="txtNITUsuario" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Nombre:</label>
-                            <input type="text" name="txtNombreUsuario" class="form-control">
+                            <input type="text" value="${usuario.getNombreUsuario()}" name="txtNombreUsuario" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Apellido:</label>
-                            <input type="text" name="txtApellidoUsuario" class="form-control">
+                            <input type="text" value="${usuario.getApellidoUsuario()}" name="txtApellidoUsuario" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Usuario:</label>
-                            <input type="text" name="txtUser" class="form-control">
+                            <input type="text" value="${usuario.getUsuario()}" name="txtUser" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Contraseña:</label>
-                            <input type="text" name="txtPass" class="form-control">
+                            <input type="text" value="${usuario.getPasswordUser()}" name="txtPass" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Correo:</label>
-                            <input type="text" name="txtCorreoElectronico" class="form-control">
+                            <input type="text" value="${usuario.getCorreoElectronico()}" name="txtCorreoElectronico" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Departamento:</label>
-                            <input type="text" name="txtCodigoDepartamento" class="form-control">
+                            <input type="text" value="${usuario.getCodigoDepartamento()}" ${read} name="txtCodigoDepartamento" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Tipo de usuario:</label>
-                            <input type="text" name="txtTipoUser" class="form-control">
+                            <input type="text" value="${usuario.getCodigoTUsuario()}" ${read} name="txtTipoUser" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                         <div class="form-group">
+                            <label>Elegir Imagen:</label>
+                            <input type="file"  name="fileImg" >
+                        </div>
+                        <input type="submit" formaction="Controlador?menu=Usuario&accion=Agregar" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
@@ -70,6 +74,7 @@
                             <td>CORREO</td>
                             <td>DEPARTAMENTO</td>
                             <td>TIPO USUARIO</td>
+                            <td>FOTO USUARIO</td>
                             <td>ACCIONES</td>
                         </tr>
                     </thead>
@@ -83,11 +88,12 @@
                             <td>${usuario.getUsuario()}</td>
                             <td>${usuario.getPasswordUser()}</td>
                             <td>${usuario.getCorreoElectronico()}</td>
-                            <td>${usuario.getCodigoDepartamento()}</td>
-                            <td>${usuario.getCodigoTUsuario()}</td>
+                            <td>${(dep.listarCodigoDepto(usuario.getCodigoDepartamento())).getDepartamento()}</td>
+                            <td>${(tipoUser.listarTipoUsuario(usuario.getCodigoTUsuario())).getTipoUsuario()}</td>
+                            <td> <img src="${usuario.getFotoUsuario()}" width="60" height="60"></td>
                             <td>
-                                <a class="btn btn-warning" href="#">Editar</a>
-                                <a class="btn btn-danger" href="#">Eliminar</a>                                                                
+                                <a class="btn btn-warning" href="Controlador?menu=Usuario&accion=Editar&codigoUsuario=${usuario.getCodigoUsuario()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Usuario&accion=Eliminar&codigoUsuario=${usuario.getCodigoUsuario()}">Eliminar</a>                                                                
                             </td>
                         </tr>
                         </c:forEach>
