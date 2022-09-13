@@ -11,7 +11,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
         
         <title>Tallas</title>
     </head>
@@ -22,7 +21,7 @@
                     <form action="Controlador?menu=Talla" method="POST">
                         <div class="form-group">
                             <label>Número de Talla:</label>
-                            <input type="text" name="txtNoTalla" class="form-control">
+                            <input type="text" value="${talla.getNoTalla()}"  name="txtNoTalla" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -44,8 +43,8 @@
                             <td>${talla.getCodigoTalla()}</td>
                             <td>${talla.getNoTalla()}</td>
                             <td>
-                                <a class="btn btn-warning" href="">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Talla&accion=Editar&codigoTalla=${talla.getCodigoTalla()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Talla&accion=Eliminar&codigoTalla=${talla.getCodigoTalla()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>

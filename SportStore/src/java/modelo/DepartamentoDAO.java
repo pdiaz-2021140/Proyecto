@@ -29,6 +29,7 @@ public class DepartamentoDAO {
         //Instanciar un objeto de tipo Departamento
         Departamento depto = new Departamento();
         //Agregar una variable de tipo String para la consulta 
+        
         String sql = "Select * from Departamento where codigoDepartamento = ? and departamento = ?";
         try{
             con= cn.Conexion();
@@ -122,6 +123,8 @@ public class DepartamentoDAO {
             ps = con.prepareStatement(sql);
             ps.setString(1, dpt.getDepartamento());
             ps.setString(2, dpt.getMunicipio());
+            ps.setInt(3, dpt.getCodigoDepartamento());
+            ps.executeUpdate();
            
         }catch(Exception e){
             e.printStackTrace();

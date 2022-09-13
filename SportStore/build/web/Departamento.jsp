@@ -22,11 +22,11 @@
                     <form action="Controlador?menu=Departamento" method="POST">
                         <div class="form-group">
                             <label>Departamento</label>
-                            <input type="text" name="txtDepartamento" class="form-control">
+                            <input type="text" value="${departamento.getDepartamento()}" name="txtDepartamento" class="form-control">
                         </div>
                           <div class="form-group">
                               <label>Municipio</label>
-                            <input type="text" name="txtMunicipio" class="form-control">
+                              <input type="text" value="${departamento.getMunicipio()}" name="txtMunicipio" class="form-control">
                         </div>
                          <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -54,8 +54,8 @@
                          
                            
                                <td>
-                                <a class="btn btn-warning" href="#" >Editar</a>
-                                <a class="btn btn-danger" href="#">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Departamento&accion=Editar&codigoDepartamento=${departamento.getCodigoDepartamento()}" >Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Departamento&accion=Eliminar&codigoDepartamento=${departamento.getCodigoDepartamento()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach> 

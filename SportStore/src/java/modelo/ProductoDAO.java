@@ -31,6 +31,7 @@ public class ProductoDAO {
                     pr.setCodigoMarca(rs.getInt(5));
                     pr.setCodigoTalla(rs.getInt(6));
                     pr.setCodigoTProducto(rs.getInt(7));
+                    pr.setFotoProducto(rs.getString(8));
                     listaProducto.add(pr);
                 }
             }catch(Exception e){
@@ -43,7 +44,7 @@ public class ProductoDAO {
         // Agregar
         
         public int agregar(Producto pr){
-            String sql = "Insert into producto(nombreProducto, stock, precio, codigoMarca, codigoTalla, codigoTProducto) values(?,?,?,?,?,?)";
+            String sql = "Insert into producto(nombreProducto, stock, precio, codigoMarca, codigoTalla, codigoTProducto, fotoProducto) values(?,?,?,?,?,?,?)";
             try{
                 con = cn.Conexion();
                 ps = con.prepareStatement(sql);
@@ -53,6 +54,8 @@ public class ProductoDAO {
                 ps.setInt(4, pr.getCodigoMarca());
                 ps.setInt(5, pr.getCodigoTalla());
                 ps.setInt(6, pr.getCodigoTProducto());
+                ps.setString(7, pr.getFotoProducto());
+                
                 ps.executeUpdate();
             }catch(Exception e){
                 e.printStackTrace();
@@ -95,6 +98,7 @@ public class ProductoDAO {
                 ps.setInt(2, pr.getStock());
                 ps.setDouble(3, pr.getPrecio());
                 ps.setInt(4, pr.getCodigoProducto());
+                ps.executeUpdate();
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -104,7 +108,7 @@ public class ProductoDAO {
         //Eliminar
         
         public void eliminar(int id){
-            String sql = "delete from producto where codigoProducto = "+id;
+            String sql = "delete from Producto where codigoProducto = "+id;
             try{
                 con = cn.Conexion();
                 ps = con.prepareStatement(sql);

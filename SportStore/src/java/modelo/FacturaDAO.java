@@ -87,6 +87,8 @@ public class FacturaDAO {
         
         return fact;
     }    
+  
+    
     
     // Método para editar factura
     
@@ -109,7 +111,7 @@ public class FacturaDAO {
     }    
     
     public void eliminar(int id) {
-        String sql = "delete from Factura where codigoFactura = " + id;
+        String sql = "delete from factura where codigoFactura = " + id;
         
         try {
             con = cn.Conexion();
