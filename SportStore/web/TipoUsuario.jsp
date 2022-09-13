@@ -17,7 +17,7 @@
                         
                         <div>
                             <label>TipoUsuario:</label>
-                            <input type="text" name="txtTipoUsuario" class="form-control">  
+                            <input type="text" value="${tipoUsuario.getTipoUsuario()}" name="txtTipoUsuario" class="form-control">  
                         </div>
 
                             <br><br>
@@ -43,8 +43,8 @@
                             <td>${tipoUsuario.getCodigoTUsuario()}</td>
                             <td>${tipoUsuario.getTipoUsuario()}</td>
                             <td>
-                                <a class="btn btn-warning" href="" >EDITAR</a>
-                                <a class="btn btn-danger" href="">ELIMINAR</a>
+                                <a class="btn btn-warning" href="Controlador?menu=TipoUsuario&accion=Editar&codigoTUsuario=${tipoUsuario.getCodigoTUsuario()}" >EDITAR</a>
+                                <a class="btn btn-danger" href="Controlador?menu=TipoUsuario&accion=Eliminar&codigoTUsuario=${tipoUsuario.getCodigoTUsuario()}">ELIMINAR</a>
                             </td>
                         </tr>
                         </c:forEach>

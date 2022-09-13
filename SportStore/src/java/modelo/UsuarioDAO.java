@@ -142,7 +142,7 @@ public class UsuarioDAO {
     //Método para editar
     
     public int actualizar(Usuario user) {
-        String sql = "Update Usuario set nombreUsuario = ?, apellidoUsuario = ?, NIT = ?, usuario = ?, passwordUser = ?, correoElectronico = ?, codigoTUsuario = ?, codigoDepartamento = ? where codigoUsuario = ?";
+        String sql = "Update Usuario set nombreUsuario = ?, apellidoUsuario = ?, NIT = ?, usuario = ?, passwordUser = ?, correoElectronico = ? where codigoUsuario = ?";
         
         try {
             con = cn.Conexion();
@@ -153,9 +153,7 @@ public class UsuarioDAO {
             ps.setString(4, user.getUsuario());
             ps.setString(5, user.getPasswordUser());
             ps.setString(6, user.getCorreoElectronico());
-            ps.setInt(7, user.getCodigoTUsuario());
-            ps.setInt(8, user.getCodigoDepartamento());
-            ps.setInt(9, user.getCodigoUsuario());
+            ps.setInt(7, user.getCodigoUsuario());
             ps.executeUpdate();
             
         } catch(Exception e) {
@@ -169,7 +167,7 @@ public class UsuarioDAO {
     //Método para eliminar
     
     public void eliminar(int id) {
-        String sql = "delete from Usuario where codigoUsuairo = " + id;
+        String sql = "delete from Usuario where codigoUsuario = " + id;
         
         try {
             con = cn.Conexion();

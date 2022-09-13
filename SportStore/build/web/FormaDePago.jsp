@@ -38,7 +38,7 @@
                     <form action="Controlador?menu=FormaDePago" method="POST">
                         <div class="form-group">
                             <label>Forma De Pago</label>
-                            <input type="text" name="txtFormaDePago" class="form-control">
+                            <input type="text" name="txtFormaDePago" value="${formaDePago.getFormaDePago()}" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -60,8 +60,8 @@
                             <p>La culpa de gastar, se acaba al estrenar</p>
                         </details>
                         <a href="#" class="btn btn-primary">._.</a>
-                        <a class="btn btn-warning" href="#">Editar</a>
-                        <a class="btn btn-danger" href="#">Eliminar</a> 
+                        <a class="btn btn-warning" href="Controlador?menu=FormaDePago&accion=Editar&codigoFormaDePago=${formaDePago.getCodigoFormaDePago()}">Editar</a>
+                        <a class="btn btn-danger"  href="Controlador?menu=FormaDePago&accion=Eliminar&codigoFormaDePago=${formaDePago.getCodigoFormaDePago()}">Eliminar</a> 
                     </div>
                 </div> 
             </div>
