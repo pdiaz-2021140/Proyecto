@@ -154,7 +154,8 @@ Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usu
     values ('Gabriela', 'Pinzon', '25361425',  'gabrielapinzon@gmail.com','gpinzon', '987654', 2,1);     
 Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento)
     values ('Stuart', 'Pinzon', '8754219632',  'stuartpinzon@gmail.com','spinzon', '12345', 1,3);  
-
+Insert into Usuario (nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento, fotoUsuario)
+    values ('Pablo', 'Díaz', '1234567880',  'pablod2021@gmail.com','pdiaz', '12345', 1,3, './img/Perfil/306697981_627641495378368_6982417623225097073_n.jpg');  
 
 
 
@@ -193,6 +194,7 @@ Insert into DetalleFactura (horaDeEmision, codigoProducto, codigoFactura) values
 
 
 select * from Producto;
+select * from Usuario;
 
 
 

@@ -79,17 +79,37 @@ public class Validar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String accion = request.getParameter("accion");
+        String accion = request.getParameter("accion");     
+        String menu = request.getParameter("menu");
+       
+        
         
         if(accion.equalsIgnoreCase("Ingresar")) {
             String user = request.getParameter("txtUser");
             String pass = request.getParameter("txtPass");
+           
             usuario = usuarioDAO.validar(user, pass);
+           
             
-            if(usuario.getUsuario() != null) {
-                request.setAttribute("usuario", usuario);
-                request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
-            } else {
+          
+            if(usuario.getUsuario() != null ) {
+                 request.setAttribute("usuario", usuario);
+                 request.setAttribute("tipo", usuario.getTipo());
+      
+                switch(usuario.getCodigoTUsuario()){
+                    case 1:
+                        request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
+                    break;
+                    case 2:
+                        request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
+                    break;  
+                    default:
+                        response.sendRedirect("Tienda.jsp");
+                }
+
+            
+                }
+              else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } else {

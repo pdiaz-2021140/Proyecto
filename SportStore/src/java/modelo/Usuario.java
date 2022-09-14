@@ -92,6 +92,20 @@ public class Usuario {
     public void setCodigoTUsuario(int codigoTUsuario) {
         this.codigoTUsuario = codigoTUsuario;
     }
+    
+     public String getTipo(){
+        if(this.codigoTUsuario == 1 ){
+            return "Master";
+        }else if (this.codigoTUsuario == 2){
+            return "Trabajador";
+            
+        } else if (this.codigoTUsuario == 3){
+            return "Cliente";
+        }
+        return "";
+                
+    }
+
 
     public int getCodigoDepartamento() {
         return codigoDepartamento;
