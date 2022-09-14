@@ -18,7 +18,7 @@
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Usuario" method="POST">
+                    <form action="Controlador?menu=Usuario" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>NIT:</label>
                             <input type="text" value="${usuario.getNIT()}" name="txtNITUsuario" class="form-control">
@@ -51,8 +51,12 @@
                             <label>Tipo de usuario:</label>
                             <input type="text" value="${usuario.getCodigoTUsuario()}" ${read} name="txtTipoUser" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+                         <div class="form-group">
+                            <label>Elegir Imagen:</label>
+                            <input type="file"  name="fileImg" >
+                        </div>
+                        <input type="submit" formaction="Controlador?menu=Usuario&accion=Agregar" name="accion" value="Agregar" class="btn btn-info">
+                        <input type="submit" formaction="Controlador?menu=Usuario&accion=Actualizar" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
@@ -70,6 +74,7 @@
                             <td>CORREO</td>
                             <td>DEPARTAMENTO</td>
                             <td>TIPO USUARIO</td>
+                            <td>FOTO USUARIO</td>
                             <td>ACCIONES</td>
                         </tr>
                     </thead>
@@ -85,6 +90,7 @@
                             <td>${usuario.getCorreoElectronico()}</td>
                             <td>${(dep.listarCodigoDepto(usuario.getCodigoDepartamento())).getDepartamento()}</td>
                             <td>${(tipoUser.listarTipoUsuario(usuario.getCodigoTUsuario())).getTipoUsuario()}</td>
+                            <td> <img src="${usuario.getFotoUsuario()}" width="60" height="60"></td>
                             <td>
                                 <a class="btn btn-warning" href="Controlador?menu=Usuario&accion=Editar&codigoUsuario=${usuario.getCodigoUsuario()}">Editar</a>
                                 <a class="btn btn-danger" href="Controlador?menu=Usuario&accion=Eliminar&codigoUsuario=${usuario.getCodigoUsuario()}">Eliminar</a>                                                                

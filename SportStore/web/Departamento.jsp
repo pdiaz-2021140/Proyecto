@@ -33,21 +33,21 @@
                     </form>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <table class="table table-hover">
-                    <thead>
+                    <thead class="bg-dark">
                    
                         <tr>
-                            <td>Codigo Departamento</td>
-                            <td>Departamento</td>
-                            <td>Municipio</td>
-                            <td>Acciones<td>
+                            <td style="color: white">Codigo Departamento</td>
+                            <td style="color: white">Departamento</td>
+                            <td style="color: white">Municipio</td>
+                            <td style="color: white">Acciones<td>
                        
                         </tr> 
                     </thead>
                     <tbody>
                         <c:forEach var="departamento" items="${departamentos}">
-                        <tr>
+                       <tr >
                              <td>${departamento.getCodigoDepartamento()}</td>
                             <td>${departamento.getDepartamento()}</td>
                             <td>${departamento.getMunicipio()}</td>

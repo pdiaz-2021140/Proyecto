@@ -42,14 +42,14 @@
             
             <div class="col-sm-8">
                 <table class="table table-hover">
-                    <thead>
+                    <thead class="bg-dark">
                         <tr>
-                            <td>CODIGO FACTURA</td>
-                            <td>FECHA</td>
-                            <td>ESTADO</td>
-                            <td>NIT</td>
-                            <td>FORMA DE PAGO</td>
-                            <td>ACCIONES</td>
+                            <td style="color: white">CODIGO FACTURA</td>
+                            <td style="color: white">FECHA</td>
+                            <td style="color: white">ESTADO</td>
+                            <td style="color: white">NIT</td>
+                            <td style="color: white">FORMA DE PAGO</td>
+                            <td style="color: white">ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>

@@ -18,48 +18,53 @@
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Producto" method="POST">
+                    <form action="Controlador?menu=Producto" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Nombre:</label>
-                            <input type="text" name="txtNombreProducto" class="form-control">
+                            <input type="text" value="${producto.getNombreProducto()}" name="txtNombreProducto" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Stock</label>
-                            <input type="text" name="txtStock" class="form-control">
+                            <input type="text" value="${producto.getStock()}" name="txtStock" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Precio</label>
-                            <input type="text" name="txtPrecio" class="form-control">
+                            <input type="text" value="${producto.getPrecio()}" name="txtPrecio" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Marca</label>
-                            <input type="text" name="txtCodigoMarca" class="form-control">
+                            <input type="text" value="${producto.getCodigoMarca()}" ${read} name="txtCodigoMarca" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Talla</label>
-                            <input type="text" name="txtCodigoTalla" class="form-control">
+                            <input type="text" value="${producto.getCodigoTalla()}" ${read} name="txtCodigoTalla" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Tipo Producto</label>
-                            <input type="text" name="txtCodigoTProducto" class="form-control">
+                            <input type="text" value="${producto.getCodigoTProducto()}" ${read} name="txtCodigoTProducto" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+                         <div class="form-group">
+                            <label>Foto Producto</label>
+                            <input type="file"  name="fileProducto" >
+                        </div>
+                        <input type="submit" formaction="Controlador?menu=Producto&accion=Agregar" name="accion" value="Agregar" class="btn btn-info">
+                        <input type="submit" formaction="Controlador?menu=Producto&accion=Actualizar" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
             <div class="col-sm-8">
                 <table class="table table-hover">
-                    <thead>
+                     <thead class="bg-dark">
                         <tr>
-                            <td>CODIGO</td>
-                            <td>NOMBRES</td>
-                            <td>STOCK</td>
-                            <td>PRECIO</td>
-                            <td>MARCA</td>
-                            <td>TALLA</td>
-                            <td>TIPO PRODUCTO</td>
-                            <td>ACCIONES</td>
+                            <td style="color: white">CODIGO</td>
+                            <td style="color: white">NOMBRES</td>
+                            <td style="color: white">STOCK</td>
+                            <td style="color: white">PRECIO</td>
+                            <td style="color: white">MARCA</td>
+                            <td style="color: white">TALLA</td>
+                            <td style="color: white">TIPO PRODUCTO</td>
+                            <td style="color: white">FOTO PRODUCTO</td>
+                            <td style="color: white">ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,9 +77,10 @@
                             <td>${producto.getCodigoMarca()}</td>
                             <td>${producto.getCodigoTalla()}</td>
                             <td>${producto.getCodigoTProducto()}</td>
+                            <td><img src="${producto.getFotoProducto()}" width="60" height="60"></td>
                             <td>
-                                <a class="btn btn-warning" href="">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Producto&accion=Editar&codigoProducto=${producto.getCodigoProducto()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Producto&accion=Eliminar&codigoProducto=${producto.getCodigoProducto()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>

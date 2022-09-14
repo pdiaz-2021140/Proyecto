@@ -21,15 +21,15 @@
                 <form action="Controlador?menu=Marca" method="POST">
                      <div class="form-group">
                         <label>NOMBRE DE MARCA</label>
-                        <input type="text" name="txtNombreMarca" class="form-control">  
+                        <input type="text" value="${marca.getNombreMarca()}" name="txtNombreMarca" class="form-control">  
                     </div>
                      <div class="form-group">
                         <label>NUMERO DE CONTACTO</label>
-                        <input type="text" name="txtNumeroContacto" class="form-control">  
+                        <input type="text" value="${marca.getNumeroContacto()}"name="txtNumeroContacto" class="form-control">  
                     </div>
                     <div class="form-group">
                         <label>CORREO CONTACTO</label>
-                        <input type="text" name="txtCorreoContacto" class="form-control">  
+                        <input type="text"  value="${marca.getCorreoContacto()}"name="txtCorreoContacto" class="form-control">  
                     </div>
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                     <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -39,13 +39,13 @@
         
         <div class="col-sm-8">
             <table class="table table-hover">
-                <thead>
+                <thead class="bg-dark">
                     <tr>
-                        <td>CODIGO  MARCA</td>
-                        <td>NOMBRE  MARCA</td>
-                        <td>NUMERO  CONTACTO</td>
-                        <td>CORREO CONTACTO</td>
-                        <td>ACCIONES</td>
+                        <td style="color: white">CODIGO  MARCA</td>
+                        <td style="color: white">NOMBRE  MARCA</td>
+                        <td  style="color: white"><NUMERO  CONTACTO</td>
+                        <td  style="color: white">CORREO CONTACTO</td>
+                        <td  style="color: white">ACCIONES</td>
                     </tr>
                 </thead>
                 <tbody>  
@@ -56,8 +56,8 @@
                         <td>${marca.getNumeroContacto()}</td> 
                         <td>${marca.getCorreoContacto()}</td>
                         <td>
-                             <a class="btn btn-warning" href="">Editar</a>
-                             <a class="btn btn-danger" href="">Eliminar</a>
+                             <a class="btn btn-warning" href="Controlador?menu=Marca&accion=Editar&codigoMarca=${marca.getCodigoMarca()}">Editar</a>
+                             <a class="btn btn-danger" href="Controlador?menu=Marca&accion=Eliminar&codigoMarca=${marca.getCodigoMarca()}">Eliminar</a>
                         </td>
                     </tr> 
                     </c:forEach>

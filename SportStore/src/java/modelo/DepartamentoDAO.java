@@ -24,33 +24,7 @@ public class DepartamentoDAO {
     ResultSet rs;
     int resp;
     
-    //Metodo para Validar
-    public Departamento validar(int codigoDepartamento, String departamento, String municipio ){
-        //Instanciar un objeto de tipo Departamento
-        Departamento depto = new Departamento();
-        //Agregar una variable de tipo String para la consulta 
-        
-        String sql = "Select * from Departamento where codigoDepartamento = ? and departamento = ?";
-        try{
-            con= cn.Conexion();
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, codigoDepartamento);
-            ps.setString(2, departamento);
-            ps.setString(3, municipio);
-         
-            rs = ps.executeQuery();
-            while(rs.next()){
-            depto.setCodigoDepartamento(rs.getInt("codigoDepartamento"));
-            depto.setDepartamento(rs.getString("departamento"));
-            depto.setMunicipio(rs.getString("municipio"));
-          
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-    }
-    return depto;     //Marca Encontrada
-    
-    }
+  
     
     //OPERACIONES DEL CRUD
     
@@ -123,6 +97,8 @@ public class DepartamentoDAO {
             ps = con.prepareStatement(sql);
             ps.setString(1, dpt.getDepartamento());
             ps.setString(2, dpt.getMunicipio());
+            ps.setInt(3, dpt.getCodigoDepartamento());
+            ps.executeUpdate();
            
         }catch(Exception e){
             e.printStackTrace();

@@ -33,7 +33,7 @@ public class UsuarioDAO {
                 user.setApellidoUsuario(rs.getString("apellidoUsuario"));
                 user.setNIT(rs.getString("NIT"));
                 user.setUsuario(rs.getString("usuario"));
-                user.setPasswordUser(rs.getString("passwordU"));
+                user.setPasswordUser(rs.getString("passwordUser"));
                 user.setCorreoElectronico(rs.getString("correoElectronico"));
                 user.setCodigoDepartamento(rs.getInt("codigoDepartamento"));
                 user.setCodigoTUsuario(rs.getInt("codigoTUsuario"));
@@ -70,6 +70,7 @@ public class UsuarioDAO {
                 user.setPasswordUser(rs.getString(7));
                 user.setCodigoTUsuario(rs.getInt(8));
                 user.setCodigoDepartamento(rs.getInt(9));
+                user.setFotoUsuario(rs.getString(10));
                 listaUsuario.add(user);
                 
             }
@@ -85,7 +86,7 @@ public class UsuarioDAO {
     //Método Agregar
     
     public int agregar(Usuario user) {
-        String sql = "insert into Usuario(nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento) values(?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Usuario(nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser, codigoTUsuario, codigoDepartamento, fotoUsuario) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         try {
             con = cn.Conexion();
@@ -98,6 +99,7 @@ public class UsuarioDAO {
             ps.setString(6, user.getPasswordUser());
             ps.setInt(7, user.getCodigoTUsuario());
             ps.setInt(8, user.getCodigoDepartamento());
+            ps.setString(9, user.getFotoUsuario());
             ps.executeUpdate();
             
         } catch(Exception e) {
@@ -107,6 +109,32 @@ public class UsuarioDAO {
         
         return resp;
     }
+    
+        public int agregarCliente(Usuario user) {
+        String sql = "insert into Usuario(nombreUsuario, apellidoUsuario, NIT, correoElectronico, usuario, passwordUser,codigoDepartamento,codigoTUsuario) values(?, ?, ?, ?, ?, ?, ?,3)";
+        
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, user.getNombreUsuario());
+            ps.setString(2, user.getApellidoUsuario());
+            ps.setString(3, user.getNIT());
+            ps.setString(4, user.getCorreoElectronico());
+            ps.setString(5, user.getUsuario());
+            ps.setString(6, user.getPasswordUser());
+            ps.setInt(7, user.getCodigoDepartamento());
+            ps.executeUpdate();
+            
+        } catch(Exception e) {
+            e.printStackTrace();
+            System.out.println("No se pudo agregar el registro"+e);
+        }
+        
+        return resp;
+        
+        
+    }
+    
     
     
     //Método buscar por código
@@ -129,6 +157,7 @@ public class UsuarioDAO {
                 user.setPasswordUser(rs.getString(7));
                 user.setCodigoTUsuario(rs.getInt(8));
                 user.setCodigoDepartamento(rs.getInt(9));
+               
             }
             
         } catch(Exception e) {

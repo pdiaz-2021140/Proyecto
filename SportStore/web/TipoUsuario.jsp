@@ -11,13 +11,13 @@
     </head>
     <body>
         <div class="d-flex">
-            <div class="card col-sm-3">
+            <div class="card col-sm-3 ">
                 <div class="card-body" >
                     <form action="Controlador?menu=TipoUsuario" method="POST" >
                         
                         <div>
                             <label>TipoUsuario:</label>
-                            <input type="text" name="txtTipoUsuario" class="form-control">  
+                            <input type="text" value="${tipoUsuario.getTipoUsuario()}" name="txtTipoUsuario" class="form-control">  
                         </div>
 
                             <br><br>
@@ -27,24 +27,24 @@
                 </div>
             </div>
                 
-            <div class="col-sm-8">
+            <div class="col-sm-10">
                 <table class="table table-hover"> 
-                    <thead style="background-color: #CCCCCC ">
+                    <thead class="bg-dark">
                         <tr>
-                            <td>CODIGO</td>
-                            <td>TIPO DE USUARIO</td>
-                            <td>ACCIONES</td>
+                            <td style="color: white">CODIGO</td>
+                            <td style="color: white">TIPO DE USUARIO</td>
+                            <td style="color: white" >ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>
                         
                         <c:forEach var="tipoUsuario" items="${tipoUsuarios}">
-                        <tr>
-                            <td>${tipoUsuario.getCodigoTUsuario()}</td>
-                            <td>${tipoUsuario.getTipoUsuario()}</td>
+                        <tr >
+                            <td >${tipoUsuario.getCodigoTUsuario()}</td>
+                            <td >${tipoUsuario.getTipoUsuario()}</td>
                             <td>
-                                <a class="btn btn-warning" href="" >EDITAR</a>
-                                <a class="btn btn-danger" href="">ELIMINAR</a>
+                                <a class="btn btn-warning" href="Controlador?menu=TipoUsuario&accion=Editar&codigoTUsuario=${tipoUsuario.getCodigoTUsuario()}" >EDITAR</a>
+                                <a class="btn btn-danger" href="Controlador?menu=TipoUsuario&accion=Eliminar&codigoTUsuario=${tipoUsuario.getCodigoTUsuario()}">ELIMINAR</a>
                             </td>
                         </tr>
                         </c:forEach>

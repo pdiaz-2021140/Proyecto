@@ -39,11 +39,11 @@
             <div class="col-sm-8">
                 
                 <table class="table table-hover">
-                    <thead>
-                         <td>CODIGO</td>
-                         <td>DESCRIPCIÓN</td>
-                         <td>GÉNERO DE LA MARCA</td>
-                         <td>ACCIONES</td>
+                    <thead class="bg-dark">
+                         <td style="color: white">CODIGO</td>
+                         <td style="color: white">DESCRIPCIÓN</td>
+                         <td style="color: white">GÉNERO DE LA MARCA</td>
+                         <td style="color: white">ACCIONES</td>
                     </thead>
                     <tbody>
                  <c:forEach var="tipoProducto" items="${tipoProductos}">
