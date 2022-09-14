@@ -28,7 +28,7 @@
             </div>
                 
             <div class="col-sm-10">
-                <table class="table table-hover"> 
+                 <table class=" table table-hover table-bordered  ">
                     <thead class="bg-dark">
                         <tr>
                             <td style="color: white">CODIGO</td>

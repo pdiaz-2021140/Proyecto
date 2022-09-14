@@ -38,7 +38,7 @@
             
             <div class="col-sm-8">
                 
-                <table class="table table-hover">
+                  <table class=" table table-hover table-bordered  ">
                     <thead class="bg-dark">
                          <td style="color: white">CODIGO</td>
                          <td style="color: white">DESCRIPCIÓN</td>

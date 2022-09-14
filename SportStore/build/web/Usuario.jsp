@@ -61,26 +61,26 @@
                 </div>
             </div>
             
-            <div class="col-sm-8">
-                <table class="table table-hover">
-                   <thead class="bg-dark">
-                        <tr>
-                            <td style="color: white">CÓDIGO</td>
-                            <td style="color: white">NIT</td>
-                            <td style="color: white">NOMBRE</td>
-                            <td style="color: white">APELLIDO</td>                           
-                            <td style="color: white">USUARIO</td>
-                            <td style="color: white">CONTRASEÑA</td>
-                            <td style="color: white">CORREO</td>
-                            <td style="color: white">DEPARTAMENTO</td>
-                            <td style="color: white">TIPO USUARIO</td>
-                            <td style="color: white">FOTO USUARIO</td>
-                            <td style="color: white">ACCIONES</td>
+            <div class="col-sm  d-flex">
+                <table class=" table table-hover table-bordered  ">
+                    <thead class="bg-dark">
+                        <tr  style="color: white; font-size: 10px">
+                            <td>CÓDIGO</td>
+                            <td>NIT</td>
+                            <td>NOMBRE</td>
+                            <td>APELLIDO</td>                           
+                            <td>USUARIO</td>
+                            <td>CONTRASEÑA</td>
+                            <td>CORREO</td>
+                            <td>DEPARTAMENTO</td>
+                            <td>TIPO USUARIO</td>
+                            <td>FOTO USUARIO</td>
+                            <td>ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach var="usuario" items="${usuarios}">
-                        <tr>
+                        <tr  style="font-size: 10px">
                             <td>${usuario.getCodigoUsuario()}</td>
                             <td>${usuario.getNIT()}</td>
                             <td>${usuario.getNombreUsuario()}</td>
