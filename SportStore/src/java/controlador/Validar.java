@@ -104,7 +104,7 @@ public class Validar extends HttpServlet {
                         request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
                     break;  
                     default:
-                        response.sendRedirect("Tienda.jsp");
+                        request.getRequestDispatcher("Controlador?menu=Tienda").forward(request, response);
                 }
 
             

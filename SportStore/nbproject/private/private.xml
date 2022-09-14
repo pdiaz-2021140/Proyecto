@@ -3,9 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/50256/Desktop/kinal%202022/Informatica/Unidad%204/Proyecto%20final/SportStore/src/java/config/Conexion.java</file>
-            <file>file:/C:/Users/50256/Desktop/kinal%202022/Informatica/Unidad%204/Proyecto%20final/SportStore/src/java/modelo/ObtenerUrl.java</file>
-            <file>file:/C:/Users/50256/Desktop/kinal%202022/Informatica/Unidad%204/Proyecto%20final/SportStore/web/Usuario.jsp</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/src/java/modelo/Producto.java</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/web/Tienda.jsp</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/src/java/controlador/Validar.java</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/src/java/controlador/Controlador.java</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/web/ProductosCliente.jsp</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/src/java/modelo/Usuario.java</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/src/java/modelo/ProductoDAO.java</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/src/java/modelo/UsuarioDAO.java</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/web/CSS/productosCliente.css</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/web/CSS/carrito.css</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/src/java/config/Conexion.java</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/web/CarritoCompras.jsp</file>
+            <file>file:/C:/Users/Jilder%20Calderon%20M/Documents/NetBeansProjects/SportStore/web/Principal.jsp</file>
         </group>
     </open-files>
 </project-private>

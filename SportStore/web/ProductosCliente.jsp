@@ -18,16 +18,6 @@
     <body>
         <div>
             <div style='display: inline-block'>
-                <div class='filtro-producto'>
-                    <h1>Filtros</h1>
-                    <h1>Filtros</h1>
-                    <h1>Filtros</h1>
-                    <h1>Filtros</h1>
-                    <h1>Filtros</h1>
-                    <h1>Filtros</h1>
-                    <h1>Filtros</h1>
-                    
-                </div>
                 
                 <div class='encabezado-productos'>
                     <h1>Productos</h1>
@@ -49,7 +39,7 @@
                                     <div class="d-grid">
                                       <h4 class="card-title">${pr.getNombreProducto()}</h4>
                                       <p class="card-text">Q ${pr.getPrecio()}</p>
-                                      <a href="#" class="btn btn-outline-dark">Añadir al carrito</a>
+                                      <a href="Controlador?menu=ProductosCliente&accion=AgregarCarrito&id=${pr.getCodigoProducto()}&total=${pr.getPrecio()}" class="btn btn-outline-dark">Añadir al carrito</a>
                                     </div>
                             </div>
                             

@@ -74,12 +74,14 @@ public class ProductoDAO {
                 ps = con.prepareStatement(sql);
                 rs = ps.executeQuery();
                 while(rs.next()){
+                    pr.setCodigoProducto(rs.getInt(1));
                     pr.setNombreProducto(rs.getString(2));
                     pr.setStock(rs.getInt(3));
                     pr.setPrecio(rs.getDouble(4));
                     pr.setCodigoMarca(rs.getInt(5));
                     pr.setCodigoTalla(rs.getInt(6));
                     pr.setCodigoTProducto(rs.getInt(7));
+                    pr.setFotoProducto(rs.getString(8));
                 }
             }catch(Exception e){
                 e.printStackTrace();

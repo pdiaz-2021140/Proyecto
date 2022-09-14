@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -82,7 +83,9 @@ public class Controlador extends HttpServlet {
     int codDFactura;
     int codMarca;
     
-    
+    List<Producto> listaCarrito = new ArrayList();
+    HashMap<Integer, String> cntProductoCarrito = new HashMap<Integer, String>();
+    double totalCarrito = 0;
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -674,10 +677,80 @@ public class Controlador extends HttpServlet {
             case "Listar":
                 List listaProductos = productoDAO.listar();
                 request.setAttribute("productos", listaProductos);
+                
+                break;
+            
+            case "AgregarCarrito":
+                
+                int id = Integer.parseInt(request.getParameter("id"));
+                double precioTotal = Double.parseDouble(request.getParameter("total"));
+                
+                if(listaCarrito.isEmpty()){
+                    listaCarrito.add(productoDAO.listarCodigoProducto(id));
+                    cntProductoCarrito.put(id, "1");
+                    
+                    totalCarrito = precioTotal + totalCarrito;
+                    
+                } else {
+                    for(int i = 0; i < listaCarrito.size(); i++) {
+                        if (listaCarrito.get(i).getCodigoProducto() == id) {
+                            String ant = cntProductoCarrito.get(id);
+                            cntProductoCarrito.put(id, String.valueOf((Integer.parseInt(ant))+1));
+                            totalCarrito = precioTotal + totalCarrito;
+                            
+                            request.getRequestDispatcher("Controlador?menu=ProductosCliente&accion=Listar").forward(request, response);
+                            return;
+                        }
+                    }
+                    listaCarrito.add(productoDAO.listarCodigoProducto(id));
+                    cntProductoCarrito.put(id, "1");
+                    totalCarrito = precioTotal + totalCarrito;
+                    
+                }
+                
+                
+                
+                request.getRequestDispatcher("Controlador?menu=ProductosCliente&accion=Listar").forward(request, response);
+                
                 break;
         }
         
         request.getRequestDispatcher("ProductosCliente.jsp").forward(request, response);
+        
+    } else if (menu.equals("CarritoCompras")) {
+        switch(accion) {
+            case "Listar":
+                request.setAttribute("carrito", listaCarrito);
+                request.setAttribute("cantidad", cntProductoCarrito);
+                request.setAttribute("total", totalCarrito);
+                request.getRequestDispatcher("CarritoCompras.jsp").forward(request, response);
+                break;
+                
+            case "Eliminar":
+                int id = Integer.parseInt(request.getParameter("id"));
+                double precioTotal = Double.parseDouble(request.getParameter("total"));
+                
+                    for(int i = 0; i < listaCarrito.size(); i++) {
+                        if (listaCarrito.get(i).getCodigoProducto() == id) {
+                            String ant = cntProductoCarrito.get(id);
+                            
+                            if(Integer.parseInt(ant) > 1) {
+                                cntProductoCarrito.put(id, String.valueOf((Integer.parseInt(ant))-1));
+                                totalCarrito = totalCarrito - precioTotal;
+                            } else {
+                                listaCarrito.remove(i);
+                                totalCarrito = totalCarrito - precioTotal;
+                            }
+                            
+                            
+                            request.getRequestDispatcher("Controlador?menu=CarritoCompras&accion=Listar").forward(request, response);
+                            return;
+                        }
+                    }
+                break;
+        }
+        
+        
     }
 }
         
