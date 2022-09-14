@@ -63,19 +63,19 @@
             
             <div class="col-sm-8">
                 <table class="table table-hover">
-                    <thead>
+                   <thead class="bg-dark">
                         <tr>
-                            <td>CÓDIGO</td>
-                            <td>NIT</td>
-                            <td>NOMBRE</td>
-                            <td>APELLIDO</td>                           
-                            <td>USUARIO</td>
-                            <td>CONTRASEÑA</td>
-                            <td>CORREO</td>
-                            <td>DEPARTAMENTO</td>
-                            <td>TIPO USUARIO</td>
-                            <td>FOTO USUARIO</td>
-                            <td>ACCIONES</td>
+                            <td style="color: white">CÓDIGO</td>
+                            <td style="color: white">NIT</td>
+                            <td style="color: white">NOMBRE</td>
+                            <td style="color: white">APELLIDO</td>                           
+                            <td style="color: white">USUARIO</td>
+                            <td style="color: white">CONTRASEÑA</td>
+                            <td style="color: white">CORREO</td>
+                            <td style="color: white">DEPARTAMENTO</td>
+                            <td style="color: white">TIPO USUARIO</td>
+                            <td style="color: white">FOTO USUARIO</td>
+                            <td style="color: white">ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>
