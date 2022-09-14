@@ -33,22 +33,22 @@
                         </div>
                         <div class="form-group">
                             <label>Marca</label>
-                            <input type="text" value="${producto.getCodigoMarca()}" name="txtCodigoMarca" class="form-control">
+                            <input type="text" value="${producto.getCodigoMarca()}" ${read} name="txtCodigoMarca" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Talla</label>
-                            <input type="text" value="${producto.getCodigoTalla()}" name="txtCodigoTalla" class="form-control">
+                            <input type="text" value="${producto.getCodigoTalla()}" ${read} name="txtCodigoTalla" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Tipo Producto</label>
-                            <input type="text" value="${producto.getCodigoTProducto()}" name="txtCodigoTProducto" class="form-control">
+                            <input type="text" value="${producto.getCodigoTProducto()}" ${read} name="txtCodigoTProducto" class="form-control">
                         </div>
                          <div class="form-group">
                             <label>Foto Producto</label>
                             <input type="file"  name="fileProducto" >
                         </div>
                         <input type="submit" formaction="Controlador?menu=Producto&accion=Agregar" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+                        <input type="submit" formaction="Controlador?menu=Producto&accion=Actualizar" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>

@@ -56,7 +56,7 @@
                             <input type="file"  name="fileImg" >
                         </div>
                         <input type="submit" formaction="Controlador?menu=Usuario&accion=Agregar" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+                        <input type="submit" formaction="Controlador?menu=Usuario&accion=Actualizar" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
